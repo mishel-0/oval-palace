@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Oval Palace Resort — A premium luxury resort investment opportunity by Nalakath Holdings LLP. Invest and earn 12% p.a. immediate returns. Book your slot today.">
+    <meta name="keywords" content="Oval Palace, Nalakath Holdings, resort investment, luxury resort, LLP investment, hospitality investment">
+    <meta name="author" content="Nalakath Holdings">
+    <title>Oval Palace Resort — A Nalakath Holdings Venture | Invest in Luxury</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cellipse cx='50' cy='55' rx='35' ry='28' fill='none' stroke='%23C9A84C' stroke-width='4'/%3E%3Cpath d='M50 15 L42 30 L50 25 L58 30 Z' fill='%23C9A84C'/%3E%3Ccircle cx='35' cy='30' r='3' fill='%23C9A84C'/%3E%3Ccircle cx='65' cy='30' r='3' fill='%23C9A84C'/%3E%3Ccircle cx='50' cy='10' r='3' fill='%23C9A84C'/%3E%3C/svg%3E">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- ==================== NAVIGATION ==================== -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="#" class="nav-logo">
+                <div class="nav-logo-icon">
+                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <ellipse cx="50" cy="58" rx="32" ry="24" stroke="#C9A84C" stroke-width="3"/>
+                        <path d="M50 18 L43 32 L50 27 L57 32 Z" fill="#C9A84C"/>
+                        <circle cx="36" cy="30" r="2.5" fill="#C9A84C"/>
+                        <circle cx="64" cy="30" r="2.5" fill="#C9A84C"/>
+                        <circle cx="50" cy="12" r="2.5" fill="#C9A84C"/>
+                    </svg>
+                </div>
+                <div class="nav-logo-text">
+                    <span class="nav-logo-name">OVAL PALACE</span>
+                    <span class="nav-logo-tagline">R E S O R T</span>
+                </div>
+            </a>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">About</a></li>
+                <li><a href="resort-overview.html">Resort Overview</a></li>
+                <li><a href="#investment">Investment</a></li>
+                <li><a href="testimonials.html">Testimonials</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#investment" class="nav-cta">Invest Now</a></li>
+            </ul>
+
+            <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu-overlay" id="mobileOverlay"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="#about" onclick="closeMobileMenu()">About</a></li>
+            <li><a href="resort-overview.html" onclick="closeMobileMenu()">Resort Overview</a></li>
+            <li><a href="#investment" onclick="closeMobileMenu()">Investment Plans</a></li>
+            <li><a href="testimonials.html" onclick="closeMobileMenu()">Testimonials</a></li>
+            <li><a href="events.html" onclick="closeMobileMenu()">Events</a></li>
+            <li><a href="#appointment" onclick="closeMobileMenu()">Book Appointment</a></li>
+            <li><a href="#contact" onclick="closeMobileMenu()">Contact</a></li>
+        </ul>
+        <a href="#investment" class="nav-cta" onclick="closeMobileMenu()">Invest Now</a>
+    </div>
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <section class="hero" id="hero">
+        <div class="hero-slideshow" id="heroSlideshow">
+            <div class="hero-slide active" style="background-image: url('images/hero-1.jpg')"></div>
+            <div class="hero-slide" style="background-image: url('images/hero-2.jpg')"></div>
+            <div class="hero-slide" style="background-image: url('images/hero-3.jpg')"></div>
+            <div class="hero-slide" style="background-image: url('images/hero-4.jpg')"></div>
+            <div class="hero-slide" style="background-image: url('images/hero-5.jpg')"></div>
+        </div>
+        <div class="hero-overlay"></div>
+
+        <div class="container hero-content">
+
+            <h1 class="hero-title">
+                <span class="line">Invest in</span>
+                <span class="line gold">Paradise.</span>
+                <span class="line">Own a Piece of Oval Palace.</span>
+            </h1>
+            <p class="hero-description">
+                A premium LLP resort investment by Nalakath Holdings. Enjoy <strong>12% p.a. immediate returns</strong> with buyback guarantee and capital appreciation.
+            </p>
+            <div class="hero-ctas">
+                <a href="#investment" class="btn-primary">
+                    <i data-lucide="trending-up"></i>
+                    Explore Investment Plans
+                </a>
+                <a href="#appointment" class="btn-secondary">
+                    <i data-lucide="calendar"></i>
+                    Book Appointment
+                </a>
+            </div>
+
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="hero-stat-value">12%</div>
+                    <div class="hero-stat-label">Annual Returns</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-value">20+</div>
+                    <div class="hero-stat-label">Amenities</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-value">₹5L</div>
+                    <div class="hero-stat-label">Starts From</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-scroll-indicator">
+            <div class="scroll-mouse"></div>
+            <span>Scroll to explore</span>
+        </div>
+    </section>
+
+    <!-- ==================== ABOUT SECTION ==================== -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image-wrapper reveal">
+                    <div class="about-image">
+                        <img src="images/hero-2.jpg" alt="Oval Palace Resort Architecture" loading="lazy">
+                        <div class="about-image-badge">
+                            <i data-lucide="hard-hat"></i>
+                            <span>Under Construction</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-content reveal">
+                    <span class="section-label">Hospitality & Resorts Project</span>
+                    <h2 class="section-title">A Nalakath Holdings <span class="gold-gradient-text">Venture</span></h2>
+                    <p class="section-subtitle" style="margin-bottom: 24px;">
+                        <strong>Oval Palace Resort LLP</strong> is a landmark hospitality venture in Perinthalmanna, envisioned to deliver a world-class resort experience that blends luxury, comfort, and sustainability. Developed by Nalakath Holdings, the project is strategically located near the Perinthalmanna Cricket Stadium, offering guests a unique destination that combines modern amenities with the natural beauty of Kerala.
+                    </p>
+                    <p class="section-subtitle">
+                        <strong>Vision:</strong> To establish a premier resort that stands as a symbol of hospitality excellence in Malappuram district—catering to leisure travelers, families, corporates, and international tourists alike.
+                    </p>
+
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <div class="about-feature-icon">
+                                <i data-lucide="shield-check"></i>
+                            </div>
+                            <div>
+                                <h4>Secure Investment</h4>
+                                <p>Risk-minimized, backed by Nalakath Holdings' trusted reputation</p>
+                            </div>
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">
+                                <i data-lucide="gem"></i>
+                            </div>
+                            <div>
+                                <h4>Premium Property</h4>
+                                <p>Luxury resort in a prime destination</p>
+                            </div>
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">
+                                <i data-lucide="arrow-up-right"></i>
+                            </div>
+                            <div>
+                                <h4>Buyback Guarantee</h4>
+                                <p>Secure exit strategy with guaranteed buyback</p>
+                            </div>
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">
+                                <i data-lucide="trending-up"></i>
+                            </div>
+                            <div>
+                                <h4>Capital Appreciation</h4>
+                                <p>Long-term value growth in hospitality</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CONSTRUCTION TIMELINE ==================== -->
+    <section class="timeline-section" id="timeline">
+        <div class="container">
+            <div class="timeline-header reveal">
+                <span class="section-label" style="justify-content: center;">Project Timeline</span>
+                <h2 class="section-title">Construction <span class="gold-gradient-text">Progress</span></h2>
+                <p class="section-subtitle">Track the journey of Oval Palace from vision to reality</p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-line">
+                    <div class="timeline-progress"></div>
+                </div>
+
+                <div class="timeline-item completed reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Q1 2025</span>
+                        <h3 class="timeline-title">Land Acquisition</h3>
+                        <p class="timeline-desc">Strategic land secured in a prime hospitality destination with excellent connectivity.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item completed reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Q2 2025</span>
+                        <h3 class="timeline-title">Design & Architecture</h3>
+                        <p class="timeline-desc">World-class architects crafted the tropical-modern design blending brick, timber, and natural stone.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item current reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Q4 2025 — Ongoing</span>
+                        <h3 class="timeline-title">Foundation & Structure</h3>
+                        <p class="timeline-desc">Construction is underway — foundation complete, structural framework in progress.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Q1 2027</span>
+                        <h3 class="timeline-title">Interior & Finishing</h3>
+                        <p class="timeline-desc">Premium interiors, landscaping, infinity pool, and amenity setup begins.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Q2 2028</span>
+                        <h3 class="timeline-title">Grand Opening</h3>
+                        <p class="timeline-desc">Oval Palace Resort opens its doors — investors start receiving returns.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== AMENITIES ==================== -->
+    <section class="amenities" id="amenities">
+        <div class="container">
+            <div class="amenities-header reveal">
+                <span class="section-label" style="justify-content: center;">World-Class Amenities</span>
+                <h2 class="section-title">Experience <span class="gold-gradient-text">Luxury</span> Redefined</h2>
+                <p class="section-subtitle">Every detail designed for an unforgettable experience</p>
+            </div>
+
+            <div class="amenities-grid">
+                <div class="amenity-card reveal">
+                    <div class="amenity-icon"><i data-lucide="waves"></i></div>
+                    <h3>Infinity Pool</h3>
+                    <p>A stunning infinity-edge pool with panoramic mountain views and poolside cabanas.</p>
+                </div>
+
+                <div class="amenity-card reveal">
+                    <div class="amenity-icon"><i data-lucide="flower-2"></i></div>
+                    <h3>Spa & Wellness</h3>
+                    <p>Full-service spa offering Ayurvedic treatments, massages, and holistic wellness programs.</p>
+                </div>
+
+                <div class="amenity-card reveal">
+                    <div class="amenity-icon"><i data-lucide="utensils-crossed"></i></div>
+                    <h3>Multi-Cuisine Restaurant</h3>
+                    <p>Fine dining with international and local cuisines prepared by expert chefs.</p>
+                </div>
+
+                <div class="amenity-card reveal">
+                    <div class="amenity-icon"><i data-lucide="dumbbell"></i></div>
+                    <h3>Fitness Center</h3>
+                    <p>State-of-the-art gym with personal trainers and yoga sessions.</p>
+                </div>
+
+                <div class="amenity-card reveal">
+                    <div class="amenity-icon"><i data-lucide="trees"></i></div>
+                    <h3>Landscaped Gardens</h3>
+                    <p>Lush tropical gardens with waterfalls, rock features, and walking trails.</p>
+                </div>
+
+                <div class="amenity-card reveal">
+                    <div class="amenity-icon"><i data-lucide="mountain"></i></div>
+                    <h3>Mountain View Rooms</h3>
+                    <p>Premium accommodations with breathtaking mountain panoramas from every room.</p>
+                </div>
+
+                <div class="amenity-card reveal">
+                    <div class="amenity-icon"><i data-lucide="presentation"></i></div>
+                    <h3>Conference Hall</h3>
+                    <p>Fully-equipped conference and banquet halls for corporate events and celebrations.</p>
+                </div>
+
+                <div class="amenity-card reveal">
+                    <div class="amenity-icon"><i data-lucide="baby"></i></div>
+                    <h3>Kids Play Area</h3>
+                    <p>Dedicated children's zone with safe, engaging play equipment and activities.</p>
+                </div>
+
+                <div class="amenity-card reveal">
+                    <div class="amenity-icon"><i data-lucide="tent-tree"></i></div>
+                    <h3>Outdoor Cabanas</h3>
+                    <p>Private gazebos and cabanas for relaxation amidst nature's tranquility.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== INVESTMENT PLANS ==================== -->
+    <section class="investment" id="investment">
+        <div class="container">
+            <div class="investment-header reveal">
+                <span class="section-label" style="justify-content: center;">Capital Ventures</span>
+                <h2 class="section-title">Investment <span class="gold-gradient-text">Opportunities</span></h2>
+                <p class="section-subtitle" style="margin: 0 auto;">Oval Palace Resort LLP is not just a hospitality project but also a carefully structured investment platform.</p>
+            </div>
+
+            <div class="investment-highlight reveal">
+                <div class="roi-badge">
+                    <i data-lucide="trophy"></i>
+                    12% p.a. Immediate Returns
+                </div>
+            </div>
+
+            <div class="why-invest reveal">
+                <div class="why-invest-item">
+                    <i data-lucide="trending-up"></i>
+                    <span><strong>Pre-Operational Returns</strong> with attractive assured yields.</span>
+                </div>
+                <div class="why-invest-item">
+                    <i data-lucide="pie-chart"></i>
+                    <span><strong>Post-Operational Revenue Sharing</strong> with long-term profitability.</span>
+                </div>
+                <div class="why-invest-item">
+                    <i data-lucide="refresh-ccw"></i>
+                    <span><strong>Transparent Buyback Policy</strong> offering security and flexibility.</span>
+                </div>
+                <div class="why-invest-item">
+                    <i data-lucide="lock"></i>
+                    <span><strong>Two-Year Lock-in Period</strong> ensuring project stability.</span>
+                </div>
+            </div>
+
+            <!-- Investment Plans Row 1 -->
+            <div class="plans-grid reveal">
+                <!-- Plan 1: 1 Share -->
+                <div class="plan-card" data-plan="1-share">
+                    <div class="plan-shares">1 Share</div>
+                    <div class="plan-monthly">₹5,000 <span>/month</span></div>
+                    <div class="plan-total">Total Investment: <strong>₹5 Lakh</strong></div>
+                    <ul class="plan-features">
+                        <li><i data-lucide="check"></i> 12% p.a. Immediate Returns</li>
+                        <li><i data-lucide="check"></i> Monthly Return Payouts</li>
+                        <li><i data-lucide="check"></i> Partner Privileges</li>
+                        <li><i data-lucide="check"></i> Buyback Guarantee</li>
+                        <li><i data-lucide="check"></i> Capital Appreciation</li>
+                        <li><i data-lucide="check"></i> Flexible Liquidity</li>
+                    </ul>
+                    <button class="plan-book-btn" onclick="openBookingModal('1 Share — ₹5,000/month', '₹5 Lakh')">
+                        Book This Slot
+                    </button>
+                </div>
+
+                <!-- Plan 2: 2 Shares -->
+                <div class="plan-card featured" data-plan="2-share">
+                    <div class="plan-shares">2 Shares</div>
+                    <div class="plan-monthly">₹10,000 <span>/month</span></div>
+                    <div class="plan-total">Total Investment: <strong>₹10 Lakh</strong></div>
+                    <ul class="plan-features">
+                        <li><i data-lucide="check"></i> 12% p.a. Immediate Returns</li>
+                        <li><i data-lucide="check"></i> Monthly Return Payouts</li>
+                        <li><i data-lucide="check"></i> Priority Partner Benefits</li>
+                        <li><i data-lucide="check"></i> Buyback Guarantee</li>
+                        <li><i data-lucide="check"></i> Capital Appreciation</li>
+                        <li><i data-lucide="check"></i> Flexible Liquidity</li>
+                    </ul>
+                    <button class="plan-book-btn" onclick="openBookingModal('2 Shares — ₹10,000/month', '₹10 Lakh')">
+                        Book This Slot
+                    </button>
+                </div>
+
+                <!-- Plan 3: 4 Shares -->
+                <div class="plan-card" data-plan="4-share">
+                    <div class="plan-shares">4 Shares</div>
+                    <div class="plan-monthly">₹20,000 <span>/month</span></div>
+                    <div class="plan-total">Total Investment: <strong>₹20 Lakh</strong></div>
+                    <ul class="plan-features">
+                        <li><i data-lucide="check"></i> 12% p.a. Immediate Returns</li>
+                        <li><i data-lucide="check"></i> Monthly Return Payouts</li>
+                        <li><i data-lucide="check"></i> Exclusive Access Benefits</li>
+                        <li><i data-lucide="check"></i> Buyback Guarantee</li>
+                        <li><i data-lucide="check"></i> Capital Appreciation</li>
+                        <li><i data-lucide="check"></i> Flexible Liquidity</li>
+                    </ul>
+                    <button class="plan-book-btn" onclick="openBookingModal('4 Shares — ₹20,000/month', '₹20 Lakh')">
+                        Book This Slot
+                    </button>
+                </div>
+            </div>
+
+            <!-- Investment Plans Row 2 -->
+            <div class="plans-row-2 reveal" style="margin-top: 24px;">
+                <!-- Plan 4: 10 Shares -->
+                <div class="plan-card" data-plan="10-share">
+                    <div class="plan-shares">10 Shares</div>
+                    <div class="plan-monthly">₹50,000 <span>/month</span></div>
+                    <div class="plan-total">Total Investment: <strong>₹50 Lakh</strong></div>
+                    <ul class="plan-features">
+                        <li><i data-lucide="check"></i> 12% p.a. Immediate Returns</li>
+                        <li><i data-lucide="check"></i> Monthly Return Payouts</li>
+                        <li><i data-lucide="check"></i> VIP Partner Status</li>
+                        <li><i data-lucide="check"></i> Buyback Guarantee</li>
+                        <li><i data-lucide="check"></i> Capital Appreciation</li>
+                        <li><i data-lucide="check"></i> Priority Liquidity Access</li>
+                    </ul>
+                    <button class="plan-book-btn" onclick="openBookingModal('10 Shares — ₹50,000/month', '₹50 Lakh')">
+                        Book This Slot
+                    </button>
+                </div>
+
+                <!-- Plan 5: 15 Shares -->
+                <div class="plan-card featured" data-plan="15-share">
+                    <div class="plan-shares">15 Shares</div>
+                    <div class="plan-monthly">₹75,000 <span>/month</span></div>
+                    <div class="plan-total">Total Investment: <strong>₹75 Lakh</strong></div>
+                    <ul class="plan-features">
+                        <li><i data-lucide="check"></i> 12% p.a. Immediate Returns</li>
+                        <li><i data-lucide="check"></i> Monthly Return Payouts</li>
+                        <li><i data-lucide="check"></i> Premium VIP Benefits</li>
+                        <li><i data-lucide="check"></i> Buyback Guarantee</li>
+                        <li><i data-lucide="check"></i> Capital Appreciation</li>
+                        <li><i data-lucide="check"></i> Priority Liquidity Access</li>
+                    </ul>
+                    <button class="plan-book-btn" onclick="openBookingModal('15 Shares — ₹75,000/month', '₹75 Lakh')">
+                        Book This Slot
+                    </button>
+                </div>
+
+                <!-- Plan 6: 20 Shares -->
+                <div class="plan-card" data-plan="20-share">
+                    <div class="plan-shares">20 Shares</div>
+                    <div class="plan-monthly">₹1,00,000 <span>/month</span></div>
+                    <div class="plan-total">Total Investment: <strong>₹1 Crore</strong></div>
+                    <ul class="plan-features">
+                        <li><i data-lucide="check"></i> 12% p.a. Immediate Returns</li>
+                        <li><i data-lucide="check"></i> Monthly Return Payouts</li>
+                        <li><i data-lucide="check"></i> Chairman's Club Benefits</li>
+                        <li><i data-lucide="check"></i> Buyback Guarantee</li>
+                        <li><i data-lucide="check"></i> Capital Appreciation</li>
+                        <li><i data-lucide="check"></i> Instant Liquidity Access</li>
+                    </ul>
+                    <button class="plan-book-btn" onclick="openBookingModal('20 Shares — ₹1,00,000/month', '₹1 Crore')">
+                        Book This Slot
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== GALLERY ==================== -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="gallery-header reveal">
+                <span class="section-label" style="justify-content: center;">Visual Tour</span>
+                <h2 class="section-title">Resort <span class="gold-gradient-text">Gallery</span></h2>
+                <p class="section-subtitle">Explore the architectural brilliance and natural beauty of Oval Palace</p>
+            </div>
+
+            <div class="gallery-grid reveal">
+                <div class="gallery-item" onclick="openLightbox(0)">
+                    <img src="images/hero-1.jpg" alt="Oval Palace Aerial View" loading="lazy">
+                    <div class="gallery-zoom"><i data-lucide="maximize-2"></i></div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(1)">
+                    <img src="images/hero-2.jpg" alt="Resort Architecture" loading="lazy">
+                    <div class="gallery-zoom"><i data-lucide="maximize-2"></i></div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(2)">
+                    <img src="images/hero-3.jpg" alt="Garden Walkway" loading="lazy">
+                    <div class="gallery-zoom"><i data-lucide="maximize-2"></i></div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(3)">
+                    <img src="images/hero-4.jpg" alt="Infinity Pool View" loading="lazy">
+                    <div class="gallery-zoom"><i data-lucide="maximize-2"></i></div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(4)">
+                    <img src="images/hero-5.jpg" alt="Panoramic Resort View" loading="lazy">
+                    <div class="gallery-zoom"><i data-lucide="maximize-2"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== APPOINTMENT BOOKING ==================== -->
+    <section class="appointment" id="appointment">
+        <div class="container">
+            <div class="appointment-header reveal">
+                <span class="section-label" style="justify-content: center;">Schedule a Meeting</span>
+                <h2 class="section-title">Book an Appointment with <span class="gold-gradient-text">Sales Manager</span></h2>
+                <p class="section-subtitle">Get personalized investment guidance from our expert advisors</p>
+            </div>
+
+            <div class="appointment-grid">
+                <div class="calendar-container reveal">
+                    <div class="calendar-header">
+                        <span class="calendar-month" id="calendarMonth">April 2026</span>
+                        <div class="calendar-nav">
+                            <button onclick="changeMonth(-1)" id="calPrev"><i data-lucide="chevron-left"></i></button>
+                            <button onclick="changeMonth(1)" id="calNext"><i data-lucide="chevron-right"></i></button>
+                        </div>
+                    </div>
+                    <div class="calendar-days-header">
+                        <span>Sun</span>
+                        <span>Mon</span>
+                        <span>Tue</span>
+                        <span>Wed</span>
+                        <span>Thu</span>
+                        <span>Fri</span>
+                        <span>Sat</span>
+                    </div>
+                    <div class="calendar-grid" id="calendarGrid">
+                        <!-- Calendar days will be generated by JS -->
+                    </div>
+
+                    <div class="time-slots" id="timeSlots" style="display: none;">
+                        <h4>Select Time Slot</h4>
+                        <div class="time-slots-grid">
+                            <button class="time-slot" onclick="selectTimeSlot(this)">10:00 AM</button>
+                            <button class="time-slot" onclick="selectTimeSlot(this)">11:00 AM</button>
+                            <button class="time-slot" onclick="selectTimeSlot(this)">12:00 PM</button>
+                            <button class="time-slot" onclick="selectTimeSlot(this)">02:00 PM</button>
+                            <button class="time-slot" onclick="selectTimeSlot(this)">03:00 PM</button>
+                            <button class="time-slot" onclick="selectTimeSlot(this)">04:00 PM</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="appointment-form-container reveal">
+                    <h3>Talk to Our Investment Advisor</h3>
+                    <p>Fill in your details and we'll confirm your appointment within 24 hours.</p>
+
+                    <form id="appointmentForm" onsubmit="submitAppointment(event)">
+                        <div class="form-group">
+                            <label for="apptName">Full Name</label>
+                            <input type="text" id="apptName" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="apptEmail">Email Address</label>
+                            <input type="email" id="apptEmail" placeholder="your@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="apptPhone">Phone Number</label>
+                            <input type="tel" id="apptPhone" placeholder="+91 XXXXX XXXXX" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Preferred Mode</label>
+                            <div class="mode-options">
+                                <div class="mode-option selected" onclick="selectMode(this, 'in-person')">
+                                    <i data-lucide="map-pin"></i>
+                                    <span>In-Person</span>
+                                </div>
+                                <div class="mode-option" onclick="selectMode(this, 'video')">
+                                    <i data-lucide="video"></i>
+                                    <span>Video Call</span>
+                                </div>
+                                <div class="mode-option" onclick="selectMode(this, 'phone')">
+                                    <i data-lucide="phone"></i>
+                                    <span>Phone Call</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="apptMessage">Additional Notes</label>
+                            <textarea id="apptMessage" placeholder="Any specific questions or interests..." rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">
+                            <i data-lucide="calendar-check"></i>
+                            Confirm Appointment
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== TESTIMONIALS ==================== -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="testimonials-header reveal">
+                <span class="section-label" style="justify-content: center;">Investor Confidence</span>
+                <h2 class="section-title">What Our <span class="gold-gradient-text">Investors Say</span></h2>
+                <p class="section-subtitle">Trusted by forward-thinking investors across India</p>
+            </div>
+
+            <div class="testimonials-carousel reveal">
+                <div class="testimonial-card active">
+                    <p class="testimonial-quote">
+                        The transparency and professionalism shown by Nalakath Holdings is remarkable. The 12% annual return with buyback guarantee makes this one of the safest hospitality investments I've seen.
+                    </p>
+                    <div class="testimonial-author">
+                        <span class="testimonial-name">Rajesh Menon</span>
+                        <span class="testimonial-role">Investor — 10 Shares</span>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">
+                        I've invested in multiple hospitality projects, but Oval Palace stands out for its architectural vision and the team's commitment to quality. The flexible investment plans make it accessible.
+                    </p>
+                    <div class="testimonial-author">
+                        <span class="testimonial-name">Dr. Priya Sharma</span>
+                        <span class="testimonial-role">Investor — 15 Shares</span>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">
+                        The monthly return structure and capital appreciation potential convinced me to invest. The sales team was incredibly helpful throughout the entire process.
+                    </p>
+                    <div class="testimonial-author">
+                        <span class="testimonial-name">Anwar Ibrahim</span>
+                        <span class="testimonial-role">Investor — 4 Shares</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-dots" id="testimonialDots">
+                <span class="testimonial-dot active" onclick="showTestimonial(0)"></span>
+                <span class="testimonial-dot" onclick="showTestimonial(1)"></span>
+                <span class="testimonial-dot" onclick="showTestimonial(2)"></span>
+            </div>
+
+            <div class="trust-badges reveal">
+                <div class="trust-badge">
+                    <div class="trust-badge-icon"><i data-lucide="building-2"></i></div>
+                    <span>LLP Registered</span>
+                </div>
+                <div class="trust-badge">
+                    <div class="trust-badge-icon"><i data-lucide="file-check"></i></div>
+                    <span>Fully Compliant</span>
+                </div>
+                <div class="trust-badge">
+                    <div class="trust-badge-icon"><i data-lucide="lock"></i></div>
+                    <span>Secure Investment</span>
+                </div>
+                <div class="trust-badge">
+                    <div class="trust-badge-icon"><i data-lucide="handshake"></i></div>
+                    <span>Buyback Guarantee</span>
+                </div>
+                <div class="trust-badge">
+                    <div class="trust-badge-icon"><i data-lucide="users"></i></div>
+                    <span>100+ Investors</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CONTACT ==================== -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-header reveal">
+                <span class="section-label" style="justify-content: center;">Get in Touch</span>
+                <h2 class="section-title">Contact <span class="gold-gradient-text">Us</span></h2>
+                <p class="section-subtitle">Have questions? Our team is ready to assist you.</p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-info reveal">
+                    <div class="contact-item">
+                        <div class="contact-item-icon"><i data-lucide="phone"></i></div>
+                        <div>
+                            <h4>Call Us</h4>
+                            <p>
+                                <a href="tel:+917592867000">+91 759 286 7000</a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-item-icon"><i data-lucide="map-pin"></i></div>
+                        <div>
+                            <h4>Visit Us</h4>
+                            <p>ASSN Tower, Opp Suzuki Nexa,<br>Calicut Road, Angadipuram Perinthalmanna.</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-item-icon"><i data-lucide="mail"></i></div>
+                        <div>
+                            <h4>Email</h4>
+                            <a href="mailto:sales@nalakathholdings.com">sales@nalakathholdings.com</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-item-icon"><i data-lucide="clock"></i></div>
+                        <div>
+                            <h4>Office Hours</h4>
+                            <p>Mon — Sat: 9:00 AM — 7:00 PM<br>Sunday: By Appointment</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-socials">
+                        <a href="#" class="social-link" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+                        <a href="#" class="social-link" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+                        <a href="#" class="social-link" aria-label="Youtube"><i data-lucide="youtube"></i></a>
+                        <a href="#" class="social-link" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+                    </div>
+                </div>
+
+                <div class="contact-form reveal">
+                    <h3>Send us a Message</h3>
+                    <form id="contactForm" onsubmit="submitContact(event)">
+                        <div class="form-group">
+                            <label for="contactName">Full Name</label>
+                            <input type="text" id="contactName" placeholder="Your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactEmail">Email</label>
+                            <input type="email" id="contactEmail" placeholder="your@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactPhone">Phone</label>
+                            <input type="tel" id="contactPhone" placeholder="+91 XXXXX XXXXX" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactInterest">Interested In</label>
+                            <select id="contactInterest">
+                                <option value="">Select your interest</option>
+                                <option value="investment">Investment Plans</option>
+                                <option value="visit">Site Visit</option>
+                                <option value="partnership">Business Partnership</option>
+                                <option value="general">General Inquiry</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactMessage">Message</label>
+                            <textarea id="contactMessage" placeholder="Tell us how we can help..." rows="4"></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">
+                            <i data-lucide="send"></i>
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="nav-logo">
+                        <div class="nav-logo-icon">
+                            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <ellipse cx="50" cy="58" rx="32" ry="24" stroke="#C9A84C" stroke-width="3"/>
+                                <path d="M50 18 L43 32 L50 27 L57 32 Z" fill="#C9A84C"/>
+                                <circle cx="36" cy="30" r="2.5" fill="#C9A84C"/>
+                                <circle cx="64" cy="30" r="2.5" fill="#C9A84C"/>
+                                <circle cx="50" cy="12" r="2.5" fill="#C9A84C"/>
+                            </svg>
+                        </div>
+                        <div class="nav-logo-text">
+                            <span class="nav-logo-name">OVAL PALACE</span>
+                            <span class="nav-logo-tagline">R E S O R T</span>
+                        </div>
+                    </a>
+                    <p>A premium luxury resort by Nalakath Holdings. Invest in hospitality, earn 12% p.a. returns with buyback guarantee.</p>
+                    <p style="font-size: 0.82rem; color: var(--text-muted);">Oval Palace LLP — A Nalakath Holdings Venture</p>
+                </div>
+
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#hero">Home</a></li>
+                        <li><a href="resort-overview.html">Resort Overview</a></li>
+                        <li><a href="testimonials.html">Testimonials</a></li>
+                        <li><a href="events.html">Celebrations & Events</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4>Investor</h4>
+                    <ul class="footer-links">
+                        <li><a href="#investment">1 Share Plan</a></li>
+                        <li><a href="#investment">2 Shares Plan</a></li>
+                        <li><a href="#investment">4 Shares Plan</a></li>
+                        <li><a href="#investment">10 Shares Plan</a></li>
+                        <li><a href="#investment">15 & 20 Shares</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4>Stay Updated</h4>
+                    <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 8px;">Subscribe for construction updates and investment news.</p>
+                    <div class="newsletter-input">
+                        <input type="email" placeholder="Your email" id="newsletterEmail">
+                        <button onclick="subscribeNewsletter()">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>Copyright 2026 All rights reserved. | Designed by Mishel Adnan.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms & Conditions</a>
+                    <a href="#">Disclaimer</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==================== CHATBOT ==================== -->
+    <button class="chatbot-trigger" id="chatbotTrigger" onclick="toggleChatbot()" aria-label="Open chat">
+        <i data-lucide="message-circle"></i>
+        <span class="chatbot-notification"></span>
+    </button>
+
+    <div class="chatbot-window" id="chatbotWindow">
+        <div class="chatbot-header">
+            <div class="chatbot-header-info">
+                <div class="chatbot-avatar"><i data-lucide="bot"></i></div>
+                <div class="chatbot-status">
+                    <span>Oval Palace Assistant</span>
+                    <span><span class="online-dot"></span> Online 24/7</span>
+                </div>
+            </div>
+            <button class="chatbot-close" onclick="toggleChatbot()"><i data-lucide="x"></i></button>
+        </div>
+        <div class="chatbot-messages" id="chatMessages">
+            <!-- Messages will be added by JS -->
+        </div>
+        <div class="chatbot-input">
+            <input type="text" id="chatInput" placeholder="Type your message..." onkeypress="handleChatKeypress(event)">
+            <button onclick="sendChatMessage()"><i data-lucide="send"></i></button>
+        </div>
+    </div>
+
+    <!-- ==================== BOOKING MODAL ==================== -->
+    <div class="modal-overlay" id="bookingModal">
+        <div class="modal">
+            <button class="modal-close" onclick="closeBookingModal()"><i data-lucide="x"></i></button>
+
+            <div id="bookingFormView">
+                <h2>Book Investment Slot</h2>
+                <p class="modal-subtitle">Secure your share in Oval Palace Resort</p>
+
+                <div class="modal-plan-summary" id="modalPlanSummary">
+                    <div class="modal-plan-icon">💎</div>
+                    <div class="modal-plan-details">
+                        <h4 id="modalPlanName">2 Shares — ₹10,000/month</h4>
+                        <span id="modalPlanTotal">Total: ₹10 Lakh</span>
+                    </div>
+                </div>
+
+                <form id="bookingForm" onsubmit="submitBooking(event)">
+                    <div class="form-group">
+                        <label for="bookName">Full Name</label>
+                        <input type="text" id="bookName" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="bookEmail">Email Address</label>
+                        <input type="email" id="bookEmail" placeholder="your@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="bookPhone">Phone Number</label>
+                        <input type="tel" id="bookPhone" placeholder="+91 XXXXX XXXXX" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="bookPayment">Preferred Payment Mode</label>
+                        <select id="bookPayment" required>
+                            <option value="">Select payment mode</option>
+                            <option value="bank-transfer">Bank Transfer (NEFT/RTGS)</option>
+                            <option value="upi">UPI Payment</option>
+                            <option value="cheque">Cheque / DD</option>
+                            <option value="emi">Monthly EMI</option>
+                        </select>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="bookTerms" required>
+                        <label for="bookTerms">I agree to the terms and conditions, and acknowledge that this is an LLP investment with associated risks and rewards as described.</label>
+                    </div>
+                    <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">
+                        <i data-lucide="check-circle"></i>
+                        Confirm Booking
+                    </button>
+                </form>
+            </div>
+
+            <div id="bookingSuccessView" style="display: none;">
+                <div class="success-animation">
+                    <div class="success-check">
+                        <i data-lucide="check"></i>
+                    </div>
+                    <h3>Booking Confirmed!</h3>
+                    <p>Thank you for your interest! Our sales team will contact you within 24 hours to finalize the investment details.</p>
+                    <button class="btn-primary" style="margin-top: 24px;" onclick="closeBookingModal()">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== APPOINTMENT SUCCESS MODAL ==================== -->
+    <div class="modal-overlay" id="appointmentSuccessModal">
+        <div class="modal">
+            <button class="modal-close" onclick="closeAppointmentSuccess()"><i data-lucide="x"></i></button>
+            <div class="success-animation">
+                <div class="success-check">
+                    <i data-lucide="calendar-check"></i>
+                </div>
+                <h3>Appointment Booked!</h3>
+                <p id="appointmentConfirmText">Your appointment has been scheduled. We'll send a confirmation to your email shortly.</p>
+                <button class="btn-primary" style="margin-top: 24px;" onclick="closeAppointmentSuccess()">
+                    Done
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== LIGHTBOX ==================== -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" onclick="closeLightbox()"><i data-lucide="x"></i></button>
+        <button class="lightbox-nav lightbox-prev" onclick="navigateLightbox(-1)"><i data-lucide="chevron-left"></i></button>
+        <img src="" alt="" id="lightboxImage">
+        <button class="lightbox-nav lightbox-next" onclick="navigateLightbox(1)"><i data-lucide="chevron-right"></i></button>
+    </div>
+
+    <!-- ==================== SCRIPTS ==================== -->
+    <script src="script.js"></script>
+</body>
+</html>

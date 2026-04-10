@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore Oval Palace Resort — a premium luxury hospitality project by Nalakath Holdings. View our reels, social media posts, and resort highlights.">
+    <meta name="keywords" content="Oval Palace Resort overview, Nalakath Holdings resort, luxury resort Kerala, resort reels">
+    <meta name="author" content="Nalakath Holdings">
+    <title>Resort Overview — Oval Palace Resort | Nalakath Holdings</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cellipse cx='50' cy='55' rx='35' ry='28' fill='none' stroke='%23C9A84C' stroke-width='4'/%3E%3Cpath d='M50 15 L42 30 L50 25 L58 30 Z' fill='%23C9A84C'/%3E%3Ccircle cx='35' cy='30' r='3' fill='%23C9A84C'/%3E%3Ccircle cx='65' cy='30' r='3' fill='%23C9A84C'/%3E%3Ccircle cx='50' cy='10' r='3' fill='%23C9A84C'/%3E%3C/svg%3E">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="pages.css">
+    <link rel="stylesheet" href="resort-overview.css">
+</head>
+<body>
+
+    <!-- ==================== NAVIGATION ==================== -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-logo">
+                <div class="nav-logo-icon">
+                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <ellipse cx="50" cy="58" rx="32" ry="24" stroke="#C9A84C" stroke-width="3"/>
+                        <path d="M50 18 L43 32 L50 27 L57 32 Z" fill="#C9A84C"/>
+                        <circle cx="36" cy="30" r="2.5" fill="#C9A84C"/>
+                        <circle cx="64" cy="30" r="2.5" fill="#C9A84C"/>
+                        <circle cx="50" cy="12" r="2.5" fill="#C9A84C"/>
+                    </svg>
+                </div>
+                <div class="nav-logo-text">
+                    <span class="nav-logo-name">OVAL PALACE</span>
+                    <span class="nav-logo-tagline">R E S O R T</span>
+                </div>
+            </a>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="resort-overview.html" class="active">Resort Overview</a></li>
+                <li><a href="index.html#investment">Investment</a></li>
+                <li><a href="testimonials.html">Testimonials</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="index.html#investment" class="nav-cta">Invest Now</a></li>
+            </ul>
+
+            <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu-overlay" id="mobileOverlay"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="index.html" onclick="closeMobileMenu()">Home</a></li>
+            <li><a href="resort-overview.html" onclick="closeMobileMenu()">Resort Overview</a></li>
+            <li><a href="index.html#investment" onclick="closeMobileMenu()">Investment</a></li>
+            <li><a href="testimonials.html" onclick="closeMobileMenu()">Testimonials</a></li>
+            <li><a href="events.html" onclick="closeMobileMenu()">Events</a></li>
+            <li><a href="index.html#contact" onclick="closeMobileMenu()">Contact</a></li>
+        </ul>
+        <a href="index.html#investment" class="nav-cta" onclick="closeMobileMenu()">Invest Now</a>
+    </div>
+
+    <!-- ==================== PAGE HERO ==================== -->
+    <section class="page-hero" style="height: 480px;">
+        <div class="page-hero-bg" style="background-image: url('images/hero-1.jpg')"></div>
+        <div class="page-hero-overlay"></div>
+        <div class="container page-hero-content">
+            <div class="page-breadcrumb">
+                <a href="index.html"><i data-lucide="home"></i> Home</a>
+                <i data-lucide="chevron-right"></i>
+                <span>Resort Overview</span>
+            </div>
+            <h1 class="page-hero-title">Discover <span class="gold-gradient-text">Oval Palace</span></h1>
+            <p class="page-hero-subtitle">A 360° look at our premium luxury resort — from architectural vision to social media buzz. Watch our reels, explore highlights, and see why investors love us.</p>
+        </div>
+    </section>
+
+    <!-- ==================== RESORT HIGHLIGHTS ==================== -->
+    <section class="resort-highlights">
+        <div class="container">
+            <div class="section-header-centered reveal">
+                <span class="section-label" style="justify-content: center;">The Vision</span>
+                <h2 class="section-title">Resort <span class="gold-gradient-text">Highlights</span></h2>
+                <p class="section-subtitle">A world-class resort blending luxury, sustainability, and Kerala's natural beauty.</p>
+            </div>
+
+            <div class="highlights-grid reveal">
+                <div class="highlight-card">
+                    <div class="highlight-icon"><i data-lucide="bed-double"></i></div>
+                    <h3>Premium Accommodations</h3>
+                    <p>Elegantly designed rooms and private villas for a luxurious stay with mountain views.</p>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-icon"><i data-lucide="party-popper"></i></div>
+                    <h3>Banquet & Events</h3>
+                    <p>State-of-the-art halls and open spaces for weddings, corporate meets, and cultural events.</p>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-icon"><i data-lucide="chef-hat"></i></div>
+                    <h3>Dining & Cuisine</h3>
+                    <p>Multi-cuisine restaurants and cafés offering both local flavors and international delicacies.</p>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-icon"><i data-lucide="flower-2"></i></div>
+                    <h3>Wellness & Leisure</h3>
+                    <p>Spa, fitness center, Ayurvedic treatments, and recreational areas for complete relaxation.</p>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-icon"><i data-lucide="waves"></i></div>
+                    <h3>Swimming Pool</h3>
+                    <p>A modern infinity-edge pool for leisure, family fun, and fitness activities.</p>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-icon"><i data-lucide="leaf"></i></div>
+                    <h3>Eco-Friendly Design</h3>
+                    <p>Energy-efficient infrastructure with a focus on sustainability and green practices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== REELS SHOWCASE ==================== -->
+    <section class="reels-section">
+        <div class="container">
+            <div class="section-header-centered reveal">
+                <span class="section-label" style="justify-content: center;"><i data-lucide="clapperboard" style="width:16px;height:16px;margin-right:6px;vertical-align:middle;"></i> Featured Reels</span>
+                <h2 class="section-title">Watch Our <span class="gold-gradient-text">Reels</span></h2>
+                <p class="section-subtitle">Experience Oval Palace through short, stunning preview videos.</p>
+            </div>
+
+            <div class="reels-showcase reveal">
+                <!-- Main Reel Player — Phone Mockup -->
+                <div class="reel-player-wrapper">
+                    <div class="phone-mockup">
+                        <div class="phone-notch"></div>
+                        <div class="phone-screen" id="mainReelScreen">
+                            <!-- Default: Upload placeholder -->
+                            <div class="reel-upload-placeholder" id="reelUploadArea">
+                                <input type="file" id="reelFileInput" accept="video/*" style="display:none" onchange="loadReel(this)">
+                                <div class="reel-upload-content" onclick="document.getElementById('reelFileInput').click()">
+                                    <div class="reel-upload-icon-ring">
+                                        <i data-lucide="play"></i>
+                                    </div>
+                                    <h4>Upload Your Reel</h4>
+                                    <p>Click to upload a reel video (MP4, MOV)</p>
+                                </div>
+                            </div>
+                            <!-- Video player (hidden until reel loaded) -->
+                            <video id="mainReelVideo" style="display:none" loop playsinline></video>
+                            <!-- Reel Overlay UI -->
+                            <div class="reel-overlay" id="reelOverlay" style="display:none">
+                                <div class="reel-overlay-top">
+                                    <span class="reel-badge"><i data-lucide="clapperboard"></i> Reels</span>
+                                </div>
+                                <div class="reel-overlay-bottom">
+                                    <div class="reel-author">
+                                        <div class="reel-author-avatar">
+                                            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" width="32" height="32">
+                                                <ellipse cx="50" cy="58" rx="32" ry="24" stroke="#C9A84C" stroke-width="4"/>
+                                                <path d="M50 18 L43 32 L50 27 L57 32 Z" fill="#C9A84C"/>
+                                            </svg>
+                                        </div>
+                                        <div class="reel-author-info">
+                                            <span class="reel-author-name">Oval Palace Resort</span>
+                                            <span class="reel-author-handle">@ovalpalaceresort</span>
+                                        </div>
+                                    </div>
+                                    <p class="reel-caption" id="reelCaption">🏡 Experience luxury redefined. Oval Palace Resort — Coming Soon! 🌟</p>
+                                    <div class="reel-actions">
+                                        <button class="reel-action" onclick="toggleReelPlay()">
+                                            <i data-lucide="play" id="reelPlayIcon"></i>
+                                        </button>
+                                        <button class="reel-action" onclick="toggleReelMute()">
+                                            <i data-lucide="volume-2" id="reelMuteIcon"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <!-- Progress bar -->
+                                <div class="reel-progress">
+                                    <div class="reel-progress-bar" id="reelProgressBar"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="phone-home-bar"></div>
+                    </div>
+
+                    <!-- Side Reel Thumbnails -->
+                    <div class="reel-sidebar">
+                        <h4 class="reel-sidebar-title">More Reels</h4>
+                        <div class="reel-thumb-list">
+                            <div class="reel-thumb upload-thumb" onclick="document.getElementById('reelInput2').click()">
+                                <input type="file" id="reelInput2" accept="video/*" style="display:none" onchange="loadSideReel(this, 0)">
+                                <i data-lucide="plus"></i>
+                                <span>Add Reel</span>
+                            </div>
+                            <div class="reel-thumb upload-thumb" onclick="document.getElementById('reelInput3').click()">
+                                <input type="file" id="reelInput3" accept="video/*" style="display:none" onchange="loadSideReel(this, 1)">
+                                <i data-lucide="plus"></i>
+                                <span>Add Reel</span>
+                            </div>
+                            <div class="reel-thumb upload-thumb" onclick="document.getElementById('reelInput4').click()">
+                                <input type="file" id="reelInput4" accept="video/*" style="display:none" onchange="loadSideReel(this, 2)">
+                                <i data-lucide="plus"></i>
+                                <span>Add Reel</span>
+                            </div>
+                        </div>
+                        <a href="https://www.instagram.com/" target="_blank" class="reel-follow-btn">
+                            <i data-lucide="instagram"></i>
+                            Follow on Instagram
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SOCIAL MEDIA FEED ==================== -->
+    <section class="social-feed-section">
+        <div class="container">
+            <div class="section-header-centered reveal">
+                <span class="section-label" style="justify-content: center;">Stay Connected</span>
+                <h2 class="section-title">Social Media <span class="gold-gradient-text">Feed</span></h2>
+                <p class="section-subtitle">Follow our journey across platforms. Upload posts, promotions, and marketing content here.</p>
+            </div>
+
+            <!-- Social Platform Tabs -->
+            <div class="social-tabs reveal">
+                <button class="social-tab active" onclick="switchSocialTab('all', this)">
+                    <i data-lucide="layout-grid"></i> All Posts
+                </button>
+                <button class="social-tab" onclick="switchSocialTab('instagram', this)">
+                    <i data-lucide="instagram"></i> Instagram
+                </button>
+                <button class="social-tab" onclick="switchSocialTab('facebook', this)">
+                    <i data-lucide="facebook"></i> Facebook
+                </button>
+                <button class="social-tab" onclick="switchSocialTab('youtube', this)">
+                    <i data-lucide="youtube"></i> YouTube
+                </button>
+                <button class="social-tab" onclick="switchSocialTab('promotions', this)">
+                    <i data-lucide="megaphone"></i> Promotions
+                </button>
+            </div>
+
+            <!-- Social Posts Grid -->
+            <div class="social-posts-grid reveal" id="socialPostsGrid">
+
+                <!-- Post 1: Upload Card -->
+                <div class="social-post-card upload-card" data-platform="all" onclick="document.getElementById('postUpload1').click()">
+                    <input type="file" id="postUpload1" accept="image/*,video/*" style="display:none" onchange="previewSocialPost(this, 'instagram')">
+                    <div class="social-upload-content">
+                        <div class="social-upload-icon"><i data-lucide="plus-circle"></i></div>
+                        <h4>Add New Post</h4>
+                        <p>Upload an image or video</p>
+                    </div>
+                </div>
+
+                <!-- Post 2: Instagram -->
+                <div class="social-post-card" data-platform="instagram">
+                    <div class="social-post-image" style="background-image: url('images/hero-1.jpg')">
+                        <div class="social-post-platform-badge instagram-badge">
+                            <i data-lucide="instagram"></i>
+                        </div>
+                    </div>
+                    <div class="social-post-body">
+                        <div class="social-post-header">
+                            <div class="social-post-avatar">
+                                <svg viewBox="0 0 100 100" fill="none" width="28" height="28"><ellipse cx="50" cy="58" rx="32" ry="24" stroke="#C9A84C" stroke-width="4"/><path d="M50 18 L43 32 L50 27 L57 32 Z" fill="#C9A84C"/></svg>
+                            </div>
+                            <div>
+                                <span class="social-post-name">Oval Palace Resort</span>
+                                <span class="social-post-time">2 days ago</span>
+                            </div>
+                        </div>
+                        <p class="social-post-caption">🏗️ Construction is progressing rapidly! Our foundation work is complete and structural framework is rising. The dream of Oval Palace is becoming reality! #OvalPalace #NalakathHoldings</p>
+                        <div class="social-post-engagement">
+                            <span><i data-lucide="heart"></i> 245</span>
+                            <span><i data-lucide="message-circle"></i> 38</span>
+                            <span><i data-lucide="share-2"></i> 12</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Post 3: Facebook -->
+                <div class="social-post-card" data-platform="facebook">
+                    <div class="social-post-image" style="background-image: url('images/hero-4.jpg')">
+                        <div class="social-post-platform-badge facebook-badge">
+                            <i data-lucide="facebook"></i>
+                        </div>
+                    </div>
+                    <div class="social-post-body">
+                        <div class="social-post-header">
+                            <div class="social-post-avatar">
+                                <svg viewBox="0 0 100 100" fill="none" width="28" height="28"><ellipse cx="50" cy="58" rx="32" ry="24" stroke="#C9A84C" stroke-width="4"/><path d="M50 18 L43 32 L50 27 L57 32 Z" fill="#C9A84C"/></svg>
+                            </div>
+                            <div>
+                                <span class="social-post-name">Nalakath Holdings</span>
+                                <span class="social-post-time">5 days ago</span>
+                            </div>
+                        </div>
+                        <p class="social-post-caption">🎉 We've crossed 100+ investors! Thank you for your trust in Oval Palace Resort LLP. Together, we're building Kerala's finest hospitality destination.</p>
+                        <div class="social-post-engagement">
+                            <span><i data-lucide="thumbs-up"></i> 482</span>
+                            <span><i data-lucide="message-circle"></i> 67</span>
+                            <span><i data-lucide="share-2"></i> 45</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Post 4: Promotion -->
+                <div class="social-post-card promo-card" data-platform="promotions">
+                    <div class="promo-banner">
+                        <div class="promo-glow"></div>
+                        <div class="promo-content">
+                            <span class="promo-label"><i data-lucide="zap"></i> LIMITED OFFER</span>
+                            <h3>Invest Now & Earn</h3>
+                            <div class="promo-highlight">12% p.a.</div>
+                            <p>Immediate Returns with Buyback Guarantee</p>
+                            <span class="promo-tag">Starting from ₹5,000/month</span>
+                        </div>
+                    </div>
+                    <div class="social-post-body">
+                        <p class="social-post-caption">💰 Don't miss out on Kerala's most promising hospitality investment. Oval Palace Resort LLP — secure your future today!</p>
+                        <a href="index.html#investment" class="promo-cta-btn">
+                            <i data-lucide="trending-up"></i> View Investment Plans
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Post 5: YouTube -->
+                <div class="social-post-card" data-platform="youtube">
+                    <div class="social-post-image" style="background-image: url('images/hero-5.jpg')">
+                        <div class="social-post-platform-badge youtube-badge">
+                            <i data-lucide="youtube"></i>
+                        </div>
+                        <div class="youtube-play-overlay">
+                            <i data-lucide="play"></i>
+                        </div>
+                    </div>
+                    <div class="social-post-body">
+                        <div class="social-post-header">
+                            <div class="social-post-avatar">
+                                <svg viewBox="0 0 100 100" fill="none" width="28" height="28"><ellipse cx="50" cy="58" rx="32" ry="24" stroke="#C9A84C" stroke-width="4"/><path d="M50 18 L43 32 L50 27 L57 32 Z" fill="#C9A84C"/></svg>
+                            </div>
+                            <div>
+                                <span class="social-post-name">Oval Palace Resort</span>
+                                <span class="social-post-time">1 week ago</span>
+                            </div>
+                        </div>
+                        <p class="social-post-caption">🎥 Resort Walkthrough — Take a virtual tour of the Oval Palace Resort construction site and see the vision come to life!</p>
+                        <div class="social-post-engagement">
+                            <span><i data-lucide="eye"></i> 1.2K</span>
+                            <span><i data-lucide="thumbs-up"></i> 89</span>
+                            <span><i data-lucide="message-circle"></i> 14</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Post 6: Instagram Upload Slot -->
+                <div class="social-post-card upload-card" data-platform="instagram" onclick="document.getElementById('postUpload2').click()">
+                    <input type="file" id="postUpload2" accept="image/*,video/*" style="display:none" onchange="previewSocialPost(this, 'instagram')">
+                    <div class="social-upload-content">
+                        <div class="social-upload-icon instagram-icon"><i data-lucide="instagram"></i></div>
+                        <h4>Add Instagram Post</h4>
+                        <p>Upload your latest IG content</p>
+                    </div>
+                </div>
+
+                <!-- Post 7: Promotion Upload -->
+                <div class="social-post-card upload-card" data-platform="promotions" onclick="document.getElementById('postUpload3').click()">
+                    <input type="file" id="postUpload3" accept="image/*,video/*" style="display:none" onchange="previewSocialPost(this, 'promotions')">
+                    <div class="social-upload-content">
+                        <div class="social-upload-icon promo-icon"><i data-lucide="megaphone"></i></div>
+                        <h4>Add Promotion</h4>
+                        <p>Upload marketing creatives</p>
+                    </div>
+                </div>
+
+                <!-- Post 8: Facebook Upload -->
+                <div class="social-post-card upload-card" data-platform="facebook" onclick="document.getElementById('postUpload4').click()">
+                    <input type="file" id="postUpload4" accept="image/*,video/*" style="display:none" onchange="previewSocialPost(this, 'facebook')">
+                    <div class="social-upload-content">
+                        <div class="social-upload-icon facebook-icon"><i data-lucide="facebook"></i></div>
+                        <h4>Add Facebook Post</h4>
+                        <p>Upload your FB content</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SOCIAL CONNECT STRIP ==================== -->
+    <section class="social-connect">
+        <div class="container">
+            <div class="social-connect-content reveal">
+                <h3>Follow <span class="gold-gradient-text">Oval Palace</span> Everywhere</h3>
+                <div class="social-connect-links">
+                    <a href="#" class="social-connect-link instagram-link" target="_blank">
+                        <i data-lucide="instagram"></i>
+                        <div>
+                            <span class="social-connect-platform">Instagram</span>
+                            <span class="social-connect-handle">@ovalpalaceresort</span>
+                        </div>
+                    </a>
+                    <a href="#" class="social-connect-link facebook-link" target="_blank">
+                        <i data-lucide="facebook"></i>
+                        <div>
+                            <span class="social-connect-platform">Facebook</span>
+                            <span class="social-connect-handle">Nalakath Holdings</span>
+                        </div>
+                    </a>
+                    <a href="#" class="social-connect-link youtube-link" target="_blank">
+                        <i data-lucide="youtube"></i>
+                        <div>
+                            <span class="social-connect-platform">YouTube</span>
+                            <span class="social-connect-handle">Oval Palace Resort</span>
+                        </div>
+                    </a>
+                    <a href="#" class="social-connect-link linkedin-link" target="_blank">
+                        <i data-lucide="linkedin"></i>
+                        <div>
+                            <span class="social-connect-platform">LinkedIn</span>
+                            <span class="social-connect-handle">Nalakath Holdings</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CTA BANNER ==================== -->
+    <section class="cta-banner">
+        <div class="container">
+            <div class="cta-banner-content reveal">
+                <h2>Ready to Invest in <span class="gold-gradient-text">Paradise</span>?</h2>
+                <p>Join 100+ investors earning 12% p.a. returns. Secure your share in Kerala's premium resort.</p>
+                <div class="cta-banner-buttons">
+                    <a href="index.html#investment" class="btn-primary">
+                        <i data-lucide="trending-up"></i>
+                        Explore Investment Plans
+                    </a>
+                    <a href="index.html#appointment" class="btn-secondary">
+                        <i data-lucide="calendar"></i>
+                        Book Appointment
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="nav-logo">
+                        <div class="nav-logo-icon">
+                            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <ellipse cx="50" cy="58" rx="32" ry="24" stroke="#C9A84C" stroke-width="3"/>
+                                <path d="M50 18 L43 32 L50 27 L57 32 Z" fill="#C9A84C"/>
+                                <circle cx="36" cy="30" r="2.5" fill="#C9A84C"/>
+                                <circle cx="64" cy="30" r="2.5" fill="#C9A84C"/>
+                                <circle cx="50" cy="12" r="2.5" fill="#C9A84C"/>
+                            </svg>
+                        </div>
+                        <div class="nav-logo-text">
+                            <span class="nav-logo-name">OVAL PALACE</span>
+                            <span class="nav-logo-tagline">R E S O R T</span>
+                        </div>
+                    </a>
+                    <p>A premium luxury resort by Nalakath Holdings. Invest in hospitality, earn 12% p.a. returns with buyback guarantee.</p>
+                    <p style="font-size: 0.82rem; color: var(--text-muted);">Oval Palace LLP — A Nalakath Holdings Venture</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="resort-overview.html">Resort Overview</a></li>
+                        <li><a href="testimonials.html">Testimonials</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="index.html#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Investor</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#investment">1 Share Plan</a></li>
+                        <li><a href="index.html#investment">2 Shares Plan</a></li>
+                        <li><a href="index.html#investment">4 Shares Plan</a></li>
+                        <li><a href="index.html#investment">10 Shares Plan</a></li>
+                        <li><a href="index.html#investment">15 & 20 Shares</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Contact</h4>
+                    <ul class="footer-links">
+                        <li><a href="tel:+917592867000">+91 759 286 7000</a></li>
+                        <li><a href="mailto:sales@nalakathholdings.com">sales@nalakathholdings.com</a></li>
+                        <li>ASSN Tower, Opp Suzuki Nexa, Calicut Road, Angadipuram Perinthalmanna.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Copyright 2026 All rights reserved. | Designed by Mishel Adnan.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms & Conditions</a>
+                    <a href="#">Disclaimer</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==================== SCRIPTS ==================== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            initPageNavbar();
+            initScrollReveal();
+        });
+
+        function initPageNavbar() {
+            const hamburger = document.getElementById('navHamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const overlay = document.getElementById('mobileOverlay');
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+                overlay.classList.toggle('active');
+                document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+            });
+            overlay.addEventListener('click', closeMobileMenu);
+        }
+
+        function closeMobileMenu() {
+            document.getElementById('navHamburger').classList.remove('active');
+            document.getElementById('mobileMenu').classList.remove('active');
+            document.getElementById('mobileOverlay').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function initScrollReveal() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+            }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        }
+
+        // ==================== REEL PLAYER ====================
+        let isReelPlaying = false;
+        let isReelMuted = false;
+
+        function loadReel(input) {
+            if (!input.files || !input.files[0]) return;
+            const file = input.files[0];
+            const url = URL.createObjectURL(file);
+            const video = document.getElementById('mainReelVideo');
+            const overlay = document.getElementById('reelOverlay');
+            const uploadArea = document.getElementById('reelUploadArea');
+
+            video.src = url;
+            video.style.display = 'block';
+            overlay.style.display = 'flex';
+            uploadArea.style.display = 'none';
+
+            video.play();
+            isReelPlaying = true;
+            updatePlayIcon();
+
+            // Progress tracking
+            video.addEventListener('timeupdate', () => {
+                if (video.duration) {
+                    const pct = (video.currentTime / video.duration) * 100;
+                    document.getElementById('reelProgressBar').style.width = pct + '%';
+                }
+            });
+
+            lucide.createIcons();
+        }
+
+        function toggleReelPlay() {
+            const video = document.getElementById('mainReelVideo');
+            if (video.paused) { video.play(); isReelPlaying = true; }
+            else { video.pause(); isReelPlaying = false; }
+            updatePlayIcon();
+        }
+
+        function toggleReelMute() {
+            const video = document.getElementById('mainReelVideo');
+            video.muted = !video.muted;
+            isReelMuted = video.muted;
+            const icon = document.getElementById('reelMuteIcon');
+            icon.setAttribute('data-lucide', isReelMuted ? 'volume-x' : 'volume-2');
+            lucide.createIcons();
+        }
+
+        function updatePlayIcon() {
+            const icon = document.getElementById('reelPlayIcon');
+            icon.setAttribute('data-lucide', isReelPlaying ? 'pause' : 'play');
+            lucide.createIcons();
+        }
+
+        function loadSideReel(input, index) {
+            if (!input.files || !input.files[0]) return;
+            const file = input.files[0];
+            const url = URL.createObjectURL(file);
+            const container = input.closest('.reel-thumb');
+
+            container.classList.remove('upload-thumb');
+            container.innerHTML = `
+                <video src="${url}" muted loop style="width:100%;height:100%;object-fit:cover;border-radius:12px;"></video>
+                <div class="reel-thumb-play"><i data-lucide="play"></i></div>
+            `;
+            container.onclick = () => {
+                const mainVideo = document.getElementById('mainReelVideo');
+                const overlay = document.getElementById('reelOverlay');
+                const uploadArea = document.getElementById('reelUploadArea');
+                mainVideo.src = url;
+                mainVideo.style.display = 'block';
+                overlay.style.display = 'flex';
+                if (uploadArea) uploadArea.style.display = 'none';
+                mainVideo.play();
+                isReelPlaying = true;
+                updatePlayIcon();
+            };
+            lucide.createIcons();
+        }
+
+        // ==================== SOCIAL TABS ====================
+        function switchSocialTab(platform, btn) {
+            document.querySelectorAll('.social-tab').forEach(t => t.classList.remove('active'));
+            btn.classList.add('active');
+
+            document.querySelectorAll('.social-post-card').forEach(card => {
+                const plat = card.dataset.platform;
+                card.style.display = (platform === 'all' || plat === platform || plat === 'all') ? '' : 'none';
+            });
+        }
+
+        // ==================== SOCIAL POST UPLOAD ====================
+        function previewSocialPost(input, platform) {
+            if (!input.files || !input.files[0]) return;
+            const file = input.files[0];
+            const reader = new FileReader();
+            const card = input.closest('.social-post-card');
+
+            reader.onload = function(e) {
+                card.classList.remove('upload-card');
+                const isVideo = file.type.startsWith('video/');
+                card.innerHTML = `
+                    <div class="social-post-image" style="background-image: ${isVideo ? 'none' : `url('${e.target.result}')`}">
+                        ${isVideo ? `<video src="${e.target.result}" autoplay muted loop style="width:100%;height:100%;object-fit:cover;"></video>` : ''}
+                        <div class="social-post-platform-badge ${platform}-badge">
+                            <i data-lucide="${platform === 'promotions' ? 'megaphone' : platform}"></i>
+                        </div>
+                    </div>
+                    <div class="social-post-body">
+                        <div class="social-post-header">
+                            <div class="social-post-avatar">
+                                <svg viewBox="0 0 100 100" fill="none" width="28" height="28"><ellipse cx="50" cy="58" rx="32" ry="24" stroke="#C9A84C" stroke-width="4"/><path d="M50 18 L43 32 L50 27 L57 32 Z" fill="#C9A84C"/></svg>
+                            </div>
+                            <div>
+                                <span class="social-post-name">Oval Palace Resort</span>
+                                <span class="social-post-time">Just now</span>
+                            </div>
+                        </div>
+                        <p class="social-post-caption" contenteditable="true" style="cursor:text;outline:none;">Click here to add a caption...</p>
+                        <div class="social-post-engagement">
+                            <span><i data-lucide="heart"></i> 0</span>
+                            <span><i data-lucide="message-circle"></i> 0</span>
+                            <span><i data-lucide="share-2"></i> 0</span>
+                        </div>
+                    </div>
+                `;
+                lucide.createIcons();
+            };
+            reader.readAsDataURL(file);
+        }
+    </script>
+</body>
+</html>

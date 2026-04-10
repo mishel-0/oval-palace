@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore celebrations, team events, and milestones at Oval Palace Resort LLP — a Nalakath Holdings venture.">
+    <meta name="keywords" content="Oval Palace events, Nalakath Holdings celebrations, investor meet, team events">
+    <meta name="author" content="Nalakath Holdings">
+    <title>Celebrations & Events — Oval Palace Resort | Nalakath Holdings</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cellipse cx='50' cy='55' rx='35' ry='28' fill='none' stroke='%23C9A84C' stroke-width='4'/%3E%3Cpath d='M50 15 L42 30 L50 25 L58 30 Z' fill='%23C9A84C'/%3E%3Ccircle cx='35' cy='30' r='3' fill='%23C9A84C'/%3E%3Ccircle cx='65' cy='30' r='3' fill='%23C9A84C'/%3E%3Ccircle cx='50' cy='10' r='3' fill='%23C9A84C'/%3E%3C/svg%3E">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="pages.css">
+</head>
+<body>
+
+    <!-- ==================== NAVIGATION ==================== -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-logo">
+                <div class="nav-logo-icon">
+                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <ellipse cx="50" cy="58" rx="32" ry="24" stroke="#C9A84C" stroke-width="3"/>
+                        <path d="M50 18 L43 32 L50 27 L57 32 Z" fill="#C9A84C"/>
+                        <circle cx="36" cy="30" r="2.5" fill="#C9A84C"/>
+                        <circle cx="64" cy="30" r="2.5" fill="#C9A84C"/>
+                        <circle cx="50" cy="12" r="2.5" fill="#C9A84C"/>
+                    </svg>
+                </div>
+                <div class="nav-logo-text">
+                    <span class="nav-logo-name">OVAL PALACE</span>
+                    <span class="nav-logo-tagline">R E S O R T</span>
+                </div>
+            </a>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#investment">Investment</a></li>
+                <li><a href="testimonials.html">Testimonials</a></li>
+                <li><a href="events.html" class="active">Events</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="index.html#investment" class="nav-cta">Invest Now</a></li>
+            </ul>
+
+            <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu-overlay" id="mobileOverlay"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="index.html" onclick="closeMobileMenu()">Home</a></li>
+            <li><a href="index.html#about" onclick="closeMobileMenu()">About</a></li>
+            <li><a href="index.html#investment" onclick="closeMobileMenu()">Investment</a></li>
+            <li><a href="testimonials.html" onclick="closeMobileMenu()">Testimonials</a></li>
+            <li><a href="events.html" onclick="closeMobileMenu()">Events</a></li>
+            <li><a href="index.html#contact" onclick="closeMobileMenu()">Contact</a></li>
+        </ul>
+        <a href="index.html#investment" class="nav-cta" onclick="closeMobileMenu()">Invest Now</a>
+    </div>
+
+    <!-- ==================== PAGE HERO ==================== -->
+    <section class="page-hero">
+        <div class="page-hero-bg" style="background-image: url('images/hero-3.jpg')"></div>
+        <div class="page-hero-overlay"></div>
+        <div class="container page-hero-content">
+            <div class="page-breadcrumb">
+                <a href="index.html"><i data-lucide="home"></i> Home</a>
+                <i data-lucide="chevron-right"></i>
+                <span>Celebrations & Events</span>
+            </div>
+            <h1 class="page-hero-title">Celebrations & <span class="gold-gradient-text">Events</span></h1>
+            <p class="page-hero-subtitle">Capturing the moments that define our journey — from milestones to team spirit.</p>
+        </div>
+    </section>
+
+    <!-- ==================== EVENTS OVERVIEW ==================== -->
+    <section class="events-overview">
+        <div class="container">
+            <div class="section-header-centered reveal">
+                <span class="section-label" style="justify-content: center;">Our Journey</span>
+                <h2 class="section-title">Milestones & <span class="gold-gradient-text">Memories</span></h2>
+                <p class="section-subtitle">Every milestone is a celebration. Explore the key moments in the Oval Palace story.</p>
+            </div>
+
+            <div class="events-timeline reveal">
+                <!-- Event 1 -->
+                <div class="event-card">
+                    <div class="event-card-visual">
+                        <div class="event-date-badge">
+                            <span class="event-day">15</span>
+                            <span class="event-month">Jan 2025</span>
+                        </div>
+                        <div class="event-icon-wrapper">
+                            <i data-lucide="flag"></i>
+                        </div>
+                    </div>
+                    <div class="event-card-content">
+                        <h3>Project Launch Ceremony</h3>
+                        <p>The official launch of Oval Palace Resort LLP. Key stakeholders, early investors, and the Nalakath Holdings leadership gathered to mark the beginning of a new era in hospitality.</p>
+                        <div class="event-tags">
+                            <span class="event-tag"><i data-lucide="users"></i> 50+ Attendees</span>
+                            <span class="event-tag"><i data-lucide="map-pin"></i> Perinthalmanna</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 2 -->
+                <div class="event-card">
+                    <div class="event-card-visual">
+                        <div class="event-date-badge">
+                            <span class="event-day">22</span>
+                            <span class="event-month">Mar 2025</span>
+                        </div>
+                        <div class="event-icon-wrapper">
+                            <i data-lucide="hard-hat"></i>
+                        </div>
+                    </div>
+                    <div class="event-card-content">
+                        <h3>Foundation Stone Laying</h3>
+                        <p>A momentous day as the foundation stone was laid at the resort site near the Perinthalmanna Cricket Stadium. Investors were invited for a site visit and ceremonial blessing.</p>
+                        <div class="event-tags">
+                            <span class="event-tag"><i data-lucide="users"></i> 75+ Attendees</span>
+                            <span class="event-tag"><i data-lucide="camera"></i> Photo Gallery</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 3 -->
+                <div class="event-card featured-event">
+                    <div class="event-card-visual">
+                        <div class="event-date-badge">
+                            <span class="event-day">10</span>
+                            <span class="event-month">Oct 2025</span>
+                        </div>
+                        <div class="event-icon-wrapper">
+                            <i data-lucide="trophy"></i>
+                        </div>
+                    </div>
+                    <div class="event-card-content">
+                        <h3>🎉 100+ Investors Celebration</h3>
+                        <p>A grand celebration marking the achievement of 100+ investors! An exclusive investor meet was organized to thank our partners and showcase the construction progress. A memorable evening of networking, food, and fellowship.</p>
+                        <div class="event-tags">
+                            <span class="event-tag"><i data-lucide="users"></i> 100+ Investors</span>
+                            <span class="event-tag"><i data-lucide="sparkles"></i> Milestone</span>
+                            <span class="event-tag"><i data-lucide="map-pin"></i> ASSN Tower</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 4 -->
+                <div class="event-card">
+                    <div class="event-card-visual">
+                        <div class="event-date-badge">
+                            <span class="event-day">25</span>
+                            <span class="event-month">Dec 2025</span>
+                        </div>
+                        <div class="event-icon-wrapper">
+                            <i data-lucide="gift"></i>
+                        </div>
+                    </div>
+                    <div class="event-card-content">
+                        <h3>Year-End Investor Appreciation</h3>
+                        <p>A special year-end gathering to appreciate our investor community. Detailed project updates were presented alongside plans for 2026. Team awards and recognition were highlights of the evening.</p>
+                        <div class="event-tags">
+                            <span class="event-tag"><i data-lucide="users"></i> Investor Meet</span>
+                            <span class="event-tag"><i data-lucide="award"></i> Awards Night</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 5 -->
+                <div class="event-card">
+                    <div class="event-card-visual">
+                        <div class="event-date-badge">
+                            <span class="event-day">08</span>
+                            <span class="event-month">Mar 2026</span>
+                        </div>
+                        <div class="event-icon-wrapper">
+                            <i data-lucide="heart"></i>
+                        </div>
+                    </div>
+                    <div class="event-card-content">
+                        <h3>Team Building & Retreat</h3>
+                        <p>The Oval Palace team gathered for an energizing team-building retreat. Strengthening bonds, sharing ideas, and fostering the culture that drives the excellence of Nalakath Holdings.</p>
+                        <div class="event-tags">
+                            <span class="event-tag"><i data-lucide="users"></i> Team Event</span>
+                            <span class="event-tag"><i data-lucide="map-pin"></i> Kerala</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== PHOTO/VIDEO GALLERY ==================== -->
+    <section class="events-gallery-section">
+        <div class="container">
+            <div class="section-header-centered reveal">
+                <span class="section-label" style="justify-content: center;">Gallery</span>
+                <h2 class="section-title">Event <span class="gold-gradient-text">Gallery</span></h2>
+                <p class="section-subtitle">Upload and browse photos & videos from our events and celebrations.</p>
+            </div>
+
+            <!-- Category Filter -->
+            <div class="gallery-filter reveal">
+                <button class="gallery-filter-btn active" onclick="filterGallery('all', this)">All Events</button>
+                <button class="gallery-filter-btn" onclick="filterGallery('celebration', this)">100+ Celebration</button>
+                <button class="gallery-filter-btn" onclick="filterGallery('team', this)">Team Events</button>
+                <button class="gallery-filter-btn" onclick="filterGallery('site', this)">Site Visits</button>
+            </div>
+
+            <div class="events-gallery-grid reveal" id="eventsGalleryGrid">
+                <!-- Upload slots for event photos -->
+                <div class="event-gallery-item upload-placeholder" data-category="celebration" onclick="document.getElementById('eventUpload1').click()">
+                    <input type="file" id="eventUpload1" accept="image/*,video/*" style="display:none" onchange="previewEventMedia(this)">
+                    <div class="upload-placeholder-content">
+                        <i data-lucide="image-plus"></i>
+                        <span>100+ Celebration</span>
+                    </div>
+                </div>
+                <div class="event-gallery-item upload-placeholder" data-category="celebration" onclick="document.getElementById('eventUpload2').click()">
+                    <input type="file" id="eventUpload2" accept="image/*,video/*" style="display:none" onchange="previewEventMedia(this)">
+                    <div class="upload-placeholder-content">
+                        <i data-lucide="image-plus"></i>
+                        <span>Investor Meet</span>
+                    </div>
+                </div>
+                <div class="event-gallery-item upload-placeholder" data-category="team" onclick="document.getElementById('eventUpload3').click()">
+                    <input type="file" id="eventUpload3" accept="image/*,video/*" style="display:none" onchange="previewEventMedia(this)">
+                    <div class="upload-placeholder-content">
+                        <i data-lucide="image-plus"></i>
+                        <span>Team Photo</span>
+                    </div>
+                </div>
+                <div class="event-gallery-item upload-placeholder" data-category="site" onclick="document.getElementById('eventUpload4').click()">
+                    <input type="file" id="eventUpload4" accept="image/*,video/*" style="display:none" onchange="previewEventMedia(this)">
+                    <div class="upload-placeholder-content">
+                        <i data-lucide="image-plus"></i>
+                        <span>Site Visit</span>
+                    </div>
+                </div>
+                <div class="event-gallery-item upload-placeholder" data-category="celebration" onclick="document.getElementById('eventUpload5').click()">
+                    <input type="file" id="eventUpload5" accept="image/*,video/*" style="display:none" onchange="previewEventMedia(this)">
+                    <div class="upload-placeholder-content">
+                        <i data-lucide="image-plus"></i>
+                        <span>Celebration</span>
+                    </div>
+                </div>
+                <div class="event-gallery-item upload-placeholder" data-category="team" onclick="document.getElementById('eventUpload6').click()">
+                    <input type="file" id="eventUpload6" accept="image/*,video/*" style="display:none" onchange="previewEventMedia(this)">
+                    <div class="upload-placeholder-content">
+                        <i data-lucide="image-plus"></i>
+                        <span>Team Event</span>
+                    </div>
+                </div>
+                <div class="event-gallery-item upload-placeholder" data-category="site" onclick="document.getElementById('eventUpload7').click()">
+                    <input type="file" id="eventUpload7" accept="image/*,video/*" style="display:none" onchange="previewEventMedia(this)">
+                    <div class="upload-placeholder-content">
+                        <i data-lucide="image-plus"></i>
+                        <span>Site Progress</span>
+                    </div>
+                </div>
+                <div class="event-gallery-item upload-placeholder" data-category="celebration" onclick="document.getElementById('eventUpload8').click()">
+                    <input type="file" id="eventUpload8" accept="image/*,video/*" style="display:none" onchange="previewEventMedia(this)">
+                    <div class="upload-placeholder-content">
+                        <i data-lucide="image-plus"></i>
+                        <span>Upload Media</span>
+                    </div>
+                </div>
+            </div>
+
+            <p class="upload-note reveal">
+                <i data-lucide="info"></i>
+                Click on any placeholder above to upload photos and videos from events. Supported formats: JPG, PNG, MP4, MOV.
+            </p>
+        </div>
+    </section>
+
+    <!-- ==================== CTA BANNER ==================== -->
+    <section class="cta-banner">
+        <div class="container">
+            <div class="cta-banner-content reveal">
+                <h2>Be Part of Our Next <span class="gold-gradient-text">Celebration</span></h2>
+                <p>Join the Oval Palace investor family and be invited to exclusive events, site tours, and milestone celebrations.</p>
+                <div class="cta-banner-buttons">
+                    <a href="index.html#investment" class="btn-primary">
+                        <i data-lucide="trending-up"></i>
+                        Explore Investment Plans
+                    </a>
+                    <a href="index.html#appointment" class="btn-secondary">
+                        <i data-lucide="calendar"></i>
+                        Book Appointment
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="nav-logo">
+                        <div class="nav-logo-icon">
+                            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <ellipse cx="50" cy="58" rx="32" ry="24" stroke="#C9A84C" stroke-width="3"/>
+                                <path d="M50 18 L43 32 L50 27 L57 32 Z" fill="#C9A84C"/>
+                                <circle cx="36" cy="30" r="2.5" fill="#C9A84C"/>
+                                <circle cx="64" cy="30" r="2.5" fill="#C9A84C"/>
+                                <circle cx="50" cy="12" r="2.5" fill="#C9A84C"/>
+                            </svg>
+                        </div>
+                        <div class="nav-logo-text">
+                            <span class="nav-logo-name">OVAL PALACE</span>
+                            <span class="nav-logo-tagline">R E S O R T</span>
+                        </div>
+                    </a>
+                    <p>A premium luxury resort by Nalakath Holdings. Invest in hospitality, earn 12% p.a. returns with buyback guarantee.</p>
+                    <p style="font-size: 0.82rem; color: var(--text-muted);">Oval Palace LLP — A Nalakath Holdings Venture</p>
+                </div>
+
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="testimonials.html">Testimonials</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="index.html#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4>Investor</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#investment">1 Share Plan</a></li>
+                        <li><a href="index.html#investment">2 Shares Plan</a></li>
+                        <li><a href="index.html#investment">4 Shares Plan</a></li>
+                        <li><a href="index.html#investment">10 Shares Plan</a></li>
+                        <li><a href="index.html#investment">15 & 20 Shares</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4>Contact</h4>
+                    <ul class="footer-links">
+                        <li><a href="tel:+917592867000">+91 759 286 7000</a></li>
+                        <li><a href="mailto:sales@nalakathholdings.com">sales@nalakathholdings.com</a></li>
+                        <li>ASSN Tower, Opp Suzuki Nexa, Calicut Road, Angadipuram Perinthalmanna.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>Copyright 2026 All rights reserved. | Designed by Mishel Adnan.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms & Conditions</a>
+                    <a href="#">Disclaimer</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script>
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            initPageNavbar();
+            initScrollReveal();
+        });
+
+        // Navbar
+        function initPageNavbar() {
+            const hamburger = document.getElementById('navHamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const overlay = document.getElementById('mobileOverlay');
+
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+                overlay.classList.toggle('active');
+                document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+            });
+
+            overlay.addEventListener('click', closeMobileMenu);
+        }
+
+        function closeMobileMenu() {
+            const hamburger = document.getElementById('navHamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const overlay = document.getElementById('mobileOverlay');
+            hamburger.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Scroll Reveal
+        function initScrollReveal() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add('visible');
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        }
+
+        // Gallery Category Filter
+        function filterGallery(category, btn) {
+            document.querySelectorAll('.gallery-filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            document.querySelectorAll('.event-gallery-item').forEach(item => {
+                if (category === 'all' || item.dataset.category === category) {
+                    item.style.display = '';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Image Upload Preview
+        function previewEventMedia(input) {
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                const container = input.closest('.event-gallery-item');
+                const file = input.files[0];
+
+                reader.onload = function(e) {
+                    container.classList.remove('upload-placeholder');
+                    if (file.type.startsWith('video/')) {
+                        container.innerHTML = `
+                            <video src="${e.target.result}" controls style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius-md);"></video>
+                        `;
+                    } else {
+                        container.innerHTML = `
+                            <img src="${e.target.result}" alt="Event Photo" style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius-md);">
+                            <div class="gallery-zoom"><i data-lucide="maximize-2"></i></div>
+                        `;
+                        lucide.createIcons();
+                    }
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+</body>
+</html>
