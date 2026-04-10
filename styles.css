@@ -203,14 +203,16 @@ button {
 }
 
 .nav-logo-img {
-    height: 54px;
+    height: 100px;
     width: auto;
     object-fit: contain;
     transition: var(--transition-smooth);
+    margin-top: 10px;
 }
 
 .navbar.scrolled .nav-logo-img {
-    height: 46px;
+    height: 70px;
+    margin-top: 5px;
 }
 
 .nav-links {
