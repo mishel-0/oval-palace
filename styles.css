@@ -200,42 +200,17 @@ button {
 .nav-logo {
     display: flex;
     align-items: center;
-    gap: 12px;
 }
 
-.nav-logo-icon {
-    width: 44px;
-    height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.nav-logo-img {
+    height: 54px;
+    width: auto;
+    object-fit: contain;
+    transition: var(--transition-smooth);
 }
 
-.nav-logo-icon svg {
-    width: 44px;
-    height: 44px;
-}
-
-.nav-logo-text {
-    display: flex;
-    flex-direction: column;
-}
-
-.nav-logo-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    letter-spacing: 1px;
-    line-height: 1.2;
-}
-
-.nav-logo-tagline {
-    font-size: 0.6rem;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--gold);
-    font-weight: 500;
+.navbar.scrolled .nav-logo-img {
+    height: 46px;
 }
 
 .nav-links {
