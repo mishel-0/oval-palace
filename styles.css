@@ -2630,14 +2630,24 @@ button {
     z-index: 10;
 }
 
-.featured-benefit {
-    transform: scale(1.05);
-    z-index: 2;
-}
-
 .featured-benefit:hover {
     transform: scale(1.05) translateY(-6px);
 }
+
+/* ---------- SOCIAL ICONS FIX ---------- */
+.social-link i, .social-connect-link i {
+    stroke-width: 2px;
+    display: block;
+}
+
+.social-link:hover i {
+    transform: scale(1.1);
+}
+
+.instagram-link i, .social-link[aria-label="Instagram"] i { color: #E1306C !important; }
+.facebook-link i, .social-link[aria-label="Facebook"] i { color: #4267B2 !important; }
+.youtube-link i, .social-link[aria-label="Youtube"] i { color: #FF0000 !important; }
+.linkedin-link i, .social-link[aria-label="LinkedIn"] i { color: #0077B5 !important; }
 
 /* ---------- RESPONSIVE ---------- */
 @media (max-width: 1024px) {

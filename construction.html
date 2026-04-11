@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Stay updated with the construction progress of Oval Palace Resort. View foundation work, structural milestones, and live updates.">
+    <meta name="keywords" content="Oval Palace construction, resort building progress, Nalakath Holdings project, luxury resort development">
+    <meta name="author" content="Nalakath Holdings">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://oval-palace.vercel.app/construction.html">
+    <meta property="og:title" content="Construction Phase & Updates | Oval Palace Resort">
+    <meta property="og:description" content="Track the real-time building progress of Oval Palace Resort. Transparency and excellence in every brick.">
+    <meta property="og:image" content="https://oval-palace.vercel.app/images/hero-4.jpg">
+
+    <link rel="canonical" href="https://oval-palace.vercel.app/construction.html" />
+
+    <title>Construction Phase — Oval Palace Resort | Nalakath Holdings</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cellipse cx='50' cy='55' rx='35' ry='28' fill='none' stroke='%23C9A84C' stroke-width='4'/%3E%3Cpath d='M50 15 L42 30 L50 25 L58 30 Z' fill='%23C9A84C'/%3E%3Ccircle cx='35' cy='30' r='3' fill='%23C9A84C'/%3E%3Ccircle cx='65' cy='30' r='3' fill='%23C9A84C'/%3E%3Ccircle cx='50' cy='10' r='3' fill='%23C9A84C'/%3E%3C/svg%3E">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="pages.css">
+    
+    <style>
+        .construction-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .update-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+
+        .update-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--border-gold);
+            box-shadow: var(--shadow-gold);
+        }
+
+        .update-img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+        }
+
+        .update-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--gold-gradient);
+            color: #000;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .update-content {
+            padding: 25px;
+        }
+
+        .update-date {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+
+        .update-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
+
+        .update-description {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .progress-container {
+            margin-top: 80px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-subtle);
+            padding: 60px 40px;
+            border-radius: var(--radius-xl);
+            text-align: center;
+        }
+
+        .progress-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .stat-circle {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-card);
+            border: 2px solid var(--border-gold);
+            border-radius: 50%;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-gold);
+            box-shadow: 0 0 20px rgba(201, 168, 76, 0.2);
+        }
+
+        .stat-label {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .progress-stats {
+                grid-template-columns: 1fr;
+            }
+            .construction-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== NAVIGATION ==================== -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-logo">
+                <img src="images/logo.png" alt="Oval Palace Resort Logo" class="nav-logo-img">
+            </a>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="resort-overview.html">Resort Overview</a></li>
+                <li><a href="construction.html" class="active">Construction Phase</a></li>
+                <li><a href="testimonials.html">Testimonials</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="index.html#investment" class="nav-cta">Invest Now</a></li>
+            </ul>
+
+            <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu-overlay" id="mobileOverlay"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="index.html" onclick="closeMobileMenu()">Home</a></li>
+            <li><a href="resort-overview.html" onclick="closeMobileMenu()">Resort Overview</a></li>
+            <li><a href="construction.html" onclick="closeMobileMenu()">Construction Phase</a></li>
+            <li><a href="testimonials.html" onclick="closeMobileMenu()">Testimonials</a></li>
+            <li><a href="events.html" onclick="closeMobileMenu()">Events</a></li>
+            <li><a href="index.html#contact" onclick="closeMobileMenu()">Contact</a></li>
+        </ul>
+        <a href="index.html#investment" class="nav-cta" onclick="closeMobileMenu()">Invest Now</a>
+    </div>
+
+    <!-- ==================== PAGE HERO ==================== -->
+    <section class="page-hero">
+        <div class="page-hero-bg" style="background-image: url('images/hero-4.jpg')"></div>
+        <div class="page-hero-overlay"></div>
+        <div class="container page-hero-content">
+            <div class="page-breadcrumb">
+                <a href="index.html"><i data-lucide="home"></i> Home</a>
+                <i data-lucide="chevron-right"></i>
+                <span>Construction Phase</span>
+            </div>
+            <h1 class="page-hero-title">Building the <span class="gold-gradient-text">Future</span></h1>
+            <p class="page-hero-subtitle">Real-time updates and transparency as we bring the Oval Palace vision to life.</p>
+        </div>
+    </section>
+
+    <!-- ==================== CONSTRUCTION UPDATES ==================== -->
+    <section class="construction-updates section-padding">
+        <div class="container">
+            <div class="section-header-centered reveal">
+                <span class="section-label" style="justify-content: center;">Live Progress</span>
+                <h2 class="section-title">Construction <span class="gold-gradient-text">Timeline</span></h2>
+                <p class="section-subtitle">Track every milestone from foundation to finish.</p>
+            </div>
+
+            <div class="construction-grid reveal">
+                <!-- Update 1 -->
+                <div class="update-card">
+                    <img src="images/hero-5.jpg" alt="Foundation Work" class="update-img">
+                    <span class="update-badge">Completed</span>
+                    <div class="update-content">
+                        <span class="update-date">March 15, 2025</span>
+                        <h3 class="update-title">Foundation Stone Laying</h3>
+                        <p class="update-description">Successfully completed the ceremonial foundation laying with our key stakeholders and initial investors present at the site.</p>
+                    </div>
+                </div>
+
+                <!-- Update 2 -->
+                <div class="update-card">
+                    <img src="images/hero-3.jpg" alt="Site Preparation" class="update-img">
+                    <span class="update-badge">In Progress</span>
+                    <div class="update-content">
+                        <span class="update-date">May 10, 2025</span>
+                        <h3 class="update-title">Structural Shuttering</h3>
+                        <p class="update-description">Current phase involves structural shuttering and reinforcement for the primary hospitality wing. Progressing as per schedule.</p>
+                    </div>
+                </div>
+
+                <!-- Update 3 -->
+                <div class="update-card">
+                    <img src="images/hero-2.jpg" alt="Utilities Work" class="update-img">
+                    <span class="update-badge">Upcoming</span>
+                    <div class="update-content">
+                        <span class="update-date">August 2025</span>
+                        <h3 class="update-title">Roofing & External Shell</h3>
+                        <p class="update-description">Scheduled phase for completing the external shell and iconic oval-inspired roofing system for the main resort building.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progress Summary -->
+            <div class="progress-container reveal">
+                <h3 class="section-title" style="font-size: 1.8rem; margin-bottom: 20px;">Overall <span class="gold-gradient-text">Milestones</span></h3>
+                <p class="section-subtitle">A transparent look at where we stand today.</p>
+                
+                <div class="progress-stats">
+                    <div class="stat-item">
+                        <div class="stat-circle">35%</div>
+                        <span class="stat-label">Civil Work</span>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-circle">100%</div>
+                        <span class="stat-label">Land Acquisition</span>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-circle">20%</div>
+                        <span class="stat-label">Utility Casting</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CTA BANNER ==================== -->
+    <section class="cta-banner">
+        <div class="container">
+            <div class="cta-banner-content reveal">
+                <h2>Invest in a <span class="gold-gradient-text">Tangible</span> Asset</h2>
+                <p>Visit the site today or book a virtual tour to see the progress for yourself.</p>
+                <div class="cta-banner-buttons">
+                    <a href="index.html#investment" class="btn-primary">
+                        <i data-lucide="trending-up"></i>
+                        Explore Investment Plans
+                    </a>
+                    <a href="index.html#appointment" class="btn-secondary">
+                        <i data-lucide="calendar"></i>
+                        Book Site Visit
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="nav-logo">
+                        <img src="images/logo.png" alt="Oval Palace Resort Logo" class="nav-logo-img">
+                    </a>
+                    <p>A premium luxury resort by Nalakath Holdings. Invest in hospitality, earn 12% p.a. returns with buyback guarantee.</p>
+                    <p style="font-size: 0.82rem; color: var(--text-muted);">Oval Palace LLP — A Nalakath Holdings Venture</p>
+                </div>
+
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="resort-overview.html">Resort Overview</a></li>
+                        <li><a href="construction.html">Construction Phase</a></li>
+                        <li><a href="testimonials.html">Testimonials</a></li>
+                        <li><a href="events.html">Events</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4>Investor</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#investment">1 Share Plan</a></li>
+                        <li><a href="index.html#investment">2 Shares Plan</a></li>
+                        <li><a href="index.html#investment">4 Shares Plan</a></li>
+                        <li><a href="index.html#investment">10 Shares Plan</a></li>
+                        <li><a href="index.html#investment">15 & 20 Shares</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4>Contact</h4>
+                    <ul class="footer-links">
+                        <li><a href="tel:+917592867000">+91 759 286 7000</a></li>
+                        <li><a href="mailto:sales@nalakathholdings.com">sales@nalakathholdings.com</a></li>
+                        <li>ASSN Tower, Opp Suzuki Nexa, Calicut Road, Angadipuram Perinthalmanna.</li>
+                    </ul>
+                    <div class="contact-socials" style="margin-top: 20px; display: flex; gap: 15px;">
+                        <a href="https://www.facebook.com/OvalPalaceResort/" class="social-link" aria-label="Facebook" target="_blank"><i data-lucide="facebook"></i></a>
+                        <a href="https://www.instagram.com/ovalpalace_resort/" class="social-link" aria-label="Instagram" target="_blank"><i data-lucide="instagram"></i></a>
+                        <a href="https://www.youtube.com/@NalakathHoldings" class="social-link" aria-label="Youtube" target="_blank"><i data-lucide="youtube"></i></a>
+                        <a href="https://www.linkedin.com/company/nalakathholdings/posts/?feedView=all" class="social-link" aria-label="LinkedIn" target="_blank"><i data-lucide="linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>Copyright 2026 All rights reserved. | Designed by Mishel Adnan.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms & Conditions</a>
+                    <a href="#">Disclaimer</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script>
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            initPageNavbar();
+            initScrollReveal();
+        });
+
+        // Navbar
+        function initPageNavbar() {
+            const hamburger = document.getElementById('navHamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const overlay = document.getElementById('mobileOverlay');
+
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+                overlay.classList.toggle('active');
+                document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+            });
+
+            overlay.addEventListener('click', closeMobileMenu);
+        }
+
+        function closeMobileMenu() {
+            const hamburger = document.getElementById('navHamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const overlay = document.getElementById('mobileOverlay');
+            hamburger.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Scroll Reveal
+        function initScrollReveal() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add('visible');
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        }
+    </script>
+</body>
+</html>
