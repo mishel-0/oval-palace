@@ -2564,6 +2564,81 @@ button {
     border-radius: 50%;
 }
 
+/* ---------- BENEFIT SUBSCRIPTION CARDS ---------- */
+.benefit-card {
+    background: rgba(20, 20, 20, 0.5);
+    border-radius: var(--radius-xl);
+    padding: 36px 28px;
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: visible;
+    backdrop-filter: blur(12px);
+    display: flex;
+    flex-direction: column;
+}
+
+.benefit-card:hover {
+    transform: translateY(-6px);
+    background: rgba(30, 30, 30, 0.7);
+}
+
+.benefit-silver {
+    border: 1px solid rgba(192, 192, 192, 0.15);
+    border-top: 1px solid rgba(192, 192, 192, 0.5);
+    box-shadow: inset 0 20px 40px -20px rgba(192, 192, 192, 0.05);
+}
+.benefit-silver:hover {
+    border-color: rgba(192, 192, 192, 0.3);
+    box-shadow: inset 0 20px 40px -20px rgba(192, 192, 192, 0.1), 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.benefit-gold {
+    border: 1px solid rgba(201, 168, 76, 0.25);
+    border-top: 1px solid rgba(201, 168, 76, 0.7);
+    box-shadow: inset 0 20px 40px -20px rgba(201, 168, 76, 0.1), 0 4px 20px rgba(201, 168, 76, 0.05);
+}
+.benefit-gold:hover {
+    border-color: rgba(201, 168, 76, 0.4);
+    box-shadow: inset 0 20px 40px -20px rgba(201, 168, 76, 0.15), 0 10px 40px rgba(201, 168, 76, 0.2);
+}
+
+.benefit-platinum {
+    border: 1px solid rgba(229, 228, 226, 0.15);
+    border-top: 1px solid rgba(229, 228, 226, 0.6);
+    box-shadow: inset 0 20px 40px -20px rgba(229, 228, 226, 0.05);
+}
+.benefit-platinum:hover {
+    border-color: rgba(229, 228, 226, 0.3);
+    box-shadow: inset 0 20px 40px -20px rgba(229, 228, 226, 0.1), 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.benefit-popular-badge {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #FFDF73, #B8860B);
+    color: #000;
+    padding: 6px 24px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    box-shadow: 0 4px 15px rgba(201, 168, 76, 0.4);
+    white-space: nowrap;
+    z-index: 10;
+}
+
+.featured-benefit {
+    transform: scale(1.05);
+    z-index: 2;
+}
+
+.featured-benefit:hover {
+    transform: scale(1.05) translateY(-6px);
+}
+
 /* ---------- RESPONSIVE ---------- */
 @media (max-width: 1024px) {
     .plans-grid,
