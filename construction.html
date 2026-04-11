@@ -49,32 +49,43 @@
         }
 
         .phase-btn {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid var(--border-subtle);
-            padding: 12px 25px;
-            border-radius: 50px;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            font-weight: 600;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 14px 28px;
+            border-radius: 12px;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.95rem;
+            font-weight: 500;
             cursor: pointer;
-            transition: var(--transition-smooth);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        .phase-btn:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: var(--border-gold);
+            color: #fff;
+            transform: translateY(-2px);
         }
 
         .phase-btn.active {
             background: var(--gold-gradient);
             color: #000;
+            font-weight: 700;
             border-color: transparent;
-            box-shadow: var(--shadow-gold);
+            box-shadow: 0 10px 20px rgba(201, 168, 76, 0.3);
+            transform: scale(1.05);
         }
 
         .phase-btn .status-dot {
-            width: 8px;
-            height: 8px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
-            background: var(--phase-soon);
+            background: rgba(255,255,255,0.2);
+            box-shadow: 0 0 5px rgba(255,255,255,0.1);
         }
 
         .phase-btn.done .status-dot { background: var(--phase-done); }
