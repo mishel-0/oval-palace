@@ -156,21 +156,11 @@
                     <div class="phone-mockup">
                         <div class="phone-notch"></div>
                         <div class="phone-screen" id="mainReelScreen">
-                            <!-- Default: Upload placeholder -->
-                            <div class="reel-upload-placeholder" id="reelUploadArea">
-                                <input type="file" id="reelFileInput" accept="video/*" style="display:none" onchange="loadReel(this)">
-                                <div class="reel-upload-content" onclick="document.getElementById('reelFileInput').click()">
-                                    <div class="reel-upload-icon-ring">
-                                        <i data-lucide="play"></i>
-                                    </div>
-                                    <h4>Upload Your Reel</h4>
-                                    <p>Click to upload a reel video (MP4, MOV)</p>
-                                </div>
-                            </div>
-                            <!-- Video player (hidden until reel loaded) -->
-                            <video id="mainReelVideo" style="display:none" loop playsinline></video>
+                            <!-- Main Video Player -->
+                            <video id="mainReelVideo" src="videos/main-reel.mp4" loop playsinline autoplay muted></video>
+                            
                             <!-- Reel Overlay UI -->
-                            <div class="reel-overlay" id="reelOverlay" style="display:none">
+                            <div class="reel-overlay" id="reelOverlay">
                                 <div class="reel-overlay-top">
                                     <span class="reel-badge"><i data-lucide="clapperboard"></i> Reels</span>
                                 </div>
@@ -190,10 +180,10 @@
                                     <p class="reel-caption" id="reelCaption">🏡 Experience luxury redefined. Oval Palace Resort — Coming Soon! 🌟</p>
                                     <div class="reel-actions">
                                         <button class="reel-action" onclick="toggleReelPlay()">
-                                            <i data-lucide="play" id="reelPlayIcon"></i>
+                                            <i data-lucide="pause" id="reelPlayIcon"></i>
                                         </button>
                                         <button class="reel-action" onclick="toggleReelMute()">
-                                            <i data-lucide="volume-2" id="reelMuteIcon"></i>
+                                            <i data-lucide="volume-x" id="reelMuteIcon"></i>
                                         </button>
                                     </div>
                                 </div>
@@ -210,20 +200,18 @@
                     <div class="reel-sidebar">
                         <h4 class="reel-sidebar-title">More Reels</h4>
                         <div class="reel-thumb-list">
-                            <div class="reel-thumb upload-thumb" onclick="document.getElementById('reelInput2').click()">
-                                <input type="file" id="reelInput2" accept="video/*" style="display:none" onchange="loadSideReel(this, 0)">
-                                <i data-lucide="plus"></i>
-                                <span>Add Reel</span>
+                            <!-- Clickable Thumbnails to change main video -->
+                            <div class="reel-thumb" onclick="changeMainReel('videos/reel-1.mp4')">
+                                <video src="videos/reel-1.mp4" muted loop style="width:100%;height:100%;object-fit:cover;border-radius:12px;"></video>
+                                <div class="reel-thumb-play"><i data-lucide="play"></i></div>
                             </div>
-                            <div class="reel-thumb upload-thumb" onclick="document.getElementById('reelInput3').click()">
-                                <input type="file" id="reelInput3" accept="video/*" style="display:none" onchange="loadSideReel(this, 1)">
-                                <i data-lucide="plus"></i>
-                                <span>Add Reel</span>
+                            <div class="reel-thumb" onclick="changeMainReel('videos/reel-2.mp4')">
+                                <video src="videos/reel-2.mp4" muted loop style="width:100%;height:100%;object-fit:cover;border-radius:12px;"></video>
+                                <div class="reel-thumb-play"><i data-lucide="play"></i></div>
                             </div>
-                            <div class="reel-thumb upload-thumb" onclick="document.getElementById('reelInput4').click()">
-                                <input type="file" id="reelInput4" accept="video/*" style="display:none" onchange="loadSideReel(this, 2)">
-                                <i data-lucide="plus"></i>
-                                <span>Add Reel</span>
+                            <div class="reel-thumb" onclick="changeMainReel('videos/reel-3.mp4')">
+                                <video src="videos/reel-3.mp4" muted loop style="width:100%;height:100%;object-fit:cover;border-radius:12px;"></video>
+                                <div class="reel-thumb-play"><i data-lucide="play"></i></div>
                             </div>
                         </div>
                         <a href="https://www.instagram.com/" target="_blank" class="reel-follow-btn">
@@ -267,19 +255,9 @@
             <!-- Social Posts Grid -->
             <div class="social-posts-grid reveal" id="socialPostsGrid">
 
-                <!-- Post 1: Upload Card -->
-                <div class="social-post-card upload-card" data-platform="all" onclick="document.getElementById('postUpload1').click()">
-                    <input type="file" id="postUpload1" accept="image/*,video/*" style="display:none" onchange="previewSocialPost(this, 'instagram')">
-                    <div class="social-upload-content">
-                        <div class="social-upload-icon"><i data-lucide="plus-circle"></i></div>
-                        <h4>Add New Post</h4>
-                        <p>Upload an image or video</p>
-                    </div>
-                </div>
-
-                <!-- Post 2: Instagram -->
+                <!-- Regular Image Post Template -->
                 <div class="social-post-card" data-platform="instagram">
-                    <div class="social-post-image" style="background-image: url('images/hero-1.jpg')">
+                    <div class="social-post-image" style="background-image: url('images/post-1.jpg')">
                         <div class="social-post-platform-badge instagram-badge">
                             <i data-lucide="instagram"></i>
                         </div>
@@ -291,21 +269,21 @@
                             </div>
                             <div>
                                 <span class="social-post-name">Oval Palace Resort</span>
-                                <span class="social-post-time">2 days ago</span>
+                                <span class="social-post-time">Recent</span>
                             </div>
                         </div>
-                        <p class="social-post-caption">🏗️ Construction is progressing rapidly! Our foundation work is complete and structural framework is rising. The dream of Oval Palace is becoming reality! #OvalPalace #NalakathHoldings</p>
+                        <p class="social-post-caption">Replace this image with 'images/post-1.jpg' and edit this text in resort-overview.html</p>
                         <div class="social-post-engagement">
-                            <span><i data-lucide="heart"></i> 245</span>
-                            <span><i data-lucide="message-circle"></i> 38</span>
-                            <span><i data-lucide="share-2"></i> 12</span>
+                            <span><i data-lucide="heart"></i> 100</span>
+                            <span><i data-lucide="message-circle"></i> 10</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Post 3: Facebook -->
+                <!-- Video Post Template -->
                 <div class="social-post-card" data-platform="facebook">
-                    <div class="social-post-image" style="background-image: url('images/hero-4.jpg')">
+                    <div class="social-post-image" style="background-image: none">
+                        <video src="videos/post-video-1.mp4" controls style="width:100%;height:100%;object-fit:cover;"></video>
                         <div class="social-post-platform-badge facebook-badge">
                             <i data-lucide="facebook"></i>
                         </div>
@@ -317,96 +295,13 @@
                             </div>
                             <div>
                                 <span class="social-post-name">Nalakath Holdings</span>
-                                <span class="social-post-time">5 days ago</span>
+                                <span class="social-post-time">Recent</span>
                             </div>
                         </div>
-                        <p class="social-post-caption">🎉 We've crossed 100+ investors! Thank you for your trust in Oval Palace Resort LLP. Together, we're building Kerala's finest hospitality destination.</p>
-                        <div class="social-post-engagement">
-                            <span><i data-lucide="thumbs-up"></i> 482</span>
-                            <span><i data-lucide="message-circle"></i> 67</span>
-                            <span><i data-lucide="share-2"></i> 45</span>
-                        </div>
+                        <p class="social-post-caption">Replace this video with 'videos/post-video-1.mp4'</p>
                     </div>
                 </div>
 
-                <!-- Post 4: Promotion -->
-                <div class="social-post-card promo-card" data-platform="promotions">
-                    <div class="promo-banner">
-                        <div class="promo-glow"></div>
-                        <div class="promo-content">
-                            <span class="promo-label"><i data-lucide="zap"></i> LIMITED OFFER</span>
-                            <h3>Invest Now & Earn</h3>
-                            <div class="promo-highlight">12% p.a.</div>
-                            <p>Immediate Returns with Buyback Guarantee</p>
-                            <span class="promo-tag">Starting from ₹5,000/month</span>
-                        </div>
-                    </div>
-                    <div class="social-post-body">
-                        <p class="social-post-caption">💰 Don't miss out on Kerala's most promising hospitality investment. Oval Palace Resort LLP — secure your future today!</p>
-                        <a href="index.html#investment" class="promo-cta-btn">
-                            <i data-lucide="trending-up"></i> View Investment Plans
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Post 5: YouTube -->
-                <div class="social-post-card" data-platform="youtube">
-                    <div class="social-post-image" style="background-image: url('images/hero-5.jpg')">
-                        <div class="social-post-platform-badge youtube-badge">
-                            <i data-lucide="youtube"></i>
-                        </div>
-                        <div class="youtube-play-overlay">
-                            <i data-lucide="play"></i>
-                        </div>
-                    </div>
-                    <div class="social-post-body">
-                        <div class="social-post-header">
-                            <div class="social-post-avatar">
-                                <svg viewBox="0 0 100 100" fill="none" width="28" height="28"><ellipse cx="50" cy="58" rx="32" ry="24" stroke="#C9A84C" stroke-width="4"/><path d="M50 18 L43 32 L50 27 L57 32 Z" fill="#C9A84C"/></svg>
-                            </div>
-                            <div>
-                                <span class="social-post-name">Oval Palace Resort</span>
-                                <span class="social-post-time">1 week ago</span>
-                            </div>
-                        </div>
-                        <p class="social-post-caption">🎥 Resort Walkthrough — Take a virtual tour of the Oval Palace Resort construction site and see the vision come to life!</p>
-                        <div class="social-post-engagement">
-                            <span><i data-lucide="eye"></i> 1.2K</span>
-                            <span><i data-lucide="thumbs-up"></i> 89</span>
-                            <span><i data-lucide="message-circle"></i> 14</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Post 6: Instagram Upload Slot -->
-                <div class="social-post-card upload-card" data-platform="instagram" onclick="document.getElementById('postUpload2').click()">
-                    <input type="file" id="postUpload2" accept="image/*,video/*" style="display:none" onchange="previewSocialPost(this, 'instagram')">
-                    <div class="social-upload-content">
-                        <div class="social-upload-icon instagram-icon"><i data-lucide="instagram"></i></div>
-                        <h4>Add Instagram Post</h4>
-                        <p>Upload your latest IG content</p>
-                    </div>
-                </div>
-
-                <!-- Post 7: Promotion Upload -->
-                <div class="social-post-card upload-card" data-platform="promotions" onclick="document.getElementById('postUpload3').click()">
-                    <input type="file" id="postUpload3" accept="image/*,video/*" style="display:none" onchange="previewSocialPost(this, 'promotions')">
-                    <div class="social-upload-content">
-                        <div class="social-upload-icon promo-icon"><i data-lucide="megaphone"></i></div>
-                        <h4>Add Promotion</h4>
-                        <p>Upload marketing creatives</p>
-                    </div>
-                </div>
-
-                <!-- Post 8: Facebook Upload -->
-                <div class="social-post-card upload-card" data-platform="facebook" onclick="document.getElementById('postUpload4').click()">
-                    <input type="file" id="postUpload4" accept="image/*,video/*" style="display:none" onchange="previewSocialPost(this, 'facebook')">
-                    <div class="social-upload-content">
-                        <div class="social-upload-icon facebook-icon"><i data-lucide="facebook"></i></div>
-                        <h4>Add Facebook Post</h4>
-                        <p>Upload your FB content</p>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -557,35 +452,26 @@
         }
 
         // ==================== REEL PLAYER ====================
-        let isReelPlaying = false;
-        let isReelMuted = false;
-
-        function loadReel(input) {
-            if (!input.files || !input.files[0]) return;
-            const file = input.files[0];
-            const url = URL.createObjectURL(file);
+        let isReelPlaying = true;
+        let isReelMuted = true;
+        
+        function changeMainReel(src) {
             const video = document.getElementById('mainReelVideo');
-            const overlay = document.getElementById('reelOverlay');
-            const uploadArea = document.getElementById('reelUploadArea');
-
-            video.src = url;
-            video.style.display = 'block';
-            overlay.style.display = 'flex';
-            uploadArea.style.display = 'none';
-
+            video.src = src;
             video.play();
             isReelPlaying = true;
             updatePlayIcon();
+        }
 
-            // Progress tracking
-            video.addEventListener('timeupdate', () => {
-                if (video.duration) {
-                    const pct = (video.currentTime / video.duration) * 100;
+        // Add progress tracking to main video
+        const mainVid = document.getElementById('mainReelVideo');
+        if(mainVid) {
+            mainVid.addEventListener('timeupdate', () => {
+                if (mainVid.duration) {
+                    const pct = (mainVid.currentTime / mainVid.duration) * 100;
                     document.getElementById('reelProgressBar').style.width = pct + '%';
                 }
             });
-
-            lucide.createIcons();
         }
 
         function toggleReelPlay() {
@@ -610,32 +496,6 @@
             lucide.createIcons();
         }
 
-        function loadSideReel(input, index) {
-            if (!input.files || !input.files[0]) return;
-            const file = input.files[0];
-            const url = URL.createObjectURL(file);
-            const container = input.closest('.reel-thumb');
-
-            container.classList.remove('upload-thumb');
-            container.innerHTML = `
-                <video src="${url}" muted loop style="width:100%;height:100%;object-fit:cover;border-radius:12px;"></video>
-                <div class="reel-thumb-play"><i data-lucide="play"></i></div>
-            `;
-            container.onclick = () => {
-                const mainVideo = document.getElementById('mainReelVideo');
-                const overlay = document.getElementById('reelOverlay');
-                const uploadArea = document.getElementById('reelUploadArea');
-                mainVideo.src = url;
-                mainVideo.style.display = 'block';
-                overlay.style.display = 'flex';
-                if (uploadArea) uploadArea.style.display = 'none';
-                mainVideo.play();
-                isReelPlaying = true;
-                updatePlayIcon();
-            };
-            lucide.createIcons();
-        }
-
         // ==================== SOCIAL TABS ====================
         function switchSocialTab(platform, btn) {
             document.querySelectorAll('.social-tab').forEach(t => t.classList.remove('active'));
@@ -645,46 +505,6 @@
                 const plat = card.dataset.platform;
                 card.style.display = (platform === 'all' || plat === platform || plat === 'all') ? '' : 'none';
             });
-        }
-
-        // ==================== SOCIAL POST UPLOAD ====================
-        function previewSocialPost(input, platform) {
-            if (!input.files || !input.files[0]) return;
-            const file = input.files[0];
-            const reader = new FileReader();
-            const card = input.closest('.social-post-card');
-
-            reader.onload = function(e) {
-                card.classList.remove('upload-card');
-                const isVideo = file.type.startsWith('video/');
-                card.innerHTML = `
-                    <div class="social-post-image" style="background-image: ${isVideo ? 'none' : `url('${e.target.result}')`}">
-                        ${isVideo ? `<video src="${e.target.result}" autoplay muted loop style="width:100%;height:100%;object-fit:cover;"></video>` : ''}
-                        <div class="social-post-platform-badge ${platform}-badge">
-                            <i data-lucide="${platform === 'promotions' ? 'megaphone' : platform}"></i>
-                        </div>
-                    </div>
-                    <div class="social-post-body">
-                        <div class="social-post-header">
-                            <div class="social-post-avatar">
-                                <svg viewBox="0 0 100 100" fill="none" width="28" height="28"><ellipse cx="50" cy="58" rx="32" ry="24" stroke="#C9A84C" stroke-width="4"/><path d="M50 18 L43 32 L50 27 L57 32 Z" fill="#C9A84C"/></svg>
-                            </div>
-                            <div>
-                                <span class="social-post-name">Oval Palace Resort</span>
-                                <span class="social-post-time">Just now</span>
-                            </div>
-                        </div>
-                        <p class="social-post-caption" contenteditable="true" style="cursor:text;outline:none;">Click here to add a caption...</p>
-                        <div class="social-post-engagement">
-                            <span><i data-lucide="heart"></i> 0</span>
-                            <span><i data-lucide="message-circle"></i> 0</span>
-                            <span><i data-lucide="share-2"></i> 0</span>
-                        </div>
-                    </div>
-                `;
-                lucide.createIcons();
-            };
-            reader.readAsDataURL(file);
         }
     </script>
 </body>
