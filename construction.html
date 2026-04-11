@@ -34,117 +34,184 @@
     <link rel="stylesheet" href="pages.css">
     
     <style>
-        .construction-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
+        .phase-section {
+            padding: 100px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .update-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-subtle);
+        .phase-section:nth-child(even) {
+            background: rgba(255, 255, 255, 0.01);
+        }
+
+        .phase-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 50px;
+            border-left: 4px solid var(--border-gold);
+            padding-left: 30px;
+        }
+
+        .phase-title-group h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+
+        .phase-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 18px;
+            background: rgba(201, 168, 76, 0.1);
+            border: 1px solid var(--border-gold);
+            border-radius: 50px;
+            color: var(--text-gold);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .phase-status.completed {
+            background: rgba(34, 197, 94, 0.1);
+            border-color: #22c55e;
+            color: #4ade80;
+        }
+
+        .phase-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .phase-info {
+            position: sticky;
+            top: 120px;
+        }
+
+        .phase-date {
+            font-size: 1rem;
+            color: var(--text-gold);
+            font-weight: 500;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .phase-description {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .phase-highlights {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 40px;
+        }
+
+        .phase-highlights li {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .phase-highlights li i {
+            color: var(--text-gold);
+            width: 20px;
+            margin-top: 4px;
+        }
+
+        /* Premium Mini Gallery */
+        .phase-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
             border-radius: var(--radius-lg);
             overflow: hidden;
-            transition: var(--transition-smooth);
-            position: relative;
-        }
-
-        .update-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--border-gold);
-            box-shadow: var(--shadow-gold);
-        }
-
-        .update-img {
-            width: 100%;
-            height: 240px;
-            object-fit: cover;
-        }
-
-        .update-badge {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: var(--gold-gradient);
-            color: #000;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-
-        .update-content {
-            padding: 25px;
-        }
-
-        .update-date {
-            display: block;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-bottom: 10px;
-        }
-
-        .update-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
-            color: var(--text-primary);
-            margin-bottom: 12px;
-        }
-
-        .update-description {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
-
-        .progress-container {
-            margin-top: 80px;
-            background: rgba(255, 255, 255, 0.03);
+            aspect-ratio: 4/5;
+            cursor: pointer;
             border: 1px solid var(--border-subtle);
-            padding: 60px 40px;
-            border-radius: var(--radius-xl);
-            text-align: center;
         }
 
-        .progress-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-            margin-top: 40px;
+        .gallery-item.large {
+            grid-column: span 2;
+            aspect-ratio: 16/9;
         }
 
-        .stat-circle {
-            position: relative;
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 20px;
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%);
             display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--bg-card);
-            border: 2px solid var(--border-gold);
-            border-radius: 50%;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-gold);
-            box-shadow: 0 0 20px rgba(201, 168, 76, 0.2);
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 25px;
+            opacity: 0;
+            transition: var(--transition-smooth);
         }
 
-        .stat-label {
-            display: block;
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay-text {
+            color: #fff;
             font-size: 0.9rem;
-            color: var(--text-primary);
-            font-weight: 600;
+            font-weight: 500;
+            transform: translateY(10px);
+            transition: transform 0.4s ease;
         }
 
-        @media (max-width: 768px) {
-            .progress-stats {
+        .gallery-item:hover .gallery-overlay-text {
+            transform: translateY(0);
+        }
+
+        /* Progress Overall Tracker */
+        .master-progress {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-xl);
+            padding: 80px 60px;
+            margin: 100px auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        @media (max-width: 1024px) {
+            .phase-grid {
                 grid-template-columns: 1fr;
+                gap: 40px;
             }
-            .construction-grid {
-                grid-template-columns: 1fr;
+            .phase-info {
+                position: static;
+            }
+            .phase-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
             }
         }
     </style>
@@ -200,72 +267,133 @@
                 <i data-lucide="chevron-right"></i>
                 <span>Construction Phase</span>
             </div>
-            <h1 class="page-hero-title">Building the <span class="gold-gradient-text">Future</span></h1>
-            <p class="page-hero-subtitle">Real-time updates and transparency as we bring the Oval Palace vision to life.</p>
+            <h1 class="page-hero-title">Real-Time <span class="gold-gradient-text">Progress</span></h1>
+            <p class="page-hero-subtitle">Visualizing the craftsmanship and speed behind the creation of Nalakath Holding's crown jewel.</p>
         </div>
     </section>
 
-    <!-- ==================== CONSTRUCTION UPDATES ==================== -->
-    <section class="construction-updates section-padding">
+    <!-- ==================== PHASE 1: FOUNDATION ==================== -->
+    <section class="phase-section">
         <div class="container">
-            <div class="section-header-centered reveal">
-                <span class="section-label" style="justify-content: center;">Live Progress</span>
-                <h2 class="section-title">Construction <span class="gold-gradient-text">Timeline</span></h2>
-                <p class="section-subtitle">Track every milestone from foundation to finish.</p>
-            </div>
-
-            <div class="construction-grid reveal">
-                <!-- Update 1 -->
-                <div class="update-card">
-                    <img src="images/hero-5.jpg" alt="Foundation Work" class="update-img">
-                    <span class="update-badge">Completed</span>
-                    <div class="update-content">
-                        <span class="update-date">March 15, 2025</span>
-                        <h3 class="update-title">Foundation Stone Laying</h3>
-                        <p class="update-description">Successfully completed the ceremonial foundation laying with our key stakeholders and initial investors present at the site.</p>
-                    </div>
+            <div class="phase-header reveal">
+                <div class="phase-title-group">
+                    <span class="phase-date">Completed — Q1 2025</span>
+                    <h2>01. <span class="gold-gradient-text">Foundation</span> & Groundwork</h2>
                 </div>
-
-                <!-- Update 2 -->
-                <div class="update-card">
-                    <img src="images/hero-3.jpg" alt="Site Preparation" class="update-img">
-                    <span class="update-badge">In Progress</span>
-                    <div class="update-content">
-                        <span class="update-date">May 10, 2025</span>
-                        <h3 class="update-title">Structural Shuttering</h3>
-                        <p class="update-description">Current phase involves structural shuttering and reinforcement for the primary hospitality wing. Progressing as per schedule.</p>
-                    </div>
-                </div>
-
-                <!-- Update 3 -->
-                <div class="update-card">
-                    <img src="images/hero-2.jpg" alt="Utilities Work" class="update-img">
-                    <span class="update-badge">Upcoming</span>
-                    <div class="update-content">
-                        <span class="update-date">August 2025</span>
-                        <h3 class="update-title">Roofing & External Shell</h3>
-                        <p class="update-description">Scheduled phase for completing the external shell and iconic oval-inspired roofing system for the main resort building.</p>
-                    </div>
+                <div class="phase-status completed">
+                    <i data-lucide="check-circle"></i> Milestone Achieved
                 </div>
             </div>
 
-            <!-- Progress Summary -->
-            <div class="progress-container reveal">
-                <h3 class="section-title" style="font-size: 1.8rem; margin-bottom: 20px;">Overall <span class="gold-gradient-text">Milestones</span></h3>
-                <p class="section-subtitle">A transparent look at where we stand today.</p>
+            <div class="phase-grid">
+                <div class="phase-info reveal">
+                    <p class="phase-description">The cornerstone of luxury. Our engineering team meticulously prepared the site for the massive structural load of the main resort block and the surrounding villa clusters.</p>
+                    <ul class="phase-highlights">
+                        <li><i data-lucide="crosshair"></i> Piling and site leveling completed.</li>
+                        <li><i data-lucide="droplets"></i> Advanced waterproofing systems installed.</li>
+                        <li><i data-lucide="box"></i> Primary foundation slabs for the 4-floor main block.</li>
+                    </ul>
+                    <a href="images/hero-5.jpg" target="_blank" class="btn-secondary" style="display: inline-flex; border-radius: 50px;">
+                        <i data-lucide="file-text"></i> Architectural Plans
+                    </a>
+                </div>
+
+                <div class="phase-gallery reveal">
+                    <div class="gallery-item large">
+                        <img src="images/hero-5.jpg" alt="Foundation Milestone">
+                        <div class="gallery-overlay">
+                            <span class="gallery-overlay-text">The Grand Foundation Stone Laying Ceremony</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/hero-6.jpg" alt="Site Prep">
+                        <div class="gallery-overlay">
+                            <span class="gallery-overlay-text">Initial Site Preparation</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/post-1.jpg" alt="Groundwork">
+                        <div class="gallery-overlay">
+                            <span class="gallery-overlay-text">Sub-surface Engineering</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== PHASE 2: STRUCTURAL ==================== -->
+    <section class="phase-section">
+        <div class="container">
+            <div class="phase-header reveal">
+                <div class="phase-title-group">
+                    <span class="phase-date">In Progress — Q2 2025</span>
+                    <h2>02. <span class="gold-gradient-text">Structural</span> Reinforcement</h2>
+                </div>
+                <div class="phase-status">
+                    <i data-lucide="hammer"></i> Active On-Site
+                </div>
+            </div>
+
+            <div class="phase-grid">
+                <div class="phase-gallery reveal">
+                    <div class="gallery-item large">
+                        <img src="images/hero-3.jpg" alt="Current Progress">
+                        <div class="gallery-overlay">
+                            <span class="gallery-overlay-text">Main Block Structural Shuttering</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/post-4.jpg" alt="Reinforcement">
+                        <div class="gallery-overlay">
+                            <span class="gallery-overlay-text">Steel Reinforcement Work</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/post-5.jpg" alt="Casting">
+                        <div class="gallery-overlay">
+                            <span class="gallery-overlay-text">Column Casting Process</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="phase-info reveal">
+                    <p class="phase-description">Our focus is now on the vertical growth of the resort. We are using ultra-premium Grade-A concrete and high-tensile steel to ensure the long-term durability of the structure.</p>
+                    <ul class="phase-highlights">
+                        <li><i data-lucide="layers"></i> Ground Floor slab casting in final stages.</li>
+                        <li><i data-lucide="shield-check"></i> Quality audits conducted weekly by external consultants.</li>
+                        <li><i data-lucide="zap"></i> Core mechanical, electrical, and plumbing (MEP) conduits.</li>
+                    </ul>
+                    <div style="background: rgba(201, 168, 76, 0.05); padding: 25px; border-radius: var(--radius-md); border-left: 3px solid var(--border-gold);">
+                        <p style="color: var(--text-primary); font-weight: 600; font-size: 0.95rem;">Expected Completion of Shell: October 2025</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== PROGRESS SUMMARY ==================== -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="master-progress reveal">
+                <div class="section-header-centered">
+                    <span class="section-label" style="justify-content: center;">Development Health</span>
+                    <h2 class="section-title">Investment <span class="gold-gradient-text">Security</span></h2>
+                    <p class="section-subtitle">We maintain a 100% transparency policy. Every rupee invested is backed by a tangible, rapidly growing asset.</p>
+                </div>
                 
                 <div class="progress-stats">
                     <div class="stat-item">
                         <div class="stat-circle">35%</div>
-                        <span class="stat-label">Civil Work</span>
+                        <span class="stat-label">Total Civil Completion</span>
                     </div>
                     <div class="stat-item">
                         <div class="stat-circle">100%</div>
-                        <span class="stat-label">Land Acquisition</span>
+                        <span class="stat-label">Land Legalities</span>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-circle">20%</div>
-                        <span class="stat-label">Utility Casting</span>
+                        <div class="stat-circle">Q4 '26</div>
+                        <span class="stat-label">Grand Opening Target</span>
                     </div>
                 </div>
             </div>
@@ -276,8 +404,8 @@
     <section class="cta-banner">
         <div class="container">
             <div class="cta-banner-content reveal">
-                <h2>Invest in a <span class="gold-gradient-text">Tangible</span> Asset</h2>
-                <p>Visit the site today or book a virtual tour to see the progress for yourself.</p>
+                <h2>Visit the Site & See the <span class="gold-gradient-text">Work</span></h2>
+                <p>We invite all current and prospective investors to Perinthalmanna for a guided site tour.</p>
                 <div class="cta-banner-buttons">
                     <a href="index.html#investment" class="btn-primary">
                         <i data-lucide="trending-up"></i>
