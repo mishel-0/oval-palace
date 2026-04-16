@@ -312,6 +312,14 @@
                     container.appendChild(item);
                 }
             } else {
+                filtered.forEach(media => {
+                    const div = document.createElement('div');
+                    div.className = 'event-gallery-item reveal';
+                    if (media.type === 'video') {
+                        div.innerHTML = `<video src="${media.src}" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video>`;
+                    } else {
+                        div.innerHTML = `<img src="${media.src}" alt="Event Media">`;
+                    }
                     container.appendChild(div);
                 });
             }
