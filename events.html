@@ -312,16 +312,18 @@
                     container.appendChild(item);
                 }
             } else {
-                filtered.forEach(media => {
-                    const div = document.createElement('div');
-                    div.className = 'event-gallery-item reveal';
-                    if (media.type === 'video') {
-                        div.innerHTML = `<video src="${media.src}" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video>`;
-                    } else {
-                        div.innerHTML = `<img src="${media.src}" alt="Event Media">`;
-                    }
-                reader.readAsDataURL(file);
+                    container.appendChild(div);
+                });
             }
+            lucide.createIcons();
+            // Re-run reveal for new items
+            initScrollReveal();
+        }
+
+        function filterGallery(category, btn) {
+            document.querySelectorAll('.gallery-filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderGallery(category);
         }
     </script>
 </body>
