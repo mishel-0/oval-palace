@@ -409,15 +409,6 @@
                     `;
                     container.appendChild(card);
                 });
-                
-                // Add an empty upload indicator
-                const emptyCard = document.createElement('div');
-                emptyCard.className = 'site-card soon';
-                emptyCard.innerHTML = `
-                    <i data-lucide="image-plus" style="width:40px; height:40px;"></i>
-                    <span>Add Phase ${phaseNum} images to:<br><b>/images/construction/phase-${phaseNum}/</b></span>
-                `;
-                container.appendChild(emptyCard);
             }
             lucide.createIcons();
         }
