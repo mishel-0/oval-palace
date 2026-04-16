@@ -151,68 +151,12 @@
             </div>
 
             <div class="events-gallery-grid reveal" id="eventsGalleryGrid">
-                <!-- Upload slots for event photos -->
-                <div class="event-gallery-item upload-placeholder" data-category="celebration" onclick="document.getElementById('eventUpload1').click()">
-                    <input type="file" id="eventUpload1" accept="image/*,video/*" style="display:none" onchange="previewEventMedia(this)">
-                    <div class="upload-placeholder-content">
-                        <i data-lucide="image-plus"></i>
-                        <span>100+ Celebration</span>
-                    </div>
-                </div>
-                <div class="event-gallery-item upload-placeholder" data-category="celebration" onclick="document.getElementById('eventUpload2').click()">
-                    <input type="file" id="eventUpload2" accept="image/*,video/*" style="display:none" onchange="previewEventMedia(this)">
-                    <div class="upload-placeholder-content">
-                        <i data-lucide="image-plus"></i>
-                        <span>Investor Meet</span>
-                    </div>
-                </div>
-                <div class="event-gallery-item upload-placeholder" data-category="team" onclick="document.getElementById('eventUpload3').click()">
-                    <input type="file" id="eventUpload3" accept="image/*,video/*" style="display:none" onchange="previewEventMedia(this)">
-                    <div class="upload-placeholder-content">
-                        <i data-lucide="image-plus"></i>
-                        <span>Team Photo</span>
-                    </div>
-                </div>
-                <div class="event-gallery-item upload-placeholder" data-category="site" onclick="document.getElementById('eventUpload4').click()">
-                    <input type="file" id="eventUpload4" accept="image/*,video/*" style="display:none" onchange="previewEventMedia(this)">
-                    <div class="upload-placeholder-content">
-                        <i data-lucide="image-plus"></i>
-                        <span>Site Visit</span>
-                    </div>
-                </div>
-                <div class="event-gallery-item upload-placeholder" data-category="celebration" onclick="document.getElementById('eventUpload5').click()">
-                    <input type="file" id="eventUpload5" accept="image/*,video/*" style="display:none" onchange="previewEventMedia(this)">
-                    <div class="upload-placeholder-content">
-                        <i data-lucide="image-plus"></i>
-                        <span>Celebration</span>
-                    </div>
-                </div>
-                <div class="event-gallery-item upload-placeholder" data-category="team" onclick="document.getElementById('eventUpload6').click()">
-                    <input type="file" id="eventUpload6" accept="image/*,video/*" style="display:none" onchange="previewEventMedia(this)">
-                    <div class="upload-placeholder-content">
-                        <i data-lucide="image-plus"></i>
-                        <span>Team Event</span>
-                    </div>
-                </div>
-                <div class="event-gallery-item upload-placeholder" data-category="site" onclick="document.getElementById('eventUpload7').click()">
-                    <input type="file" id="eventUpload7" accept="image/*,video/*" style="display:none" onchange="previewEventMedia(this)">
-                    <div class="upload-placeholder-content">
-                        <i data-lucide="image-plus"></i>
-                        <span>Site Progress</span>
-                    </div>
-                </div>
-                <div class="event-gallery-item upload-placeholder" data-category="celebration" onclick="document.getElementById('eventUpload8').click()">
-                    <input type="file" id="eventUpload8" accept="image/*,video/*" style="display:none" onchange="previewEventMedia(this)">
-                    <div class="upload-placeholder-content">
-                        <i data-lucide="image-plus"></i>
-                        <span>Upload Media</span>
-                    </div>
-                </div>
+                <!-- Content will be injected by JS -->
             </div>
 
             <p class="upload-note reveal">
                 <i data-lucide="info"></i>
-                Click on any placeholder above to upload photos and videos from events. Supported formats: JPG, PNG, MP4, MOV.
+                Capturing high-quality moments from our exclusive investor meets and site celebrations. New media added regularly.
             </p>
         </div>
     </section>
@@ -344,41 +288,38 @@
             document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
         }
 
-        // Gallery Category Filter
-        function filterGallery(category, btn) {
-            document.querySelectorAll('.gallery-filter-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
+        const eventMedia = [
+            // Example: { type: 'image', src: 'images/events/event-1.jpg', category: 'celebration' }
+        ];
 
-            document.querySelectorAll('.event-gallery-item').forEach(item => {
-                if (category === 'all' || item.dataset.category === category) {
-                    item.style.display = '';
-                } else {
-                    item.style.display = 'none';
+        function renderGallery(filter = 'all') {
+            const container = document.getElementById('eventsGalleryGrid');
+            container.innerHTML = '';
+            
+            const filtered = filter === 'all' ? eventMedia : eventMedia.filter(m => m.category === filter);
+            
+            if (filtered.length === 0) {
+                // Show high-end "Coming Soon" placeholders
+                for (let i = 0; i < 4; i++) {
+                    const item = document.createElement('div');
+                    item.className = 'event-gallery-item upload-placeholder reveal';
+                    item.innerHTML = `
+                        <div class="upload-placeholder-content">
+                            <i data-lucide="image"></i>
+                            <span>Event Gallery Coming Soon</span>
+                        </div>
+                    `;
+                    container.appendChild(item);
                 }
-            });
-        }
-
-        // Image Upload Preview
-        function previewEventMedia(input) {
-            if (input.files && input.files[0]) {
-                const reader = new FileReader();
-                const container = input.closest('.event-gallery-item');
-                const file = input.files[0];
-
-                reader.onload = function(e) {
-                    container.classList.remove('upload-placeholder');
-                    if (file.type.startsWith('video/')) {
-                        container.innerHTML = `
-                            <video src="${e.target.result}" controls style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius-md);"></video>
-                        `;
+            } else {
+                filtered.forEach(media => {
+                    const div = document.createElement('div');
+                    div.className = 'event-gallery-item reveal';
+                    if (media.type === 'video') {
+                        div.innerHTML = `<video src="${media.src}" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video>`;
                     } else {
-                        container.innerHTML = `
-                            <img src="${e.target.result}" alt="Event Photo" style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius-md);">
-                            <div class="gallery-zoom"><i data-lucide="maximize-2"></i></div>
-                        `;
-                        lucide.createIcons();
+                        div.innerHTML = `<img src="${media.src}" alt="Event Media">`;
                     }
-                };
                 reader.readAsDataURL(file);
             }
         }
