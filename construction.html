@@ -285,32 +285,7 @@
 
             <!-- Main Gallery Wall -->
             <div class="phase-gallery-wall reveal" id="phaseGallery">
-                <!-- Content will be injected by JS or rendered based on phase -->
-                <!-- Default Phase 1 Content -->
-                <div class="site-card">
-                    <img src="images/construction/phase-1/update-1.jpg" alt="Phase 1 Ready" onerror="this.src='images/hero-1.jpg';">
-                    <div class="card-overlay">
-                        <div class="card-meta">
-                            <h4>Foundation Stone</h4>
-                            <p>Phase 1 • Completed</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="site-card">
-                    <img src="images/construction/phase-1/update-2.jpg" alt="Phase 1 Ready" onerror="this.src='images/hero-2.jpg';">
-                    <div class="card-overlay">
-                        <div class="card-meta">
-                            <h4>Site Preparation</h4>
-                            <p>Phase 1 • Completed</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="site-card">
-                    <div class="card-meta" style="padding: 40px; text-align: center; color: var(--text-muted);">
-                        <i data-lucide="image-plus" style="width:40px; height:40px; margin-bottom: 15px; opacity: 0.3;"></i>
-                        <p>More images coming soon to this phase</p>
-                    </div>
-                </div>
+                <!-- Content will be injected by JS -->
             </div>
 
             <!-- Progress Banner -->
@@ -384,6 +359,9 @@
             lucide.createIcons();
             initPageNavbar();
             initScrollReveal();
+            // Load Phase 1 by default
+            const initialBtn = document.querySelector('.phase-btn.active');
+            if (initialBtn) filterPhase(1, initialBtn);
         });
 
         // Mock data for phases (since actual images will be uploaded to folders)
