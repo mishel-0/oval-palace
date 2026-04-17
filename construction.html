@@ -424,13 +424,13 @@
             } else {
                 images.forEach(data => {
                     const card = document.createElement('div');
-                    card.className = 'site-card';
+                    card.className = 'site-card reveal';
                     
                     const isVideo = data.img.toLowerCase().endsWith('.mp4') || data.img.toLowerCase().endsWith('.webm');
                     
                     if (isVideo) {
                         card.innerHTML = `
-                            <video src="${data.img}" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()" style="width:100%;height:100%;object-fit:cover;"></video>
+                            <video src="${data.img}" poster="${data.placeholder}" muted loop playsinline autoplay style="width:100%;height:100%;object-fit:cover;"></video>
                             <div class="video-preview-badge"><i data-lucide="play-circle"></i> Video</div>
                             <div class="card-overlay">
                                 <div class="card-meta">
@@ -454,6 +454,7 @@
                 });
             }
             lucide.createIcons();
+            initScrollReveal();
         }
 
         // Standard helpers
