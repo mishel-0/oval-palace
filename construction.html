@@ -190,6 +190,29 @@
             letter-spacing: 1px;
         }
 
+        .video-preview-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            padding: 6px 14px;
+            border-radius: 20px;
+            color: var(--text-gold);
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            z-index: 5;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .video-preview-badge i {
+            width: 14px;
+            height: 14px;
+        }
+
         @media (max-width: 1024px) {
             .phase-gallery-wall { grid-template-columns: repeat(2, 1fr); }
         }
@@ -398,15 +421,31 @@
                 images.forEach(data => {
                     const card = document.createElement('div');
                     card.className = 'site-card';
-                    card.innerHTML = `
-                        <img src="${data.img}" alt="${data.title}" onerror="this.src='${data.placeholder}';">
-                        <div class="card-overlay">
-                            <div class="card-meta">
-                                <h4>${data.title}</h4>
-                                <p>Phase ${phaseNum} • ${data.status}</p>
+                    
+                    const isVideo = data.img.toLowerCase().endsWith('.mp4') || data.img.toLowerCase().endsWith('.webm');
+                    
+                    if (isVideo) {
+                        card.innerHTML = `
+                            <video src="${data.img}" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()" style="width:100%;height:100%;object-fit:cover;"></video>
+                            <div class="video-preview-badge"><i data-lucide="play-circle"></i> Video</div>
+                            <div class="card-overlay">
+                                <div class="card-meta">
+                                    <h4>${data.title}</h4>
+                                    <p>Phase ${phaseNum} • ${data.status}</p>
+                                </div>
                             </div>
-                        </div>
-                    `;
+                        `;
+                    } else {
+                        card.innerHTML = `
+                            <img src="${data.img}" alt="${data.title}" onerror="this.src='${data.placeholder}';">
+                            <div class="card-overlay">
+                                <div class="card-meta">
+                                    <h4>${data.title}</h4>
+                                    <p>Phase ${phaseNum} • ${data.status}</p>
+                                </div>
+                            </div>
+                        `;
+                    }
                     container.appendChild(card);
                 });
             }
