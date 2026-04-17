@@ -6,10 +6,10 @@
 /* ---------- PAGE HERO ---------- */
 .page-hero {
     position: relative;
-    height: 420px;
+    height: clamp(320px, 40vh, 480px);
     display: flex;
     align-items: flex-end;
-    padding-bottom: 60px;
+    padding-bottom: clamp(40px, 8vw, 80px);
     overflow: hidden;
 }
 
@@ -607,6 +607,14 @@
 
 /* ---------- RESPONSIVE ---------- */
 @media (max-width: 1024px) {
+    .milestone-stats {
+        gap: 32px;
+    }
+    
+    .celebration-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
     .events-gallery-grid {
         grid-template-columns: repeat(3, 1fr);
     }
@@ -614,8 +622,31 @@
 
 @media (max-width: 768px) {
     .page-hero {
-        height: 340px;
-        padding-bottom: 40px;
+        padding-top: 120px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .page-breadcrumb {
+        justify-content: center;
+    }
+
+    .page-hero-subtitle {
+        margin: 0 auto;
+    }
+
+    .milestone-banner {
+        padding: 32px 24px;
+        text-align: center;
+    }
+
+    .milestone-badge {
+        margin: 0 auto 20px;
+    }
+
+    .milestone-stats {
+        justify-content: center;
+        gap: 24px;
     }
 
     .testimonials-masonry {
@@ -623,7 +654,7 @@
     }
 
     .celebration-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
     }
 
     .event-card {
@@ -640,8 +671,6 @@
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .milestone-stats {
-        gap: 28px;
     }
 
     .milestone-banner {
