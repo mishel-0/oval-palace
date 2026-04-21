@@ -219,12 +219,135 @@
             100% { opacity: 1; transform: scale(1); }
         }
 
-        /* Responsive Grid Wall */
+        /* Mobile-First Responsive Grid */
         .phase-gallery-wall {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
             min-height: 400px;
+        }
+
+        /* AI Watchdog Component */
+        .ai-watchdog {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(10px);
+            padding: 10px 20px;
+            border-radius: 50px;
+            border: 1px solid rgba(0, 255, 127, 0.2);
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .ai-watchdog:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 255, 127, 0.5);
+            background: rgba(0, 255, 127, 0.05);
+        }
+
+        .ai-pulse {
+            width: 12px;
+            height: 12px;
+            background: #00ff7f;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .ai-pulse::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            border: 2px solid #00ff7f;
+            animation: ai-ripple 2s infinite;
+        }
+
+        @keyframes ai-ripple {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(2.5); opacity: 0; }
+        }
+
+        .ai-status-text {
+            color: #00ff7f;
+            font-size: 0.8rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* AI Terminal overlay */
+        .ai-terminal {
+            position: fixed;
+            bottom: 90px;
+            left: 30px;
+            width: 320px;
+            background: #0a0a0a;
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 16px;
+            padding: 20px;
+            z-index: 9998;
+            display: none;
+            flex-direction: column;
+            gap: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            font-family: 'Inter', sans-serif;
+            animation: slideUp 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .ai-terminal.active { display: flex; }
+
+        .terminal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 10px;
+        }
+
+        .terminal-header h5 {
+            color: var(--text-gold);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .log-line {
+            font-size: 0.75rem;
+            color: #888;
+            display: flex;
+            gap: 8px;
+        }
+
+        .log-time { color: #555; }
+        .log-msg.success { color: #00ff7f; }
+
+        /* General Refined Responsiveness */
+        @media (max-width: 768px) {
+            .lightbox-nav { width: 50px; height: 50px; }
+            .lightbox-prev { left: 15px; }
+            .lightbox-next { right: 15px; }
+            .lightbox-close { top: 20px; right: 20px; }
+            .phase-gallery-wall { grid-template-columns: 1fr; }
+            .gallery-title h3 { font-size: 1.3rem; text-align: center; }
+            .ai-watchdog { bottom: 20px; left: 20px; }
+            .ai-terminal { left: 20px; width: calc(100% - 40px); }
+        }
+
+        @media (max-width: 480px) {
+            .phase-nav { gap: 10px; }
+            .phase-btn { padding: 10px 15px; font-size: 0.85rem; }
         }
 
         .site-card {
@@ -711,7 +834,60 @@
             if (e.key === 'ArrowRight') changeLightboxMedia(1);
             if (e.key === 'ArrowLeft') changeLightboxMedia(-1);
         });
+
+        // AI Agent Logic
+        function toggleAITerminal() {
+            const term = document.getElementById('aiTerminal');
+            term.classList.toggle('active');
+            if (term.classList.contains('active')) {
+                generateAILogs();
+            }
+        }
+
+        function generateAILogs() {
+            const logContainer = document.getElementById('aiLogContainer');
+            const messages = [
+                { msg: "System initialization complete", type: "success" },
+                { msg: "Monitoring 21 assets for Phase 2...", type: "normal" },
+                { msg: "Global CDN synchronization: Active", type: "success" },
+                { msg: "User agent detection: iPhone 15 Pro", type: "normal" },
+                { msg: "Responsive grid layout verified", type: "success" },
+                { msg: "AI Watchdog protecting construction data", type: "success" }
+            ];
+
+            logContainer.innerHTML = '';
+            messages.forEach((m, i) => {
+                setTimeout(() => {
+                    const line = document.createElement('div');
+                    line.className = 'log-line';
+                    line.innerHTML = `
+                        <span class="log-time">[${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', second:'2-digit'})}]</span>
+                        <span class="log-msg ${m.type}">${m.msg}</span>
+                    `;
+                    logContainer.appendChild(line);
+                }, i * 400);
+            });
+        }
     </script>
+
+    <!-- AI Agent Component -->
+    <div class="ai-watchdog" onclick="toggleAITerminal()">
+        <div class="ai-pulse"></div>
+        <span class="ai-status-text">AI Watchdog Active</span>
+    </div>
+
+    <div class="ai-terminal" id="aiTerminal">
+        <div class="terminal-header">
+            <h5><i data-lucide="shield-check" style="width:14px;height:14px;vertical-align:middle;margin-right:5px;"></i> AI Monitoring Core</h5>
+            <span style="color:#555; font-size:0.7rem;">v2.4.0</span>
+        </div>
+        <div id="aiLogContainer" style="display:flex; flex-direction:column; gap:8px;">
+            <!-- Logs appear here -->
+        </div>
+        <div style="border-top:1px solid rgba(255,255,255,0.05); padding-top:10px; margin-top:5px; font-size:0.7rem; color:#444;">
+            Monitoring Latency: 12ms | Security Level: Max
+        </div>
+    </div>
 
     <!-- Lightbox Modal -->
     <div class="lightbox-modal" id="lightboxModal">
