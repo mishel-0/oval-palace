@@ -569,7 +569,8 @@
                 if (phaseNum === 2 && videos.length > 0) {
                     const videoHead = document.createElement('div');
                     videoHead.className = 'gallery-title reveal';
-                    videoHead.innerHTML = `<h3 style="color:var(--text-gold); font-family:'Playfair Display'; font-size:1.5rem; margin-bottom:20px;">Video Highlights</h3>`;
+                    videoHead.style.cssText = 'grid-column: 1 / -1; margin-top: 20px;';
+                    videoHead.innerHTML = `<h3 style="color:var(--text-gold); font-family:'Playfair Display'; font-size:1.5rem; margin-bottom:25px;">Video Highlights</h3>`;
                     container.appendChild(videoHead);
                 }
 
