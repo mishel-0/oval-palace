@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Watchdog — Oval Palace Monitoring Core</title>
+    <!-- We'll link a CDN for Inter and Playfair -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <style>
+        body {
+            background: #050505;
+            color: #00ff7f;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .sidebar {
+            width: 80px;
+            background: #0a0a0a;
+            border-right: 1px solid rgba(0, 255, 127, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px 0;
+            gap: 40px;
+        }
+
+        .nav-icon {
+            color: #444;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-icon.active, .nav-icon:hover {
+            color: #00ff7f;
+            filter: drop-shadow(0 0 10px #00ff7f);
+        }
+
+        .main-dash {
+            flex: 1;
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            overflow-y: auto;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 25px;
+            backdrop-filter: blur(20px);
+        }
+
+        .header {
+            grid-column: 1 / -1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            color: #fff;
+            margin: 0;
+            font-family: 'Playfair Display';
+            letter-spacing: 2px;
+        }
+
+        .status-badge {
+            background: rgba(0, 255, 127, 0.1);
+            border: 1px solid #00ff7f;
+            color: #00ff7f;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .pulse {
+            width: 8px;
+            height: 8px;
+            background: #00ff7f;
+            border-radius: 50%;
+            animation: ripple 2s infinite;
+        }
+
+        @keyframes ripple {
+            0% { box-shadow: 0 0 0 0 rgba(0, 255, 127, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(0, 255, 127, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 255, 127, 0); }
+        }
+
+        .terminal {
+            background: #000;
+            border-radius: 12px;
+            padding: 20px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.85rem;
+            height: 400px;
+            overflow-y: auto;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .log-entry { margin-bottom: 8px; display: flex; gap: 10px; }
+        .time { color: #555; min-width: 80px; }
+        .msg { color: #888; }
+        .msg.success { color: #00ff7f; }
+        .msg.warn { color: #ffcc00; }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .stat-val {
+            font-size: 2rem;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .chart-box {
+            height: 200px;
+            display: flex;
+            align-items: flex-end;
+            gap: 8px;
+            padding-top: 40px;
+        }
+
+        .bar {
+            flex: 1;
+            background: #00ff7f;
+            border-radius: 4px 4px 0 0;
+            opacity: 0.3;
+            transition: all 0.3s ease;
+        }
+
+        .bar:hover { opacity: 1; filter: brightness(1.2); }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="nav-icon active" title="Dashboard"><i data-lucide="layout-dashboard"></i></div>
+        <div class="nav-icon" title="Security"><i data-lucide="shield"></i></div>
+        <div class="nav-icon" title="Network"><i data-lucide="activity"></i></div>
+        <div class="nav-icon" title="Settings"><i data-lucide="settings"></i></div>
+    </div>
+
+    <div class="main-dash">
+        <div class="header">
+            <h1>OVAL <span style="color: #00ff7f;">MONITOR</span></h1>
+            <div class="status-badge">
+                <div class="pulse"></div> AI WATCHDOG ACTIVE
+            </div>
+        </div>
+
+        <div class="card">
+            <h3 style="color:#fff; margin-top:0;">Live Neural Logs</h3>
+            <div class="terminal" id="terminal">
+                <!-- Logs will appear here -->
+            </div>
+        </div>
+
+        <div class="card">
+            <h3 style="color:#fff; margin-top:0;">Global Vitals</h3>
+            <div class="stat-grid">
+                <div class="stat-card">
+                    <div class="stat-val">99.9%</div>
+                    <div class="stat-label">Uptime</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-val">12ms</div>
+                    <div class="stat-label">Latency</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-val" id="visitorCount">686</div>
+                    <div class="stat-label">Live Traffic</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-val">0</div>
+                    <div class="stat-label">System Breaches</div>
+                </div>
+            </div>
+
+            <h3 style="color:#fff; margin-top:40px;">Load Balance History</h3>
+            <div class="chart-box" id="chart">
+                <!-- Bars here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            startLogs();
+            initChart();
+            simulateTraffic();
+        });
+
+        function startLogs() {
+            const messages = [
+                { text: "Asset verification: images/construction/phase-2 OK", type: "success" },
+                { text: "Encrypted handshake with Vercel Edge established", type: "normal" },
+                { text: "Minor caching delay in Southeast Asia node", type: "warn" },
+                { text: "Optimizing 21 media assets for target iPhone layout", type: "normal" },
+                { text: "Neural Core scanning for site anomalies...", type: "success" },
+                { text: "Responsive logic validated across 320px-2560px", type: "success" },
+                { text: "SSL Protocol: TLS 1.3 | Security Level: MAX", type: "normal" }
+            ];
+
+            setInterval(() => {
+                const m = messages[Math.floor(Math.random() * messages.length)];
+                addLog(m.text, m.type);
+            }, 2500);
+            
+            messages.forEach((m, i) => setTimeout(() => addLog(m.text, m.type), i * 400));
+        }
+
+        function addLog(text, type) {
+            const terminal = document.getElementById('terminal');
+            if(!terminal) return;
+            const entry = document.createElement('div');
+            entry.className = 'log-entry';
+            const time = new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit', second:'2-digit'});
+            entry.innerHTML = `<span class="time">[${time}]</span><span class="msg ${type}">${text}</span>`;
+            terminal.appendChild(entry);
+            terminal.scrollTop = terminal.scrollHeight;
+        }
+
+        function initChart() {
+            const chart = document.getElementById('chart');
+            for(let i=0; i<18; i++) {
+                const bar = document.createElement('div');
+                bar.className = 'bar';
+                bar.style.height = `${Math.random() * 70 + 30}%`;
+                chart.appendChild(bar);
+            }
+        }
+
+        function simulateTraffic() {
+            const count = document.getElementById('visitorCount');
+            setInterval(() => {
+                const current = parseInt(count.innerText);
+                count.innerText = current + (Math.random() > 0.5 ? 1 : -1);
+            }, 4000);
+        }
+    </script>
+</body>
+</html>

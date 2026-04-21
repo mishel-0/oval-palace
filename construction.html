@@ -834,62 +834,8 @@
             if (e.key === 'ArrowRight') changeLightboxMedia(1);
             if (e.key === 'ArrowLeft') changeLightboxMedia(-1);
         });
-
-        // AI Agent Logic
-        function toggleAITerminal() {
-            const term = document.getElementById('aiTerminal');
-            term.classList.toggle('active');
-            if (term.classList.contains('active')) {
-                generateAILogs();
-            }
-        }
-
-        function generateAILogs() {
-            const logContainer = document.getElementById('aiLogContainer');
-            const messages = [
-                { msg: "System initialization complete", type: "success" },
-                { msg: "Monitoring 21 assets for Phase 2...", type: "normal" },
-                { msg: "Global CDN synchronization: Active", type: "success" },
-                { msg: "User agent detection: iPhone 15 Pro", type: "normal" },
-                { msg: "Responsive grid layout verified", type: "success" },
-                { msg: "AI Watchdog protecting construction data", type: "success" }
-            ];
-
-            logContainer.innerHTML = '';
-            messages.forEach((m, i) => {
-                setTimeout(() => {
-                    const line = document.createElement('div');
-                    line.className = 'log-line';
-                    line.innerHTML = `
-                        <span class="log-time">[${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', second:'2-digit'})}]</span>
-                        <span class="log-msg ${m.type}">${m.msg}</span>
-                    `;
-                    logContainer.appendChild(line);
-                }, i * 400);
-            });
-        }
     </script>
 
-    <!-- AI Agent Component -->
-    <div class="ai-watchdog" onclick="toggleAITerminal()">
-        <div class="ai-pulse"></div>
-        <span class="ai-status-text">AI Watchdog Active</span>
-    </div>
-
-    <div class="ai-terminal" id="aiTerminal">
-        <div class="terminal-header">
-            <h5><i data-lucide="shield-check" style="width:14px;height:14px;vertical-align:middle;margin-right:5px;"></i> AI Monitoring Core</h5>
-            <span style="color:#555; font-size:0.7rem;">v2.4.0</span>
-        </div>
-        <div id="aiLogContainer" style="display:flex; flex-direction:column; gap:8px;">
-            <!-- Logs appear here -->
-        </div>
-        <div style="border-top:1px solid rgba(255,255,255,0.05); padding-top:10px; margin-top:5px; font-size:0.7rem; color:#444;">
-            Monitoring Latency: 12ms | Security Level: Max
-        </div>
-    </div>
-
-    <!-- Lightbox Modal -->
     <div class="lightbox-modal" id="lightboxModal">
         <button class="lightbox-close" onclick="closeLightbox()"><i data-lucide="x"></i></button>
         <button class="lightbox-nav lightbox-prev" onclick="changeLightboxMedia(-1)"><i data-lucide="chevron-left"></i></button>
