@@ -107,6 +107,112 @@
             100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
         }
 
+        /* Lightbox Modal */
+        .lightbox-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.95);
+            backdrop-filter: blur(15px);
+            z-index: 10000;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .lightbox-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .lightbox-content {
+            position: relative;
+            width: 90%;
+            height: 80%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-media {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: var(--radius-md);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+            animation: modalPop 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        @keyframes modalPop {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            color: #fff;
+            background: rgba(255,255,255,0.1);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-smooth);
+            z-index: 10001;
+        }
+
+        .lightbox-close:hover {
+            background: var(--text-gold);
+            color: #000;
+            transform: rotate(90deg);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.05);
+            border: none;
+            color: #fff;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-smooth);
+            z-index: 10001;
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(255,255,255,0.15);
+            color: var(--text-gold);
+        }
+
+        .lightbox-prev { left: 40px; }
+        .lightbox-next { right: 40px; }
+
+        .lightbox-info {
+            margin-top: 30px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .lightbox-info h4 {
+            font-family: 'Playfair Display';
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+            color: var(--text-gold);
+        }
+
         @keyframes pulse {
             0% { opacity: 1; transform: scale(1); }
             50% { opacity: 0.5; transform: scale(1.2); }
@@ -407,9 +513,29 @@
                 { title: 'Project Foundation', status: 'Completed', img: 'images/construction/phase-1/update-1.jpg', placeholder: 'images/hero-1.jpg' }
             ],
             2: [
+                // Videos first
                 { title: 'Site Overview', status: 'Live Progress', img: 'videos/construction/phase-2-overview-1.mp4', placeholder: 'images/hero-1.jpg' },
                 { title: 'Site Overview', status: 'Live Progress', img: 'videos/construction/phase-2-overview-2.mp4', placeholder: 'images/hero-2.jpg' },
-                { title: 'Site Overview', status: 'Live Progress', img: 'videos/construction/phase-2-overview-3.mp4', placeholder: 'images/hero-3.jpg' }
+                { title: 'Site Overview', status: 'Live Progress', img: 'videos/construction/phase-2-overview-3.mp4', placeholder: 'images/hero-3.jpg' },
+                // Photos
+                { title: 'Foundation Progress', status: 'On-Site', img: 'images/construction/phase-2/phase-2-img-1.JPG', placeholder: 'images/hero-1.jpg' },
+                { title: 'Construction View', status: 'On-Site', img: 'images/construction/phase-2/phase-2-img-2.JPG', placeholder: 'images/hero-2.jpg' },
+                { title: 'Site Perspective', status: 'On-Site', img: 'images/construction/phase-2/phase-2-img-3.JPG', placeholder: 'images/hero-3.jpg' },
+                { title: 'Build Quality', status: 'On-Site', img: 'images/construction/phase-2/phase-2-img-4.JPG', placeholder: 'images/hero-4.jpg' },
+                { title: 'Development Milestone', status: 'On-Site', img: 'images/construction/phase-2/phase-2-img-5.JPG', placeholder: 'images/hero-5.jpg' },
+                { title: 'Architectural Framing', status: 'On-Site', img: 'images/construction/phase-2/phase-2-img-6.JPG', placeholder: 'images/hero-6.jpg' },
+                { title: 'On-Site Update', status: 'On-Site', img: 'images/construction/phase-2/phase-2-img-7.JPG', placeholder: 'images/hero-1.jpg' },
+                { title: 'Structural Progress', status: 'On-Site', img: 'images/construction/phase-2/phase-2-img-8.JPG', placeholder: 'images/hero-2.jpg' },
+                { title: 'Site Panorama', status: 'On-Site', img: 'images/construction/phase-2/phase-2-img-9.JPG', placeholder: 'images/hero-3.jpg' },
+                { title: 'Phase 2 Milestone', status: 'On-Site', img: 'images/construction/phase-2/phase-2-img-10.JPG', placeholder: 'images/hero-4.jpg' },
+                { title: 'Building Frame', status: 'On-Site', img: 'images/construction/phase-2/phase-2-img-11.JPG', placeholder: 'images/hero-5.jpg' },
+                { title: 'Upper Level Build', status: 'On-Site', img: 'images/construction/phase-2/phase-2-img-12.JPG', placeholder: 'images/hero-6.jpg' },
+                { title: 'Construction Detail', status: 'On-Site', img: 'images/construction/phase-2/phase-2-img-13.JPG', placeholder: 'images/hero-1.jpg' },
+                { title: 'Site Overview', status: 'On-Site', img: 'images/construction/phase-2/phase-2-img-14.JPG', placeholder: 'images/hero-2.jpg' },
+                { title: 'Aerial View', status: 'On-Site', img: 'images/construction/phase-2/phase-2-img-15.JPG', placeholder: 'images/hero-3.jpg' },
+                { title: 'Project Scale', status: 'On-Site', img: 'images/construction/phase-2/phase-2-img-16.JPG', placeholder: 'images/hero-4.jpg' },
+                { title: 'Site Layout', status: 'On-Site', img: 'images/construction/phase-2/phase-2-img-17.JPG', placeholder: 'images/hero-5.jpg' },
+                { title: 'Final Phase 2 Framing', status: 'On-Site', img: 'images/construction/phase-2/phase-2-img-18.JPG', placeholder: 'images/hero-6.jpg' }
             ], // Active On-Site
             3: [], // Upcoming
             4: [], // Upcoming
@@ -436,19 +562,39 @@
                     </div>
                 `;
             } else {
-                images.forEach(data => {
+                // If Phase 2, separate videos and photos for a better layout
+                const videos = images.filter(d => d.img.toLowerCase().endsWith('.mp4') || d.img.toLowerCase().endsWith('.webm'));
+                const photos = images.filter(d => !d.img.toLowerCase().endsWith('.mp4') && !d.img.toLowerCase().endsWith('.webm'));
+
+                if (phaseNum === 2 && videos.length > 0) {
+                    const videoHead = document.createElement('div');
+                    videoHead.className = 'gallery-title reveal';
+                    videoHead.innerHTML = `<h3 style="color:var(--text-gold); font-family:'Playfair Display'; font-size:1.5rem; margin-bottom:20px;">Video Highlights</h3>`;
+                    container.appendChild(videoHead);
+                }
+
+                images.forEach((data, index) => {
+                    // Add Photo Gallery heading before the first photo in Phase 2
+                    if (phaseNum === 2 && !data.img.toLowerCase().endsWith('.mp4') && index === videos.length) {
+                        const photoHead = document.createElement('div');
+                        photoHead.className = 'gallery-title reveal';
+                        photoHead.style.cssText = 'grid-column: 1 / -1; margin-top: 40px;';
+                        photoHead.innerHTML = `<h3 style="color:var(--text-gold); font-family:'Playfair Display'; font-size:1.5rem; margin-bottom:20px;">Progress Photo Diary</h3>`;
+                        container.appendChild(photoHead);
+                    }
+
                     const card = document.createElement('div');
                     card.className = 'site-card reveal';
+                    card.onclick = () => openLightbox(images, index);
                     
                     const isVideo = data.img.toLowerCase().endsWith('.mp4') || data.img.toLowerCase().endsWith('.webm');
                     
                     if (isVideo) {
                         card.innerHTML = `
-                            <video muted loop playsinline autoplay controls style="width:100%;height:100%;object-fit:cover;display:block;">
+                            <video muted loop playsinline autoplay style="width:100%;height:100%;object-fit:cover;display:block;">
                                 <source src="${data.img}" type="video/mp4">
-                                Your browser does not support the video tag.
                             </video>
-                            <div class="video-preview-badge" style="pointer-events:none;"><i data-lucide="play-circle"></i> Live Video</div>
+                            <div class="video-preview-badge" style="pointer-events:none;"><i data-lucide="play-circle"></i> View Full</div>
                             <div class="card-overlay" style="pointer-events:none;">
                                 <div class="card-meta">
                                     <h4>${data.title}</h4>
@@ -458,7 +604,7 @@
                         `;
                     } else {
                         card.innerHTML = `
-                            <img src="${data.img}" alt="${data.title}" onerror="this.src='${data.placeholder}';">
+                            <img src="${data.img}" alt="${data.title}" loading="lazy" onerror="this.src='${data.placeholder}';">
                             <div class="card-overlay">
                                 <div class="card-meta">
                                     <h4>${data.title}</h4>
@@ -505,6 +651,80 @@
             }, { threshold: 0.1 });
             document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
         }
+
+        let currentGallery = [];
+        let currentIndex = 0;
+
+        function openLightbox(items, index) {
+            currentGallery = items;
+            currentIndex = index;
+            const modal = document.getElementById('lightboxModal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            updateLightboxMedia();
+        }
+
+        function closeLightbox() {
+            const modal = document.getElementById('lightboxModal');
+            const video = modal.querySelector('video');
+            if (video) video.pause();
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function changeLightboxMedia(step) {
+            currentIndex = (currentIndex + step + currentGallery.length) % currentGallery.length;
+            updateLightboxMedia();
+        }
+
+        function updateLightboxMedia() {
+            const container = document.getElementById('lightboxMediaContainer');
+            const info = document.getElementById('lightboxInfo');
+            const data = currentGallery[currentIndex];
+            const isVideo = data.img.toLowerCase().endsWith('.mp4') || data.img.toLowerCase().endsWith('.webm');
+
+            container.innerHTML = '';
+            if (isVideo) {
+                const video = document.createElement('video');
+                video.src = data.img;
+                video.className = 'lightbox-media';
+                video.controls = true;
+                video.autoplay = true;
+                container.appendChild(video);
+            } else {
+                const img = document.createElement('img');
+                img.src = data.img;
+                img.className = 'lightbox-media';
+                container.appendChild(img);
+            }
+
+            info.innerHTML = `
+                <h4>${data.title}</h4>
+                <p>${data.status} • ${currentIndex + 1} / ${currentGallery.length}</p>
+            `;
+        }
+
+        // Close on ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowRight') changeLightboxMedia(1);
+            if (e.key === 'ArrowLeft') changeLightboxMedia(-1);
+        });
     </script>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox-modal" id="lightboxModal">
+        <button class="lightbox-close" onclick="closeLightbox()"><i data-lucide="x"></i></button>
+        <button class="lightbox-nav lightbox-prev" onclick="changeLightboxMedia(-1)"><i data-lucide="chevron-left"></i></button>
+        <button class="lightbox-nav lightbox-next" onclick="changeLightboxMedia(1)"><i data-lucide="chevron-right"></i></button>
+        
+        <div class="lightbox-content" id="lightboxMediaContainer">
+            <!-- Media injected here -->
+        </div>
+
+        <div class="lightbox-info" id="lightboxInfo">
+            <!-- Info injected here -->
+        </div>
+    </div>
 </body>
 </html>
