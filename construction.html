@@ -219,119 +219,44 @@
             100% { opacity: 1; transform: scale(1); }
         }
 
-        /* Mobile-First Responsive Grid */
+        /* Mobile-First Responsive Grid & Performance Optimization */
         .phase-gallery-wall {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 20px;
             min-height: 400px;
+            /* Prevents layout shifts and boosts scroll speed */
+            content-visibility: auto;
+            contain-intrinsic-size: 1px 1000px;
         }
 
-        /* AI Watchdog Component */
-        .ai-watchdog {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            background: rgba(0,0,0,0.8);
-            backdrop-filter: blur(10px);
-            padding: 10px 20px;
-            border-radius: 50px;
-            border: 1px solid rgba(0, 255, 127, 0.2);
-            cursor: pointer;
-            transition: all 0.4s ease;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-
-        .ai-watchdog:hover {
-            transform: translateY(-5px);
-            border-color: rgba(0, 255, 127, 0.5);
-            background: rgba(0, 255, 127, 0.05);
-        }
-
-        .ai-pulse {
-            width: 12px;
-            height: 12px;
-            background: #00ff7f;
-            border-radius: 50%;
+        .site-card {
             position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            aspect-ratio: 1/1;
+            /* Premium placeholder background while images load */
+            background: linear-gradient(135deg, rgba(255,255,255,0.02) 0%, rgba(201,168,76,0.05) 100%);
+            border: 1px solid var(--border-subtle);
+            transition: var(--transition-smooth);
+            /* GPU Hardware Acceleration for zero-flicker scrolling */
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            will-change: transform;
         }
 
-        .ai-pulse::after {
-            content: '';
-            position: absolute;
-            inset: -4px;
-            border-radius: 50%;
-            border: 2px solid #00ff7f;
-            animation: ai-ripple 2s infinite;
+        .site-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0; /* Fade in once loaded */
+            transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), transform 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+            will-change: opacity, transform;
         }
 
-        @keyframes ai-ripple {
-            0% { transform: scale(1); opacity: 1; }
-            100% { transform: scale(2.5); opacity: 0; }
+        .site-card img.loaded {
+            opacity: 1;
         }
-
-        .ai-status-text {
-            color: #00ff7f;
-            font-size: 0.8rem;
-            font-family: 'Inter', sans-serif;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        /* AI Terminal overlay */
-        .ai-terminal {
-            position: fixed;
-            bottom: 90px;
-            left: 30px;
-            width: 320px;
-            background: #0a0a0a;
-            border: 1px solid rgba(255,255,255,0.15);
-            border-radius: 16px;
-            padding: 20px;
-            z-index: 9998;
-            display: none;
-            flex-direction: column;
-            gap: 12px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-            font-family: 'Inter', sans-serif;
-            animation: slideUp 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-        }
-
-        @keyframes slideUp {
-            from { transform: translateY(20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        .ai-terminal.active { display: flex; }
-
-        .terminal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding-bottom: 10px;
-        }
-
-        .terminal-header h5 {
-            color: var(--text-gold);
-            font-size: 0.9rem;
-            margin: 0;
-        }
-
-        .log-line {
-            font-size: 0.75rem;
-            color: #888;
-            display: flex;
-            gap: 8px;
-        }
-
-        .log-time { color: #555; }
-        .log-msg.success { color: #00ff7f; }
 
         /* General Refined Responsiveness */
         @media (max-width: 768px) {
@@ -341,8 +266,6 @@
             .lightbox-close { top: 20px; right: 20px; }
             .phase-gallery-wall { grid-template-columns: 1fr; }
             .gallery-title h3 { font-size: 1.3rem; text-align: center; }
-            .ai-watchdog { bottom: 20px; left: 20px; }
-            .ai-terminal { left: 20px; width: calc(100% - 40px); }
         }
 
         @media (max-width: 480px) {
@@ -728,7 +651,7 @@
                         `;
                     } else {
                         card.innerHTML = `
-                            <img src="${data.img}" alt="${data.title}" loading="lazy" onerror="this.src='${data.placeholder}';">
+                            <img src="${data.img}" alt="${data.title}" onload="this.classList.add('loaded')" loading="lazy" onerror="this.src='${data.placeholder}';">
                             <div class="card-overlay">
                                 <div class="card-meta">
                                     <h4>${data.title}</h4>
@@ -849,5 +772,6 @@
             <!-- Info injected here -->
         </div>
     </div>
+    <script src="tracker.js"></script>
 </body>
 </html>
