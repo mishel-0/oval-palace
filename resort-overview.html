@@ -750,14 +750,53 @@
             if (e.key === 'ArrowLeft') { cinemaVideo.currentTime = Math.max(0, cinemaVideo.currentTime - 10); }
         });
 
-        // ==================== AUTO-PREVIEW ON SCROLL ====================
-        // Plays muted when scrolled into view — premium auto-preview like Apple TV
-        let userPaused = false; // Track if user manually paused
+        // ==================== AUTOPLAY WITH SOUND ====================
+        // Browsers block autoplay with sound, so we start muted then
+        // auto-unmute on first user interaction (click/scroll/touch)
+        let userPaused = false;
+        let hasUnmuted = false;
 
         if (cinemaVideo) {
+            // Force autoplay muted immediately
             cinemaVideo.muted = true;
-            cinemaVideo.setAttribute('playsinline', '');
+            cinemaVideo.play().catch(() => {});
+            cinemaPlaying = true;
+            cinemaBigPlay.classList.add('hidden');
+            cinemaPlayIcon.setAttribute('data-lucide', 'pause');
 
+            // Auto-unmute on ANY user interaction
+            function autoUnmute() {
+                if (hasUnmuted || !cinemaVideo) return;
+                hasUnmuted = true;
+                cinemaVideo.muted = false;
+                cinemaMuted = false;
+                cinemaMuteIcon.setAttribute('data-lucide', 'volume-2');
+                lucide.createIcons();
+                // Remove all listeners once done
+                ['click', 'touchstart', 'scroll', 'keydown'].forEach(evt => {
+                    document.removeEventListener(evt, autoUnmute, { capture: true });
+                });
+            }
+
+            ['click', 'touchstart', 'scroll', 'keydown'].forEach(evt => {
+                document.addEventListener(evt, autoUnmute, { capture: true, once: false, passive: true });
+            });
+
+            // Also try unmuting directly (works if user has interacted with site before)
+            setTimeout(() => {
+                cinemaVideo.muted = false;
+                // If browser blocks it, the muted state won't change — fallback to listener
+                if (cinemaVideo.muted) {
+                    cinemaVideo.muted = true; // stay muted, wait for interaction
+                } else {
+                    hasUnmuted = true;
+                    cinemaMuted = false;
+                    cinemaMuteIcon.setAttribute('data-lucide', 'volume-2');
+                    lucide.createIcons();
+                }
+            }, 500);
+
+            // Auto-pause when out of viewport, resume when back
             const cinemaObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting && !userPaused) {
@@ -768,20 +807,20 @@
                         lucide.createIcons();
                     } else if (!entry.isIntersecting) {
                         cinemaVideo.pause();
-                        // Keep cinemaPlaying true so it resumes on re-entry
                     }
                 });
-            }, { threshold: 0.3 });
+            }, { threshold: 0.2 });
             cinemaObserver.observe(cinemaVideo);
         }
 
-        // Override toggleCinemaPlay to also unmute on first manual play
+        // Override toggleCinemaPlay for manual play/pause
         const _origToggle = toggleCinemaPlay;
         toggleCinemaPlay = function() {
             if (!cinemaVideo) return;
             if (cinemaVideo.paused) {
                 cinemaVideo.muted = false;
                 cinemaMuted = false;
+                hasUnmuted = true;
                 cinemaMuteIcon.setAttribute('data-lucide', 'volume-2');
                 cinemaVideo.play().catch(() => {});
                 cinemaPlaying = true;
