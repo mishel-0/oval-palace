@@ -40,7 +40,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="pages.css">
 </head>
-<body>
+<body class="loading">
 
     <!-- ==================== NAVIGATION ==================== -->
     <nav class="navbar scrolled" id="navbar">
@@ -293,67 +293,7 @@
         </div>
     </section>
 
-    <!-- ==================== INVESTOR CELEBRATION GALLERY ==================== -->
-    <section class="celebration-gallery-section">
-        <div class="container">
-            <div class="section-header-centered reveal">
-                <span class="section-label" style="justify-content: center;">Celebrations</span>
-                <h2 class="section-title">100+ Investor <span class="gold-gradient-text">Celebration</span></h2>
-                <p class="section-subtitle">Moments from our milestone celebration with our valued investor community.</p>
-            </div>
 
-            <div class="celebration-grid reveal" id="celebrationGrid">
-                <!-- Placeholder slots for photo uploads -->
-                <div class="celebration-item upload-placeholder" onclick="document.getElementById('celebUpload1').click()">
-                    <input type="file" id="celebUpload1" accept="image/*,video/*" style="display:none" onchange="previewCelebration(this, 0)">
-                    <div class="upload-placeholder-content">
-                        <i data-lucide="image-plus"></i>
-                        <span>Upload Celebration Photo</span>
-                    </div>
-                </div>
-                <div class="celebration-item upload-placeholder" onclick="document.getElementById('celebUpload2').click()">
-                    <input type="file" id="celebUpload2" accept="image/*,video/*" style="display:none" onchange="previewCelebration(this, 1)">
-                    <div class="upload-placeholder-content">
-                        <i data-lucide="image-plus"></i>
-                        <span>Upload Photo</span>
-                    </div>
-                </div>
-                <div class="celebration-item upload-placeholder" onclick="document.getElementById('celebUpload3').click()">
-                    <input type="file" id="celebUpload3" accept="image/*,video/*" style="display:none" onchange="previewCelebration(this, 2)">
-                    <div class="upload-placeholder-content">
-                        <i data-lucide="image-plus"></i>
-                        <span>Upload Photo</span>
-                    </div>
-                </div>
-                <div class="celebration-item upload-placeholder" onclick="document.getElementById('celebUpload4').click()">
-                    <input type="file" id="celebUpload4" accept="image/*,video/*" style="display:none" onchange="previewCelebration(this, 3)">
-                    <div class="upload-placeholder-content">
-                        <i data-lucide="image-plus"></i>
-                        <span>Upload Photo</span>
-                    </div>
-                </div>
-                <div class="celebration-item upload-placeholder" onclick="document.getElementById('celebUpload5').click()">
-                    <input type="file" id="celebUpload5" accept="image/*,video/*" style="display:none" onchange="previewCelebration(this, 4)">
-                    <div class="upload-placeholder-content">
-                        <i data-lucide="image-plus"></i>
-                        <span>Upload Photo</span>
-                    </div>
-                </div>
-                <div class="celebration-item upload-placeholder" onclick="document.getElementById('celebUpload6').click()">
-                    <input type="file" id="celebUpload6" accept="image/*,video/*" style="display:none" onchange="previewCelebration(this, 5)">
-                    <div class="upload-placeholder-content">
-                        <i data-lucide="image-plus"></i>
-                        <span>Upload Photo</span>
-                    </div>
-                </div>
-            </div>
-
-            <p class="upload-note reveal">
-                <i data-lucide="info"></i>
-                Click on any placeholder to upload celebration photos and videos. These will be displayed in the gallery.
-            </p>
-        </div>
-    </section>
 
     <!-- ==================== TRUST SECTION ==================== -->
     <section class="trust-section">
@@ -474,7 +414,15 @@
             initScrollReveal();
         });
 
-        // Navbar
+        // Resolve Preloader
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                preloader.classList.add('loaded');
+                document.body.classList.remove('loading');
+            }
+        });
+
         function initPageNavbar() {
             const hamburger = document.getElementById('navHamburger');
             const mobileMenu = document.getElementById('mobileMenu');
@@ -500,38 +448,15 @@
             document.body.style.overflow = '';
         }
 
-        // Scroll Reveal
         function initScrollReveal() {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) entry.target.classList.add('visible');
                 });
-            }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+            }, { threshold: 0.1 });
             document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
         }
-
-        // Image Upload Preview
-        function previewCelebration(input, index) {
-            if (input.files && input.files[0]) {
-                const reader = new FileReader();
-                const container = input.closest('.celebration-item');
-                const file = input.files[0];
-
-                reader.onload = function(e) {
-                    container.classList.remove('upload-placeholder');
-                    if (file.type.startsWith('video/')) {
-                        container.innerHTML = `
-                            <video src="${e.target.result}" controls style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius-md);"></video>
-                        `;
-                    } else {
-                        container.innerHTML = `
-                            <img src="${e.target.result}" alt="Celebration Photo" style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius-md);">
-                        `;
-                    }
-                };
-                reader.readAsDataURL(file);
-            }
-        }
-    </script>
+    <script src="script.js"></script>
+    <script src="tracker.js"></script>
 </body>
 </html>

@@ -13,6 +13,28 @@ document.addEventListener('DOMContentLoaded', () => {
     initChatbot();
 });
 
+// Final Load Event for Preloader
+window.addEventListener('load', () => {
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+        preloader.classList.add('loaded');
+        document.body.classList.remove('loading');
+    }
+});
+
+// Show preloader on navigation clicks — Masks network lag
+document.addEventListener('click', (e) => {
+    const link = e.target.closest('a');
+    // Only trigger for internal .html pages, not anchors (#)
+    if (link && link.href && link.href.includes('.html') && !link.href.includes('#')) {
+        const preloader = document.getElementById('preloader');
+        if (preloader) {
+            preloader.classList.remove('loaded');
+            document.body.classList.add('loading');
+        }
+    }
+});
+
 // ==================== NAVBAR ====================
 function initNavbar() {
     const navbar = document.getElementById('navbar');
@@ -20,13 +42,23 @@ function initNavbar() {
     const mobileMenu = document.getElementById('mobileMenu');
     const overlay = document.getElementById('mobileOverlay');
 
+    let lastScrollY = 0;
+    let ticking = false;
+
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 80) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
+        lastScrollY = window.scrollY;
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                if (lastScrollY > 80) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+                ticking = false;
+            });
+            ticking = true;
         }
-    });
+    }, { passive: true });
 
     hamburger.addEventListener('click', () => {
         hamburger.classList.toggle('active');
@@ -658,7 +690,8 @@ function showBotMessages(messages, options = null) {
                     <div class="chat-avatar-small"><i data-lucide="bot"></i></div>
                     <div class="chat-bubble">${msg.replace(/\n/g, '<br>')}</div>
                 `;
-                lucide.createIcons();
+                // Only re-scan specific elements for performance
+                if (window.lucide) lucide.createIcons({attrs: {"stroke-width": 2}, nameAttr: "data-lucide"}); 
                 scrollChatToBottom();
 
                 // Show options after last message

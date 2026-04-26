@@ -6,10 +6,10 @@
 /* ---------- PAGE HERO ---------- */
 .page-hero {
     position: relative;
-    height: clamp(320px, 40vh, 480px);
+    height: clamp(280px, 40vh, 450px);
     display: flex;
     align-items: flex-end;
-    padding-bottom: clamp(40px, 8vw, 80px);
+    padding-bottom: clamp(30px, 8vw, 60px);
     overflow: hidden;
 }
 
@@ -192,8 +192,8 @@
 
 .testimonials-masonry {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
+    grid-template-columns: repeat(auto-fill, minmax(clamp(320px, 45%, 500px), 1fr));
+    gap: 25px;
 }
 
 .testimonial-card-full {

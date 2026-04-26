@@ -85,7 +85,7 @@
     </div>
 
     <!-- ==================== PAGE HERO ==================== -->
-    <section class="page-hero" style="height: 480px;">
+    <section class="page-hero">
         <div class="page-hero-bg" style="background-image: url('images/hero-1.jpg')"></div>
         <div class="page-hero-overlay"></div>
         <div class="container page-hero-content">
@@ -95,7 +95,83 @@
                 <span>Resort Overview</span>
             </div>
             <h1 class="page-hero-title">Discover <span class="gold-gradient-text">Oval Palace</span></h1>
-            <p class="page-hero-subtitle">A 360° look at our premium luxury resort — from architectural vision to social media buzz. Watch our reels, explore highlights, and see why investors love us.</p>
+            <p class="page-hero-subtitle">A 360° look at Kerala's most iconic luxury resort — premium amenities, breathtaking views, and world-class hospitality.</p>
+        </div>
+    </section>
+
+    <!-- ==================== CINEMATIC VIDEO SHOWCASE ==================== -->
+    <section class="cinema-showcase-section">
+        <div class="container">
+            <div class="section-header-centered reveal">
+                <span class="section-label" style="justify-content: center;"><i data-lucide="film" style="width:16px;height:16px;margin-right:6px;vertical-align:middle;"></i> Resort Preview</span>
+                <h2 class="section-title">Official <span class="gold-gradient-text">Resort Film</span></h2>
+                <p class="section-subtitle">Watch the full cinematic preview of our luxury resort project.</p>
+            </div>
+
+            <div class="cinema-player reveal" id="cinemaPlayer">
+                <!-- Ambient glow behind the player -->
+                <div class="cinema-glow"></div>
+
+                <!-- The theater frame -->
+                <div class="cinema-frame" id="cinemaFrame">
+                    <video id="cinemaVideo" src="videos/resort-preview.mp4" playsinline preload="metadata" poster="images/hero-1.jpg"></video>
+
+                    <!-- Big center unmute button (shown while auto-previewing muted) -->
+                    <button class="cinema-big-play" id="cinemaBigPlay" onclick="toggleCinemaPlay()" aria-label="Unmute and play">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                    </button>
+
+                    <!-- Top gradient overlay with badge -->
+                    <div class="cinema-overlay-top">
+                        <span class="cinema-badge"><i data-lucide="crown"></i> Official Resort Preview</span>
+                    </div>
+
+                    <!-- Bottom controls bar -->
+                    <div class="cinema-controls" id="cinemaControls">
+                        <div class="cinema-progress-wrap" id="cinemaProgressWrap">
+                            <div class="cinema-progress-bar" id="cinemaProgressBar">
+                                <div class="cinema-progress-thumb"></div>
+                            </div>
+                            <div class="cinema-progress-buffer" id="cinemaProgressBuffer"></div>
+                        </div>
+                        <div class="cinema-controls-row">
+                            <div class="cinema-controls-left">
+                                <button class="cinema-ctrl-btn" onclick="toggleCinemaPlay()" aria-label="Play/Pause">
+                                    <i data-lucide="play" id="cinemaPlayIcon"></i>
+                                </button>
+                                <button class="cinema-ctrl-btn" onclick="toggleCinemaMute()" aria-label="Mute/Unmute">
+                                    <i data-lucide="volume-x" id="cinemaMuteIcon"></i>
+                                </button>
+                                <span class="cinema-time" id="cinemaTime">0:00 / 0:00</span>
+                            </div>
+                            <div class="cinema-controls-right">
+                                <button class="cinema-ctrl-btn" onclick="togglePiP()" aria-label="Picture in Picture">
+                                    <i data-lucide="picture-in-picture-2"></i>
+                                </button>
+                                <button class="cinema-ctrl-btn" onclick="toggleCinemaFullscreen()" aria-label="Fullscreen">
+                                    <i data-lucide="maximize" id="cinemaFsIcon"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Caption strip below -->
+                <div class="cinema-caption">
+                    <div class="cinema-caption-left">
+                        <img src="images/logo.png" alt="Oval Palace" class="cinema-caption-logo">
+                        <div>
+                            <strong>Oval Palace Resort — Official Preview</strong>
+                            <span>by Nalakath Holdings LLP</span>
+                        </div>
+                    </div>
+                    <div class="cinema-caption-right">
+                        <a href="index.html#investment" class="cinema-invest-btn">
+                            <i data-lucide="trending-up"></i> Invest Now
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -438,9 +514,19 @@
     <!-- ==================== SCRIPTS ==================== -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            lucide.createIcons();
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
             initPageNavbar();
             initScrollReveal();
+            // Retry icons in case Lucide CDN loaded late
+            setTimeout(() => { if (typeof lucide !== 'undefined') lucide.createIcons(); }, 500);
+            setTimeout(() => { if (typeof lucide !== 'undefined') lucide.createIcons(); }, 1500);
+        });
+
+        // Also retry when the full page (including CDN scripts) finishes loading
+        window.addEventListener('load', () => {
+            if (typeof lucide !== 'undefined') lucide.createIcons();
         });
 
         function initPageNavbar() {
@@ -465,7 +551,13 @@
 
         function initScrollReveal() {
             const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        // Re-create icons for newly visible sections
+                        if (typeof lucide !== 'undefined') lucide.createIcons();
+                    }
+                });
             }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
             document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
         }
@@ -525,6 +617,186 @@
                 card.style.display = (platform === 'all' || plat === platform || plat === 'all') ? '' : 'none';
             });
         }
+
+        // ==================== CINEMATIC VIDEO PLAYER ====================
+        const cinemaVideo = document.getElementById('cinemaVideo');
+        const cinemaBigPlay = document.getElementById('cinemaBigPlay');
+        const cinemaPlayIcon = document.getElementById('cinemaPlayIcon');
+        const cinemaMuteIcon = document.getElementById('cinemaMuteIcon');
+        const cinemaProgressBar = document.getElementById('cinemaProgressBar');
+        const cinemaProgressWrap = document.getElementById('cinemaProgressWrap');
+        const cinemaTime = document.getElementById('cinemaTime');
+        const cinemaFrame = document.getElementById('cinemaFrame');
+        let cinemaPlaying = false;
+        let cinemaMuted = true;
+
+        function formatTime(s) {
+            const m = Math.floor(s / 60);
+            const sec = Math.floor(s % 60);
+            return m + ':' + (sec < 10 ? '0' : '') + sec;
+        }
+
+        function toggleCinemaPlay() {
+            if (!cinemaVideo) return;
+            if (cinemaVideo.paused) {
+                cinemaVideo.play().catch(() => {});
+                cinemaPlaying = true;
+                cinemaBigPlay.classList.add('hidden');
+            } else {
+                cinemaVideo.pause();
+                cinemaPlaying = false;
+                cinemaBigPlay.classList.remove('hidden');
+            }
+            cinemaPlayIcon.setAttribute('data-lucide', cinemaPlaying ? 'pause' : 'play');
+            lucide.createIcons();
+        }
+
+        function toggleCinemaMute() {
+            if (!cinemaVideo) return;
+            cinemaVideo.muted = !cinemaVideo.muted;
+            cinemaMuted = cinemaVideo.muted;
+            cinemaMuteIcon.setAttribute('data-lucide', cinemaMuted ? 'volume-x' : 'volume-2');
+            lucide.createIcons();
+        }
+
+        function toggleCinemaFullscreen() {
+            if (!cinemaFrame) return;
+            if (!document.fullscreenElement) {
+                cinemaFrame.requestFullscreen().catch(() => {});
+            } else {
+                document.exitFullscreen();
+            }
+        }
+
+        function togglePiP() {
+            if (!cinemaVideo) return;
+            if (document.pictureInPictureElement) {
+                document.exitPictureInPicture().catch(() => {});
+            } else if (document.pictureInPictureEnabled) {
+                cinemaVideo.requestPictureInPicture().catch(() => {});
+            }
+        }
+
+        // Fullscreen icon toggle
+        document.addEventListener('fullscreenchange', () => {
+            const icon = document.getElementById('cinemaFsIcon');
+            if (icon) {
+                icon.setAttribute('data-lucide', document.fullscreenElement ? 'minimize' : 'maximize');
+                lucide.createIcons();
+            }
+        });
+
+        // Progress tracking
+        if (cinemaVideo) {
+            cinemaVideo.addEventListener('timeupdate', () => {
+                if (cinemaVideo.duration) {
+                    const pct = (cinemaVideo.currentTime / cinemaVideo.duration) * 100;
+                    cinemaProgressBar.style.width = pct + '%';
+                    cinemaTime.textContent = formatTime(cinemaVideo.currentTime) + ' / ' + formatTime(cinemaVideo.duration);
+                }
+            });
+
+            // Buffer progress
+            cinemaVideo.addEventListener('progress', () => {
+                const buf = document.getElementById('cinemaProgressBuffer');
+                if (cinemaVideo.buffered.length > 0 && cinemaVideo.duration && buf) {
+                    const buffered = cinemaVideo.buffered.end(cinemaVideo.buffered.length - 1);
+                    buf.style.width = (buffered / cinemaVideo.duration * 100) + '%';
+                }
+            });
+
+            cinemaVideo.addEventListener('ended', () => {
+                cinemaPlaying = false;
+                cinemaBigPlay.classList.remove('hidden');
+                cinemaPlayIcon.setAttribute('data-lucide', 'play');
+                lucide.createIcons();
+            });
+
+            // Click on video to toggle play
+            cinemaVideo.addEventListener('click', (e) => {
+                e.stopPropagation();
+                toggleCinemaPlay();
+            });
+
+            // Double-click for fullscreen
+            cinemaVideo.addEventListener('dblclick', (e) => {
+                e.stopPropagation();
+                e.preventDefault();
+                toggleCinemaFullscreen();
+            });
+        }
+
+        // Click-to-seek on progress bar
+        if (cinemaProgressWrap) {
+            cinemaProgressWrap.addEventListener('click', (e) => {
+                if (!cinemaVideo || !cinemaVideo.duration) return;
+                const rect = cinemaProgressWrap.getBoundingClientRect();
+                const pct = (e.clientX - rect.left) / rect.width;
+                cinemaVideo.currentTime = pct * cinemaVideo.duration;
+            });
+        }
+
+        // Keyboard shortcuts (when cinema player is in view)
+        document.addEventListener('keydown', (e) => {
+            if (!cinemaVideo || e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+            const player = document.getElementById('cinemaPlayer');
+            const rect = player?.getBoundingClientRect();
+            if (!rect || rect.bottom < 0 || rect.top > window.innerHeight) return;
+            
+            if (e.key === ' ' || e.key === 'k') { e.preventDefault(); toggleCinemaPlay(); }
+            if (e.key === 'f') toggleCinemaFullscreen();
+            if (e.key === 'm') toggleCinemaMute();
+            if (e.key === 'ArrowRight') { cinemaVideo.currentTime = Math.min(cinemaVideo.duration, cinemaVideo.currentTime + 10); }
+            if (e.key === 'ArrowLeft') { cinemaVideo.currentTime = Math.max(0, cinemaVideo.currentTime - 10); }
+        });
+
+        // ==================== AUTO-PREVIEW ON SCROLL ====================
+        // Plays muted when scrolled into view — premium auto-preview like Apple TV
+        let userPaused = false; // Track if user manually paused
+
+        if (cinemaVideo) {
+            cinemaVideo.muted = true;
+            cinemaVideo.setAttribute('playsinline', '');
+
+            const cinemaObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !userPaused) {
+                        cinemaVideo.play().catch(() => {});
+                        cinemaPlaying = true;
+                        cinemaBigPlay.classList.add('hidden');
+                        cinemaPlayIcon.setAttribute('data-lucide', 'pause');
+                        lucide.createIcons();
+                    } else if (!entry.isIntersecting) {
+                        cinemaVideo.pause();
+                        // Keep cinemaPlaying true so it resumes on re-entry
+                    }
+                });
+            }, { threshold: 0.3 });
+            cinemaObserver.observe(cinemaVideo);
+        }
+
+        // Override toggleCinemaPlay to also unmute on first manual play
+        const _origToggle = toggleCinemaPlay;
+        toggleCinemaPlay = function() {
+            if (!cinemaVideo) return;
+            if (cinemaVideo.paused) {
+                cinemaVideo.muted = false;
+                cinemaMuted = false;
+                cinemaMuteIcon.setAttribute('data-lucide', 'volume-2');
+                cinemaVideo.play().catch(() => {});
+                cinemaPlaying = true;
+                userPaused = false;
+                cinemaBigPlay.classList.add('hidden');
+            } else {
+                cinemaVideo.pause();
+                cinemaPlaying = false;
+                userPaused = true;
+                cinemaBigPlay.classList.remove('hidden');
+            }
+            cinemaPlayIcon.setAttribute('data-lucide', cinemaPlaying ? 'pause' : 'play');
+            lucide.createIcons();
+        };
     </script>
+    <script src="tracker.js"></script>
 </body>
 </html>

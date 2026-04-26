@@ -197,8 +197,20 @@
                     <div class="stat-label">Live Traffic</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-val">0</div>
-                    <div class="stat-label">System Breaches</div>
+                    <div class="stat-val" id="totalViews">1,240</div>
+                    <div class="stat-label">Overall Impact</div>
+                </div>
+            </div>
+
+            <h3 style="color:#fff; margin-top:40px;">Active Intelligence</h3>
+            <div style="display:flex; flex-direction:column; gap:15px;" id="intelFeed">
+                <div class="card" style="background:rgba(0,255,127,0.05); border-color:rgba(0,255,127,0.1); padding:15px;">
+                    <div style="font-size:0.7rem; color:#00ff7f; margin-bottom:5px;">LATEST DEVICE</div>
+                    <div style="color:#fff; font-size:1.1rem;" id="lastDevice">Waiting...</div>
+                </div>
+                <div class="card" style="background:rgba(229,228,226,0.05); border-color:rgba(255,255,255,0.1); padding:15px;">
+                    <div style="font-size:0.7rem; color:var(--text-gold); margin-bottom:5px;">LIVE GEOLOCATION</div>
+                    <div style="color:#fff; font-family:monospace; font-size:1rem;" id="lastCoords">N/A</div>
                 </div>
             </div>
 
@@ -212,28 +224,40 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             lucide.createIcons();
-            startLogs();
+            initMonitor();
             initChart();
-            simulateTraffic();
         });
 
-        function startLogs() {
-            const messages = [
-                { text: "Asset verification: images/construction/phase-2 OK", type: "success" },
-                { text: "Encrypted handshake with Vercel Edge established", type: "normal" },
-                { text: "Minor caching delay in Southeast Asia node", type: "warn" },
-                { text: "Optimizing 21 media assets for target iPhone layout", type: "normal" },
-                { text: "Neural Core scanning for site anomalies...", type: "success" },
-                { text: "Responsive logic validated across 320px-2560px", type: "success" },
-                { text: "SSL Protocol: TLS 1.3 | Security Level: MAX", type: "normal" }
-            ];
+        const monitorChannel = new BroadcastChannel('oval_palace_monitor');
 
-            setInterval(() => {
-                const m = messages[Math.floor(Math.random() * messages.length)];
-                addLog(m.text, m.type);
-            }, 2500);
+        function initMonitor() {
+            addLog("Neural Core Listening for Site Events...", "success");
             
-            messages.forEach((m, i) => setTimeout(() => addLog(m.text, m.type), i * 400));
+            monitorChannel.onmessage = (event) => {
+                const data = event.data;
+                
+                if (data.type === 'NAV_EVENT') {
+                    addLog(`User session [IP: 192.168.1.9] moved to [${data.page}]`, "success");
+                    updateVisitorCount(1);
+                    
+                    // Update New Intelligence Section
+                    document.getElementById('lastDevice').innerText = data.device;
+                    document.getElementById('lastCoords').innerText = `${data.coords.lat} N, ${data.coords.lng} E`;
+                    document.getElementById('totalViews').innerText = data.totalViews.toLocaleString();
+
+                    showNotification(`New Access: ${data.page}`);
+                }
+                
+                if (data.type === 'INTERACTION') {
+                    addLog(`Interaction: User clicked "${data.element.substring(0, 20)}..."`, "normal");
+                }
+            };
+
+            // Periodically check logs to keep terminal active
+            setInterval(() => {
+                const idleMsgs = ["Patrolling construction assets...", "Checking SSL integrity...", "CDN Node Kochi: Optimized"];
+                addLog(idleMsgs[Math.floor(Math.random() * idleMsgs.length)], "normal");
+            }, 8000);
         }
 
         function addLog(text, type) {
@@ -247,6 +271,17 @@
             terminal.scrollTop = terminal.scrollHeight;
         }
 
+        function updateVisitorCount(delta) {
+            const count = document.getElementById('visitorCount');
+            const current = parseInt(count.innerText);
+            count.innerText = Math.max(1, current + delta);
+        }
+
+        function showNotification(msg) {
+            // Optional: add a small popup for navigation events
+            addLog(`ALERT: Active Navigation - ${msg}`, "warn");
+        }
+
         function initChart() {
             const chart = document.getElementById('chart');
             for(let i=0; i<18; i++) {
@@ -255,14 +290,6 @@
                 bar.style.height = `${Math.random() * 70 + 30}%`;
                 chart.appendChild(bar);
             }
-        }
-
-        function simulateTraffic() {
-            const count = document.getElementById('visitorCount');
-            setInterval(() => {
-                const current = parseInt(count.innerText);
-                count.innerText = current + (Math.random() > 0.5 ? 1 : -1);
-            }, 4000);
         }
     </script>
 </body>
