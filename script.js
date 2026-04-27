@@ -5,22 +5,31 @@
 
 // ==================== INITIALIZATION ====================
 document.addEventListener('DOMContentLoaded', () => {
-    lucide.createIcons();
+    if (typeof lucide !== 'undefined') lucide.createIcons();
     initNavbar();
     initHeroSlideshow();
     initScrollReveal();
     initCalendar();
     initChatbot();
+    // Retry icons
+    setTimeout(() => { if (typeof lucide !== 'undefined') lucide.createIcons(); }, 500);
 });
 
 // Final Load Event for Preloader
 window.addEventListener('load', () => {
+    dismissPreloader();
+});
+
+// Safety timeout: NEVER let preloader stay more than 3 seconds
+setTimeout(dismissPreloader, 3000);
+
+function dismissPreloader() {
     const preloader = document.getElementById('preloader');
-    if (preloader) {
+    if (preloader && !preloader.classList.contains('loaded')) {
         preloader.classList.add('loaded');
         document.body.classList.remove('loading');
     }
-});
+}
 
 // Show preloader on navigation clicks — Masks network lag
 document.addEventListener('click', (e) => {
