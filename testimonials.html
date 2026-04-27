@@ -411,11 +411,9 @@
             if (typeof lucide !== 'undefined') lucide.createIcons();
             initPageNavbar();
             initScrollReveal();
-            setTimeout(() => { if (typeof lucide !== 'undefined') lucide.createIcons(); }, 500);
-        });
-
-        window.addEventListener('load', () => {
-            if (typeof lucide !== 'undefined') lucide.createIcons();
+            
+            // robust single retry
+            setTimeout(() => { if (typeof lucide !== 'undefined') lucide.createIcons(); }, 800);
             document.body.classList.remove('loading');
         });
 
