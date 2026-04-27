@@ -544,19 +544,18 @@
     <!-- Scripts -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            if (typeof lucide !== 'undefined') lucide.createIcons();
             initPageNavbar();
             initScrollReveal();
             // Load Phase 1 by default
             const initialBtn = document.querySelector('.phase-btn.active');
             if (initialBtn) filterPhase(1, initialBtn);
-            // Retry icons in case CDN loaded late
-            setTimeout(() => { if (typeof lucide !== 'undefined') lucide.createIcons(); }, 500);
-            setTimeout(() => { if (typeof lucide !== 'undefined') lucide.createIcons(); }, 1500);
-        });
-
-        window.addEventListener('load', () => {
-            if (typeof lucide !== 'undefined') lucide.createIcons();
+            
+            // Initialize icons robustly
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            } else {
+                setTimeout(() => { if (typeof lucide !== 'undefined') lucide.createIcons(); }, 800);
+            }
         });
 
         // Mock data for phases (since actual images will be uploaded to folders)
@@ -677,19 +676,30 @@
         function lazyLoadVideos() {
             const videoObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
+                    const video = entry.target;
                     if (entry.isIntersecting) {
-                        const video = entry.target;
                         const src = video.getAttribute('data-src');
                         if (src && !video.src) {
                             video.src = src;
                             video.load();
-                            video.play().catch(() => {});
                         }
-                        videoObserver.unobserve(video);
+                        video.play().catch(() => {});
+                    } else {
+                        // Pause video when out of viewport to save CPU/GPU!
+                        if (video.src && !video.paused) {
+                            video.pause();
+                        }
                     }
                 });
             }, { threshold: 0.1, rootMargin: '200px' });
-            document.querySelectorAll('video[data-src]').forEach(v => videoObserver.observe(v));
+            
+            // Re-observe only newly added videos
+            document.querySelectorAll('video[data-src]').forEach(v => {
+                if (!v.hasAttribute('data-observed')) {
+                    videoObserver.observe(v);
+                    v.setAttribute('data-observed', 'true');
+                }
+            });
         }
 
         // Standard helpers
