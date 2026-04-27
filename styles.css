@@ -2827,11 +2827,22 @@ button {
     gap: 30px;
 }
 
+.preloader-logo-wrap {
+    position: relative;
+    width: 130px;
+    height: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .preloader-logo {
     width: 100px;
     height: auto;
     filter: drop-shadow(0 0 20px rgba(201,168,76,0.2));
     animation: preloader-fade 2s infinite alternate;
+    position: relative;
+    z-index: 2;
 }
 
 .preloader-ring {
@@ -2841,8 +2852,8 @@ button {
     border-top: 2px solid var(--gold);
     border-radius: 50%;
     position: absolute;
-    top: -15px;
-    left: -15px;
+    top: 0;
+    left: 0;
     animation: preloader-spin 1.2s linear infinite;
 }
 
