@@ -233,19 +233,19 @@
                         <div class="reel-thumb-list">
                             <!-- Clickable Thumbnails to change main video -->
                             <div class="reel-thumb" onclick="changeMainReel('videos/reel-1.mp4')">
-                                <video src="videos/reel-1.mp4" muted loop style="width:100%;height:100%;object-fit:cover;border-radius:12px;"></video>
+                                <video src="videos/reel-1.mp4" muted loop preload="metadata" style="width:100%;height:100%;object-fit:cover;border-radius:12px;"></video>
                                 <div class="reel-thumb-play"><i data-lucide="play"></i></div>
                             </div>
                             <div class="reel-thumb" onclick="changeMainReel('videos/reel-2.mp4')">
-                                <video src="videos/reel-2.mp4" muted loop style="width:100%;height:100%;object-fit:cover;border-radius:12px;"></video>
+                                <video src="videos/reel-2.mp4" muted loop preload="metadata" style="width:100%;height:100%;object-fit:cover;border-radius:12px;"></video>
                                 <div class="reel-thumb-play"><i data-lucide="play"></i></div>
                             </div>
                             <div class="reel-thumb" onclick="changeMainReel('videos/reel-3.mp4')">
-                                <video src="videos/reel-3.mp4" muted loop style="width:100%;height:100%;object-fit:cover;border-radius:12px;"></video>
+                                <video src="videos/reel-3.mp4" muted loop preload="metadata" style="width:100%;height:100%;object-fit:cover;border-radius:12px;"></video>
                                 <div class="reel-thumb-play"><i data-lucide="play"></i></div>
                             </div>
                             <div class="reel-thumb" onclick="changeMainReel('https://media.githubusercontent.com/media/mishel-0/oval-palace/main/videos/reel-4.mp4')">
-                                <video src="https://media.githubusercontent.com/media/mishel-0/oval-palace/main/videos/reel-4.mp4" muted loop style="width:100%;height:100%;object-fit:cover;border-radius:12px;"></video>
+                                <video src="https://media.githubusercontent.com/media/mishel-0/oval-palace/main/videos/reel-4.mp4" muted loop preload="metadata" style="width:100%;height:100%;object-fit:cover;border-radius:12px;"></video>
                                 <div class="reel-thumb-play"><i data-lucide="play"></i></div>
                             </div>
                         </div>
@@ -519,14 +519,9 @@
             }
             initPageNavbar();
             initScrollReveal();
-            // Retry icons in case Lucide CDN loaded late
-            setTimeout(() => { if (typeof lucide !== 'undefined') lucide.createIcons(); }, 500);
-            setTimeout(() => { if (typeof lucide !== 'undefined') lucide.createIcons(); }, 1500);
-        });
-
-        // Also retry when the full page (including CDN scripts) finishes loading
-        window.addEventListener('load', () => {
-            if (typeof lucide !== 'undefined') lucide.createIcons();
+            
+            // Single retry for robust loading
+            setTimeout(() => { if (typeof lucide !== 'undefined') lucide.createIcons(); }, 800);
         });
 
         function initPageNavbar() {
@@ -554,8 +549,7 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
-                        // Re-create icons for newly visible sections
-                        if (typeof lucide !== 'undefined') lucide.createIcons();
+                        observer.unobserve(entry.target);
                     }
                 });
             }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
@@ -585,6 +579,20 @@
             });
         }
 
+        // Reel Intersection Observer (Pause when off-screen)
+        if(mainVid) {
+            const reelObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        if (isReelPlaying) mainVid.play().catch(() => {});
+                    } else {
+                        mainVid.pause();
+                    }
+                });
+            }, { threshold: 0.2 });
+            reelObserver.observe(mainVid);
+        }
+
         function toggleReelPlay() {
             const video = document.getElementById('mainReelVideo');
             if (video.paused) { video.play(); isReelPlaying = true; }
@@ -597,14 +605,14 @@
             video.muted = !video.muted;
             isReelMuted = video.muted;
             const icon = document.getElementById('reelMuteIcon');
-            icon.setAttribute('data-lucide', isReelMuted ? 'volume-x' : 'volume-2');
-            lucide.createIcons();
+            if (icon) icon.setAttribute('data-lucide', isReelMuted ? 'volume-x' : 'volume-2');
+            if (typeof lucide !== 'undefined') lucide.createIcons();
         }
 
         function updatePlayIcon() {
             const icon = document.getElementById('reelPlayIcon');
-            icon.setAttribute('data-lucide', isReelPlaying ? 'pause' : 'play');
-            lucide.createIcons();
+            if (icon) icon.setAttribute('data-lucide', isReelPlaying ? 'pause' : 'play');
+            if (typeof lucide !== 'undefined') lucide.createIcons();
         }
 
         // ==================== SOCIAL TABS ====================
