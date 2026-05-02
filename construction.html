@@ -539,7 +539,7 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
+    <script src="common.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             initPageNavbar();
@@ -670,7 +670,7 @@
             // Lazy-load videos: only load src when scrolled into view
             lazyLoadVideos();
         }
-
+        
         function lazyLoadVideos() {
             const videoObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -698,38 +698,6 @@
                     v.setAttribute('data-observed', 'true');
                 }
             });
-        }
-
-        // Standard helpers
-        function initPageNavbar() {
-            const hamburger = document.getElementById('navHamburger');
-            const mobileMenu = document.getElementById('mobileMenu');
-            const overlay = document.getElementById('mobileOverlay');
-            hamburger.addEventListener('click', () => {
-                hamburger.classList.toggle('active');
-                mobileMenu.classList.toggle('active');
-                overlay.classList.toggle('active');
-            });
-            overlay.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                mobileMenu.classList.remove('active');
-                overlay.classList.remove('active');
-            });
-        }
-
-        function closeMobileMenu() {
-            document.getElementById('navHamburger').classList.remove('active');
-            document.getElementById('mobileMenu').classList.remove('active');
-            document.getElementById('mobileOverlay').classList.remove('active');
-        }
-
-        function initScrollReveal() {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) entry.target.classList.add('visible');
-                });
-            }, { threshold: 0.1 });
-            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
         }
 
         let currentGallery = [];
@@ -770,6 +738,10 @@
                 video.className = 'lightbox-media';
                 video.controls = true;
                 video.autoplay = true;
+                video.muted = true; // Essential for autoplay
+                video.playsInline = true;
+                video.style.maxWidth = '100%';
+                video.style.maxHeight = '80vh';
                 container.appendChild(video);
             } else {
                 const img = document.createElement('img');

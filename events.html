@@ -289,6 +289,7 @@
     </footer>
 
     <!-- Scripts -->
+    <script src="common.js"></script>
     <script>
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
@@ -304,7 +305,10 @@
         });
 
         const eventMedia = [
-            // To be populated with real event media
+            { type: 'image', category: 'milestone', src: 'images/hero-1.jpg', title: 'Foundation Stone Ceremony' },
+            { type: 'image', category: 'celebration', src: 'images/hero-2.jpg', title: '100+ Investors Celebration' },
+            { type: 'image', category: 'milestone', src: 'images/hero-3.jpg', title: 'Phase 1 Completion Gala' },
+            { type: 'video', category: 'celebration', src: 'videos/resort-preview.mp4', title: 'Annual Site Meet' }
         ];
 
         function renderGallery(filter = 'all') {
