@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn about the legacy, vision, and leadership behind Oval Palace Resort and Nalakath Holdings.">
+    <meta name="author" content="Nalakath Holdings">
+
+    <title>Our Legacy & Leadership — Oval Palace Resort | Nalakath Holdings</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cellipse cx='50' cy='55' rx='35' ry='28' fill='none' stroke='%23C9A84C' stroke-width='4'/%3E%3Cpath d='M50 15 L42 30 L50 25 L58 30 Z' fill='%23C9A84C'/%3E%3Ccircle cx='35' cy='30' r='3' fill='%23C9A84C'/%3E%3Ccircle cx='65' cy='30' r='3' fill='%23C9A84C'/%3E%3Ccircle cx='50' cy='10' r='3' fill='%23C9A84C'/%3E%3C/svg%3E">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@0.344.0/dist/umd/lucide.js"></script>
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="pages.css">
+</head>
+<body>
+
+    <!-- ==================== NAVIGATION ==================== -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-logo">
+                <img src="images/logo.png" alt="Oval Palace Resort Logo" class="nav-logo-img">
+            </a>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="resort-overview.html">Resort Overview</a></li>
+                <li><a href="construction.html">Construction Phase</a></li>
+                <li><a href="testimonials.html">Testimonials</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="index.html#investment" class="nav-cta">Invest Now</a></li>
+            </ul>
+
+            <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu-overlay" id="mobileOverlay"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="index.html" onclick="closeMobileMenu()">Home</a></li>
+            <li><a href="about.html" onclick="closeMobileMenu()">About</a></li>
+            <li><a href="resort-overview.html" onclick="closeMobileMenu()">Resort Overview</a></li>
+            <li><a href="construction.html" onclick="closeMobileMenu()">Construction Phase</a></li>
+            <li><a href="testimonials.html" onclick="closeMobileMenu()">Testimonials</a></li>
+            <li><a href="events.html" onclick="closeMobileMenu()">Events</a></li>
+            <li><a href="index.html#contact" onclick="closeMobileMenu()">Contact</a></li>
+        </ul>
+        <a href="index.html#investment" class="nav-cta" onclick="closeMobileMenu()">Invest Now</a>
+    </div>
+
+    <!-- ==================== PAGE HERO ==================== -->
+    <section class="page-hero">
+        <div class="page-hero-bg" style="background-image: url('images/hero-2.jpg')"></div>
+        <div class="page-hero-overlay"></div>
+        <div class="container page-hero-content">
+            <div class="page-breadcrumb">
+                <a href="index.html"><i data-lucide="home"></i> Home</a>
+                <i data-lucide="chevron-right"></i>
+                <span>About Us</span>
+            </div>
+            <h1 class="page-hero-title">Our Legacy & <span class="gold-gradient-text">Leadership</span></h1>
+            <p class="page-hero-subtitle">Building trust through decades of global excellence and architectural innovation.</p>
+        </div>
+    </section>
+
+    <!-- ==================== ABOUT INTRO ==================== -->
+    <section class="about-intro">
+        <div class="container">
+            <div class="about-intro-grid">
+                <div class="about-visual reveal">
+                    <img src="images/hero-4.jpg" alt="Oval Palace Vision">
+                    <div class="about-experience-badge">
+                        <span>30+</span>
+                        <span>Years of Excellence</span>
+                    </div>
+                </div>
+                <div class="about-text reveal">
+                    <span class="section-label">A Nalakath Holdings Venture</span>
+                    <h2 class="section-title">The Vision Behind <span class="gold-gradient-text">Paradise</span></h2>
+                    <p class="section-subtitle" style="margin-left:0;">Nalakath Holdings is a diversified group with interests in real estate, hospitality, oil & gas, and infrastructure. Oval Palace Resort represents our crowning achievement in luxury hospitality—a project designed to set new benchmarks for architectural grandeur and investor value in Kerala.</p>
+                    
+                    <div class="values-grid" style="margin-top: 40px;">
+                        <div class="value-card">
+                            <div class="value-icon"><i data-lucide="shield-check"></i></div>
+                            <h3>Integrity</h3>
+                            <p>Unwavering commitment to transparency and ethical business practices.</p>
+                        </div>
+                        <div class="value-card">
+                            <div class="value-icon"><i data-lucide="gem"></i></div>
+                            <h3>Excellence</h3>
+                            <p>Delivering world-class quality in every detail of our construction.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== LEADERSHIP SECTION ==================== -->
+    <section class="leadership-section">
+        <div class="container">
+            <div class="section-header-centered reveal">
+                <span class="section-label" style="justify-content: center;">The Architects of Our Success</span>
+                <h2 class="section-title">Our <span class="gold-gradient-text">Leadership</span></h2>
+                <p class="section-subtitle">Guided by global expertise and a passion for community development.</p>
+            </div>
+
+            <div class="leadership-grid">
+                <!-- Leader 1: Chairman -->
+                <div class="leader-card reveal">
+                    <div class="leader-image-wrap">
+                        <img src="https://nalakathholdings.com/img/chairman_new.jpg" alt="Mohamed Ashraf Nalakath">
+                    </div>
+                    <div class="leader-info">
+                        <span class="leader-designation">Chairman – Nalakath Holdings</span>
+                        <h3 class="leader-name">Mohamed Ashraf Nalakath</h3>
+                        <div class="leader-bio">
+                            <p>With over three decades of diverse experience spanning oil & gas, construction, design, and hospitality, Mohamed Ashraf Nalakath leads Nalakath Holdings with a vision rooted in excellence, innovation, and integrity.</p>
+                            <p>A graduate with a strong foundation in engineering and project management, Mr. Ashraf spent a decade with WS Atkins UK, overseeing Dubai’s most iconic developments, including the <strong>Burj Al Arab</strong>, <strong>Wild Wadi Waterpark</strong>, <strong>Jumeirah Beach Hotel</strong>, and <strong>Emirates Towers</strong>.</p>
+                            <p>Today, he guides the company’s diversified portfolio with a steadfast commitment to delivering premium quality and sustainable growth, combining strategic foresight with operational excellence.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Leader 2: Executive Director -->
+                <div class="leader-card reverse reveal">
+                    <div class="leader-info">
+                        <span class="leader-designation">Executive Director – Nalakath Holdings</span>
+                        <h3 class="leader-name">Shafeeq Aslam</h3>
+                        <div class="leader-bio">
+                            <p>Shafeeq Aslam is an accomplished healthcare and renewable energy professional with over 20 years of experience working in leading hospitals across India, Saudi Arabia, and the UAE.</p>
+                            <p>In 2015, he established a successful solar energy company in India, delivering numerous high-impact government and private sector projects across Kerala. His leadership reflects a deep commitment to innovation and sustainability.</p>
+                            <p>As Executive Director, Shafeeq combines his extensive international experience and entrepreneurial vision to guide the group’s growth and diversification.</p>
+                        </div>
+                    </div>
+                    <div class="leader-image-wrap">
+                        <img src="https://nalakathholdings.com/img/director.jpeg" alt="Shafeeq Aslam">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CORE VALUES ==================== -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="section-header-centered reveal">
+                <span class="section-label" style="justify-content: center;">Foundational Pillars</span>
+                <h2 class="section-title">Core <span class="gold-gradient-text">Values</span></h2>
+            </div>
+            <div class="values-grid reveal">
+                <div class="value-card">
+                    <div class="value-icon"><i data-lucide="users"></i></div>
+                    <h3>Community</h3>
+                    <p>Creating sustainable value for our investors and the local communities we serve.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon"><i data-lucide="lightbulb"></i></div>
+                    <h3>Innovation</h3>
+                    <p>Implementing modern construction techniques and eco-friendly technologies.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon"><i data-lucide="award"></i></div>
+                    <h3>Quality</h3>
+                    <p>Uncompromising standards in every architectural detail and service offered.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CTA BANNER ==================== -->
+    <section class="cta-banner">
+        <div class="container">
+            <div class="cta-banner-content reveal">
+                <h2>Join the <span class="gold-gradient-text">Nalakath Family</span></h2>
+                <p>Invest in a legacy of trust and excellence. Secure your stake in Kerala's premium luxury resort today.</p>
+                <div class="cta-banner-buttons">
+                    <a href="index.html#investment" class="btn-primary">
+                        <i data-lucide="trending-up"></i>
+                        Explore Investment Plans
+                    </a>
+                    <a href="index.html#contact" class="btn-secondary">
+                        <i data-lucide="phone"></i>
+                        Speak with Our Team
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="nav-logo">
+                        <img src="images/logo.png" alt="Oval Palace Resort Logo" class="nav-logo-img">
+                    </a>
+                    <p>A premium luxury resort by Nalakath Holdings. Invest in hospitality, earn 12% p.a. returns with buyback guarantee.</p>
+                </div>
+
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="resort-overview.html">Resort Overview</a></li>
+                        <li><a href="construction.html">Construction Phase</a></li>
+                        <li><a href="testimonials.html">Testimonials</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4>Contact</h4>
+                    <ul class="footer-links">
+                        <li><a href="tel:+917592867000">+91 759 286 7000</a></li>
+                        <li><a href="mailto:sales@nalakathholdings.com">sales@nalakathholdings.com</a></li>
+                        <li>ASSN Tower, Opp Suzuki Nexa, Calicut Road, Angadipuram Perinthalmanna.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Copyright 2026 All rights reserved. | Designed by Mishel Adnan.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="common.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+            initPageNavbar();
+            initScrollReveal();
+            
+            // Single retry for robust loading
+            setTimeout(() => { if (typeof lucide !== 'undefined') lucide.createIcons(); }, 800);
+        });
+    </script>
+</body>
+</html>

@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://oval-palace.vercel.app/sitemap.xml
