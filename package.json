@@ -1,0 +1,8 @@
+{
+  "name": "oval-palace",
+  "version": "1.0.0",
+  "description": "Oval Palace Resort Investment Website",
+  "scripts": {
+    "start": "serve ."
+  }
+}
