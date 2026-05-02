@@ -54,12 +54,6 @@ function initVideoObserver() {
         entries.forEach(entry => {
             const video = entry.target;
             if (entry.isIntersecting) {
-                // For lazy-loading videos
-                const dataSrc = video.getAttribute('data-src');
-                if (dataSrc && !video.src) {
-                    video.src = dataSrc;
-                    video.load();
-                }
                 video.play().catch(() => {});
             } else {
                 video.pause();
@@ -68,4 +62,47 @@ function initVideoObserver() {
     }, { threshold: 0.1 });
 
     document.querySelectorAll('video').forEach(v => videoObserver.observe(v));
+}
+
+// ==================== PRELOADER MANAGEMENT ====================
+function dismissPreloader() {
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+        preloader.classList.add('loaded');
+        document.body.classList.remove('loading');
+        // Small delay to ensure smooth transition before re-enabling scroll
+        setTimeout(() => {
+            document.body.style.overflow = '';
+        }, 800);
+    }
+}
+
+function initPreloaderInterception() {
+    // Dismiss on load
+    window.addEventListener('load', dismissPreloader);
+
+    // Safety timeout: 3 seconds
+    setTimeout(dismissPreloader, 3000);
+
+    // Intercept internal links to show preloader on navigation
+    document.querySelectorAll('a').forEach(link => {
+        const href = link.getAttribute('href');
+        if (href && !href.startsWith('#') && !href.startsWith('http') && !link.hasAttribute('target')) {
+            link.addEventListener('click', (e) => {
+                const preloader = document.getElementById('preloader');
+                if (preloader) {
+                    preloader.classList.remove('loaded');
+                    document.body.classList.add('loading');
+                }
+            });
+        }
+    });
+}
+
+// Global Initialization
+function initCommon() {
+    initPageNavbar();
+    initScrollReveal();
+    initVideoObserver();
+    initPreloaderInterception();
 }
