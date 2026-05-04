@@ -111,8 +111,7 @@
         .lightbox-modal {
             position: fixed;
             inset: 0;
-            background: rgba(0,0,0,0.95);
-            backdrop-filter: blur(15px);
+            background: rgba(0,0,0,0.97);
             z-index: 10000;
             display: none;
             flex-direction: column;
@@ -224,38 +223,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 20px;
-            min-height: 400px;
-            /* Prevents layout shifts and boosts scroll speed */
-            content-visibility: auto;
-            contain-intrinsic-size: 1px 1000px;
-        }
-
-        .site-card {
-            position: relative;
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            aspect-ratio: 1/1;
-            /* Premium placeholder background while images load */
-            background: linear-gradient(135deg, rgba(255,255,255,0.02) 0%, rgba(201,168,76,0.05) 100%);
-            border: 1px solid var(--border-subtle);
-            transition: var(--transition-smooth);
-            /* GPU Hardware Acceleration for zero-flicker scrolling */
-            transform: translateZ(0);
-            backface-visibility: hidden;
-            will-change: transform;
-        }
-
-        .site-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0; /* Fade in once loaded */
-            transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), transform 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);
-            will-change: opacity, transform;
-        }
-
-        .site-card img.loaded {
-            opacity: 1;
+            min-height: 200px;
         }
 
         /* General Refined Responsiveness */
@@ -278,9 +246,16 @@
             border-radius: var(--radius-lg);
             overflow: hidden;
             aspect-ratio: 1/1;
-            background: rgba(255,255,255,0.02);
+            background: linear-gradient(135deg, rgba(255,255,255,0.02) 0%, rgba(201,168,76,0.05) 100%);
             border: 1px solid var(--border-subtle);
-            transition: var(--transition-smooth);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            transform: translateZ(0);
+            cursor: pointer;
+        }
+
+        .site-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.4);
         }
 
         .site-card.soon {
@@ -292,6 +267,12 @@
             text-align: center;
             padding: 40px;
             border: 1px dashed var(--border-subtle);
+            cursor: default;
+        }
+
+        .site-card.soon:hover {
+            transform: none;
+            box-shadow: none;
         }
 
         .site-card.soon i {
@@ -309,12 +290,44 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+            opacity: 0;
+            transition: opacity 0.6s ease, transform 0.8s ease;
+        }
+
+        .site-card img.loaded {
+            opacity: 1;
         }
 
         .site-card:hover img {
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
+
+        /* Video loading spinner */
+        .site-card video {
+            background: #0a0f1a;
+        }
+        .site-card .video-loader {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(10,15,26,0.8);
+            z-index: 2;
+            transition: opacity 0.4s ease;
+        }
+        .site-card .video-loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .video-spinner {
+            width: 36px; height: 36px;
+            border: 3px solid rgba(201,168,76,0.2);
+            border-top-color: #C9A84C;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
 
         .card-overlay {
             position: absolute;
@@ -674,7 +687,8 @@
                     
                     if (isVideo) {
                         card.innerHTML = `
-                            <video muted loop playsinline preload="none" data-src="${data.img}" style="width:100%;height:100%;object-fit:cover;display:block;background:#0a0f1a;">
+                            <div class="video-loader"><div class="video-spinner"></div></div>
+                            <video muted loop playsinline preload="none" poster="${data.placeholder}" data-src="${data.img}" style="width:100%;height:100%;object-fit:cover;display:block;">
                             </video>
                             <div class="video-preview-badge" style="pointer-events:none;"><i data-lucide="play-circle"></i> View Full</div>
                             <div class="card-overlay" style="pointer-events:none;">
@@ -686,7 +700,7 @@
                         `;
                     } else {
                         card.innerHTML = `
-                            <img src="${data.img}" alt="${data.title}" onload="this.classList.add('loaded')" loading="lazy" onerror="this.src='${data.placeholder}';">
+                            <img src="${data.img}" alt="${data.title}" onload="this.classList.add('loaded')" loading="lazy" decoding="async" onerror="this.src='${data.placeholder}';">
                             <div class="card-overlay">
                                 <div class="card-meta">
                                     <h4>${data.title}</h4>
@@ -708,23 +722,28 @@
             const videoObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     const video = entry.target;
+                    const loader = video.parentElement.querySelector('.video-loader');
                     if (entry.isIntersecting) {
                         const src = video.getAttribute('data-src');
                         if (src && !video.src) {
                             video.src = src;
                             video.load();
+                            // Hide spinner once video can play
+                            video.addEventListener('canplay', () => {
+                                if (loader) loader.classList.add('hidden');
+                            }, { once: true });
+                            // Fallback: hide spinner after 5s even if canplay doesn't fire
+                            setTimeout(() => { if (loader) loader.classList.add('hidden'); }, 5000);
                         }
                         video.play().catch(() => {});
                     } else {
-                        // Pause video when out of viewport to save CPU/GPU!
                         if (video.src && !video.paused) {
                             video.pause();
                         }
                     }
                 });
-            }, { threshold: 0.1, rootMargin: '200px' });
+            }, { threshold: 0.05, rootMargin: '400px' });
             
-            // Re-observe only newly added videos
             document.querySelectorAll('video[data-src]').forEach(v => {
                 if (!v.hasAttribute('data-observed')) {
                     videoObserver.observe(v);
