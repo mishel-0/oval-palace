@@ -87,15 +87,29 @@ body {
     color: var(--text-primary);
     line-height: 1.7;
     overflow-x: hidden;
+    width: 100%;
+    position: relative;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeSpeed; /* Speed first for high-res sites */
+    text-rendering: optimizeSpeed;
 }
 
-img {
+/* Safety wrapper for horizontal overflow */
+.page-wrapper {
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+}
+
+img, video, iframe, svg {
     max-width: 100%;
     height: auto;
     display: block;
+}
+
+/* Fix for flex/grid items causing overflow */
+* {
+    min-width: 0;
 }
 
 a {
@@ -2789,9 +2803,9 @@ button {
     .navbar.scrolled .nav-logo-img { height: 60px; }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 768px) {
     .container {
-        padding: 0 20px;
+        padding: 0 24px;
     }
 
     .hero-title {
