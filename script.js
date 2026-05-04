@@ -701,7 +701,9 @@ function showBotMessages(messages, options = null) {
             const typingEl = document.createElement('div');
             typingEl.className = 'chat-message bot';
             typingEl.innerHTML = `
-                <div class="chat-avatar-small"><i data-lucide="bot"></i></div>
+                <div class="chat-avatar-small">
+                    <img src="images/assistant-avatar.png" alt="Assistant">
+                </div>
                 <div class="typing-indicator"><span></span><span></span><span></span></div>
             `;
             container.appendChild(typingEl);
@@ -711,7 +713,9 @@ function showBotMessages(messages, options = null) {
             // Replace with actual message
             setTimeout(() => {
                 typingEl.innerHTML = `
-                    <div class="chat-avatar-small"><i data-lucide="bot"></i></div>
+                    <div class="chat-avatar-small">
+                        <img src="images/assistant-avatar.png" alt="Assistant">
+                    </div>
                     <div class="chat-bubble">${msg.replace(/\n/g, '<br>')}</div>
                 `;
                 // Only re-scan specific elements for performance
