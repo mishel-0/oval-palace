@@ -2755,6 +2755,36 @@ button {
     .contact-grid,
     .why-invest {
         grid-template-columns: 1fr;
+        gap: 12px;
+        margin: 24px auto 40px;
+    }
+
+    .why-invest-item {
+        justify-content: center;
+        text-align: center;
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .plans-grid,
+    .plans-row-2 {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .plans-row-2 {
+        margin-top: 20px !important;
+    }
+
+    .investment-highlight {
+        margin-bottom: 30px;
+    }
+
+    .roi-badge {
+        font-size: 1rem;
+        padding: 12px 20px;
+        width: 100%;
+        justify-content: center;
     }
 
     .gallery-grid {
