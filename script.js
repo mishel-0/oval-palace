@@ -323,13 +323,13 @@ function submitBooking(e) {
     if (modalContent) {
         modalContent.style.transition = 'all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1)';
         modalContent.style.opacity = '0';
-        modalContent.style.transform = 'translate(-50%, -45%) scale(0.95)';
+        modalContent.style.transform = 'scale(0.95)';
         
         setTimeout(() => {
             document.getElementById('bookingFormView').style.display = 'none';
             document.getElementById('bookingSuccessView').style.display = 'block';
             modalContent.style.opacity = '1';
-            modalContent.style.transform = 'translate(-50%, -50%) scale(1)';
+            modalContent.style.transform = 'scale(1)';
             lucide.createIcons();
         }, 300);
     } else {
