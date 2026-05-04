@@ -48,12 +48,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: 10px;
     margin-bottom: 24px;
-    font-size: 0.85rem;
-    letter-spacing: 1px;
+    font-size: 0.82rem;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
-    font-weight: 500;
+    font-weight: 600;
+    line-height: 1;
 }
 
 .page-breadcrumb a {
@@ -61,21 +62,28 @@
     display: flex;
     align-items: center;
     gap: 6px;
+    transition: var(--transition-fast);
+}
+
+.page-breadcrumb a:hover {
+    color: var(--text-primary);
 }
 
 .page-breadcrumb a i {
     width: 14px;
     height: 14px;
+    margin-top: -1px; /* Optical adjustment */
 }
 
 .page-breadcrumb > i {
     color: var(--text-muted);
-    width: 14px;
-    height: 14px;
+    width: 12px;
+    height: 12px;
+    opacity: 0.6;
 }
 
 .page-breadcrumb span {
-    color: var(--text-secondary);
+    color: var(--text-muted);
 }
 
 .page-hero-title {
