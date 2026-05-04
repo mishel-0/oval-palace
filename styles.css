@@ -1023,7 +1023,7 @@ button {
 .plan-card {
     background: var(--bg-card);
     border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-lg);
+    border-radius: 28px; /* Curvy iOS Style */
     padding: 40px 30px;
     transition: var(--transition-smooth);
     position: relative;
@@ -1077,18 +1077,26 @@ button {
     box-shadow: var(--shadow-gold);
 }
 
-.plan-card.featured::before {
-    content: 'MOST POPULAR';
+.popular-badge {
     position: absolute;
     top: 20px;
-    right: -32px;
+    right: 20px;
     background: linear-gradient(135deg, var(--gold-dark), var(--gold));
     color: var(--bg-primary);
-    font-size: 0.65rem;
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 0.7rem;
     font-weight: 700;
-    letter-spacing: 1px;
-    padding: 6px 40px;
-    transform: rotate(45deg);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    box-shadow: 0 4px 15px rgba(201, 168, 76, 0.3);
+    z-index: 5;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
 }
 
 .plan-card:hover {
