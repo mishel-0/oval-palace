@@ -582,7 +582,7 @@ const chatFlow = {
     construction: {
         messages: [
             "Oval Palace is currently in the Foundation & Structure phase! 🏗️",
-            "✅ Land Acquisition — Complete\n✅ Design & Architecture — Complete\n🔨 Foundation & Structure — In Progress\n⏳ Interior & Finishing — Q2 2026\n🎉 Grand Opening — Q4 2026",
+            "✅ Land Acquisition — Complete\n✅ Design & Architecture — Complete\n🔨 Foundation & Structure — In Progress\n⏳ Interior & Finishing — Q1 2027\n🎉 Grand Opening — Q2 2028",
             "Want to explore investment plans or visit the site?"
         ],
         options: [
