@@ -573,7 +573,7 @@ const chatFlow = {
         messages: [
             "I'd love to connect you with our sales manager! 📞",
             "You can call us directly at:",
-            "📱 +91 7592 863 000\n📱 +91 7592 868 100",
+            "📱 +91 799 497 1100",
             "Or scroll down to book an appointment through our calendar. Can I get your email and phone to schedule a callback?"
         ],
         expectsInput: true,
@@ -616,7 +616,7 @@ const chatFlow = {
         getMessage: (name) => [
             `Thank you, ${name}! 🎉`,
             "Our investment advisor will reach out to you within 24 hours.",
-            "In the meantime, feel free to explore the investment plans on this page or call us at +91 7592 863 000.",
+            "In the meantime, feel free to explore the investment plans on this page or call us at +91 799 497 1100.",
             "Is there anything else I can help with?"
         ],
         options: [
