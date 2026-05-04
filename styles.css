@@ -1206,22 +1206,45 @@ button {
     transform: scale(0.98);
 }
 
-.plan-card.featured .plan-book-btn {
+.plan-book-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
     background: linear-gradient(135deg, var(--gold-dark), var(--gold));
-    color: var(--bg-primary);
+    transition: width 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    z-index: -1;
+}
+
+.plan-book-btn:hover::before {
+    width: 100%;
 }
 
 .plan-card:not(.featured) .plan-book-btn {
-    background: rgba(201, 168, 76, 0.05);
-    border: 1px solid rgba(201, 168, 76, 0.3);
+    background: transparent;
+    border: 1px solid rgba(201, 168, 76, 0.4);
     color: var(--gold);
 }
 
 .plan-card:not(.featured) .plan-book-btn:hover {
-    background: linear-gradient(135deg, var(--gold-dark), var(--gold));
     color: var(--bg-primary);
     border-color: transparent;
 }
+
+.plan-card.featured .plan-book-btn {
+    background: rgba(201, 168, 76, 0.15);
+    color: var(--gold);
+    border: 1px solid rgba(201, 168, 76, 0.3);
+}
+
+.plan-card.featured .plan-book-btn:hover {
+    color: var(--bg-primary);
+    border-color: transparent;
+}
+
+
 
 .plans-row-2 {
     display: grid;
