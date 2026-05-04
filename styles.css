@@ -1025,9 +1025,22 @@ button {
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-lg);
     padding: 40px 30px;
-    transition: var(--transition-base);
+    transition: var(--transition-smooth);
     position: relative;
     overflow: hidden;
+}
+
+.plan-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0;
+    transition: var(--transition-smooth);
+    z-index: 1;
 }
 
 .plan-tier {
@@ -1079,9 +1092,13 @@ button {
 }
 
 .plan-card:hover {
-    transform: translateY(-6px);
+    transform: translateY(-8px);
     border-color: var(--border-gold);
     box-shadow: var(--shadow-gold);
+}
+
+.plan-card:hover::before {
+    opacity: 1;
 }
 
 .plan-Units {
