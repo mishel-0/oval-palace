@@ -36,8 +36,7 @@ function initScrollReveal() {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                // Optional: stop observing once revealed
-                // observer.unobserve(entry.target);
+                observer.unobserve(entry.target);
             }
         });
     }, { 
