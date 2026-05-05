@@ -478,6 +478,8 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 8px; /* Tight sleek spacing */
     margin-top: 30px;
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 1200px;
 }
 
 .ig-post {
