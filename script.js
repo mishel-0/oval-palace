@@ -793,7 +793,15 @@ function handleChatKeypress(e) {
 function processUserInput(message) {
     switch (chatState.step) {
         case 'greeting':
-            chatState.name = message;
+            const invalidNames = ['yes', 'no', 'hi', 'hello', 'hey', 'ok', 'okay', 'yep', 'nope', 'yeah', 'sure'];
+            const cleanMsg = message.trim().toLowerCase();
+            
+            if (cleanMsg.length < 2 || invalidNames.includes(cleanMsg) || !/^[a-zA-Z\s.-]+$/.test(cleanMsg)) {
+                showBotMessages(["Please enter a valid name so I know who I'm talking to! 😊"]);
+                return;
+            }
+            
+            chatState.name = message.charAt(0).toUpperCase() + message.slice(1);
             chatState.step = 'interest';
             const flow = chatFlow.interest;
             const msgs = flow.getMessage(chatState.name);
