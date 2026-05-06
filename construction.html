@@ -588,18 +588,9 @@
     <script src="common.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            initPageNavbar();
-            initScrollReveal();
             // Load Phase 1 by default
             const initialBtn = document.querySelector('.phase-btn.active');
             if (initialBtn) filterPhase(1, initialBtn);
-            
-            // Initialize icons robustly
-            if (typeof lucide !== 'undefined') {
-                lucide.createIcons();
-            } else {
-                setTimeout(() => { if (typeof lucide !== 'undefined') lucide.createIcons(); }, 800);
-            }
         });
 
         // Mock data for phases (since actual images will be uploaded to folders)
@@ -716,45 +707,10 @@
                     container.appendChild(card);
                 });
             }
-            if (typeof lucide !== 'undefined') lucide.createIcons();
-            initScrollReveal();
-            // Lazy-load videos: only load src when scrolled into view
-            lazyLoadVideos();
+            if (typeof lucide !== 'undefined') refreshIcons();
+            window.refreshObservers();
         }
         
-        function lazyLoadVideos() {
-            const videoObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    const video = entry.target;
-                    const loader = video.parentElement.querySelector('.video-loader');
-                    if (entry.isIntersecting) {
-                        const src = video.getAttribute('data-src');
-                        if (src && !video.src) {
-                            video.src = src;
-                            video.load();
-                            // Hide spinner once video can play
-                            video.addEventListener('canplay', () => {
-                                if (loader) loader.classList.add('hidden');
-                            }, { once: true });
-                            // Fallback: hide spinner after 5s even if canplay doesn't fire
-                            setTimeout(() => { if (loader) loader.classList.add('hidden'); }, 5000);
-                        }
-                        video.play().catch(() => {});
-                    } else {
-                        if (video.src && !video.paused) {
-                            video.pause();
-                        }
-                    }
-                });
-            }, { threshold: 0.05, rootMargin: '400px' });
-            
-            document.querySelectorAll('video[data-src]').forEach(v => {
-                if (!v.hasAttribute('data-observed')) {
-                    videoObserver.observe(v);
-                    v.setAttribute('data-observed', 'true');
-                }
-            });
-        }
 
         let currentGallery = [];
         let currentIndex = 0;

@@ -7,6 +7,7 @@
 .resort-highlights {
     padding: var(--section-padding);
     background: var(--bg-secondary);
+    contain: paint;
 }
 
 .highlights-grid {
@@ -87,6 +88,7 @@
     padding: var(--section-padding);
     position: relative;
     overflow: hidden;
+    contain: paint;
 }
 
 .reels-section::before {
@@ -120,12 +122,12 @@
     background: #1A1A2E;
     border-radius: 44px;
     padding: 12px;
-    box-shadow:
-        0 0 0 2px rgba(201, 168, 76, 0.3),
-        0 20px 60px rgba(0, 0, 0, 0.6),
-        0 0 80px rgba(201, 168, 76, 0.08);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4); /* Simplified shadow to save GPU */
     position: relative;
     flex-shrink: 0;
+    /* Force GPU layer for video container to prevent layout thrashing */
+    will-change: transform;
+    transform: translateZ(0);
 }
 
 .phone-notch {
@@ -204,8 +206,8 @@
 }
 
 @keyframes reelPulse {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(201, 168, 76, 0.3); }
-    50% { box-shadow: 0 0 0 12px rgba(201, 168, 76, 0); }
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.05); opacity: 0.8; }
 }
 
 .reel-upload-icon-ring i {
@@ -470,6 +472,7 @@
 .social-feed-section {
     padding: var(--section-padding);
     background: var(--bg-secondary);
+    contain: paint;
 }
 
 /* ---------- PREMIUM INSTAGRAM GALLERY ---------- */
@@ -478,26 +481,68 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 8px; /* Tight sleek spacing */
     margin-top: 30px;
-    content-visibility: auto;
-    contain-intrinsic-size: 1px 1200px;
+    grid-auto-rows: 1fr; /* Maintain consistent row height */
 }
 
 .ig-post {
     position: relative;
     aspect-ratio: 1 / 1;
     overflow: hidden;
-    background: #0a0a0a;
+    background: #0a1224; /* Solid color instead of heavy animated gradient */
     display: block;
     cursor: pointer;
-    border-radius: 4px; /* Slight premium rounding */
+    border-radius: 4px;
+    transform: translateZ(0); /* Clean GPU layer without the massive will-change memory leak */
+}
+
+.ig-post::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    border: 3px solid rgba(201, 168, 76, 0.2);
+    border-top-color: var(--gold);
+    border-radius: 50%;
+    /* Simplified animation to reduce layout thrashing */
+    animation: ig-spin 1.5s linear infinite;
+    z-index: 1;
+    transition: opacity 0.3s ease;
+}
+
+@keyframes ig-spin {
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes ig-skeleton {
+    to { background-position-x: -200%; }
+}
+
+/* When image is loaded, stop animation and show image */
+.ig-post.img-loaded {
+    background: #0a0a0a;
+    animation: none;
+}
+
+.ig-post.img-loaded::after {
+    opacity: 0;
+    pointer-events: none;
 }
 
 .ig-post img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    will-change: transform;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+    /* REMOVED will-change: transform, opacity; (This was causing massive GPU memory leaks with 12MB images) */
+    /* REMOVED transform scale to prevent layer recalculation */
+}
+
+.ig-post.img-loaded img {
+    opacity: 1;
 }
 
 .ig-post-overlay {
@@ -734,7 +779,7 @@
     
     .ig-gallery {
         grid-template-columns: repeat(2, 1fr);
-        gap: 4px;
+        gap: 6px;
     }
 }
 
@@ -754,6 +799,7 @@
     position: relative;
     overflow: hidden;
     background: linear-gradient(180deg, var(--bg-primary) 0%, rgba(5,9,20,1) 50%, var(--bg-primary) 100%);
+    contain: paint;
 }
 
 .cinema-showcase-section::before {

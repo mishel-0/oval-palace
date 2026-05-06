@@ -54,7 +54,7 @@
     </div>
 
     <!-- ==================== NAVIGATION ==================== -->
-    <nav class="navbar scrolled" id="navbar">
+    <nav class="navbar" id="navbar">
         <div class="container">
             <a href="index.html" class="nav-logo">
                 <img src="images/logo.png" alt="Oval Palace Resort Logo" class="nav-logo-img">
@@ -126,7 +126,7 @@
 
                 <!-- The theater frame -->
                 <div class="cinema-frame" id="cinemaFrame">
-                    <video id="cinemaVideo" src="https://media.githubusercontent.com/media/mishel-0/oval-palace/main/videos/resort-preview.mp4" playsinline autoplay muted loop preload="metadata" poster="images/hero-1.jpg"></video>
+                    <video id="cinemaVideo" data-src="https://media.githubusercontent.com/media/mishel-0/oval-palace/main/videos/resort-preview.mp4" playsinline muted loop preload="none" poster="images/hero-1.jpg"></video>
 
                     <!-- Big center unmute button (shown while auto-previewing muted) -->
                     <button class="cinema-big-play" id="cinemaBigPlay" onclick="toggleCinemaPlay()" aria-label="Unmute and play">
@@ -203,7 +203,7 @@
                         <div class="phone-notch"></div>
                         <div class="phone-screen" id="mainReelScreen">
                             <!-- Main Video Player -->
-                            <video id="mainReelVideo" src="https://raw.githubusercontent.com/mishel-0/oval-palace/main/videos/reel-1.mp4" playsinline loop muted autoplay preload="metadata" poster="images/hero-1.jpg"></video>
+                            <video id="mainReelVideo" data-src="https://raw.githubusercontent.com/mishel-0/oval-palace/main/videos/reel-1.mp4" playsinline loop muted preload="none" poster="images/hero-1.jpg"></video>
                             
                             <!-- Reel Overlay UI -->
                             <div class="reel-overlay" id="reelOverlay">
@@ -244,19 +244,19 @@
                         <h4 class="reel-sidebar-title">More Reels</h4>
                         <div class="reel-thumb-list">
                             <!-- Clickable Thumbnails to change main video -->
-                            <div class="reel-thumb" onclick="changeMainReel('https://raw.githubusercontent.com/mishel-0/oval-palace/main/videos/reel-1.mp4')">
+                            <div class="reel-thumb" onclick="changeMainReel('https://raw.githubusercontent.com/mishel-0/oval-palace/main/videos/reel-1.mp4', '🏡 Experience luxury redefined. Oval Palace Resort — Coming Soon! 🌟')">
                                 <img src="images/hero-1.jpg" alt="Reel 1" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">
                                 <div class="reel-thumb-play"><i data-lucide="play"></i></div>
                             </div>
-                            <div class="reel-thumb" onclick="changeMainReel('https://raw.githubusercontent.com/mishel-0/oval-palace/main/videos/reel-2.mp4')">
+                            <div class="reel-thumb" onclick="changeMainReel('https://raw.githubusercontent.com/mishel-0/oval-palace/main/videos/reel-2.mp4', '🏗️ Construction in full swing. Quality you can trust. 🧱')">
                                 <img src="images/hero-2.jpg" alt="Reel 2" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">
                                 <div class="reel-thumb-play"><i data-lucide="play"></i></div>
                             </div>
-                            <div class="reel-thumb" onclick="changeMainReel('https://raw.githubusercontent.com/mishel-0/oval-palace/main/videos/reel-3.mp4')">
+                            <div class="reel-thumb" onclick="changeMainReel('https://raw.githubusercontent.com/mishel-0/oval-palace/main/videos/reel-3.mp4', '🌊 Dive into paradise. Our infinity pool is taking shape. 🏊‍♂️')">
                                 <img src="images/hero-3.jpg" alt="Reel 3" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">
                                 <div class="reel-thumb-play"><i data-lucide="play"></i></div>
                             </div>
-                            <div class="reel-thumb" onclick="changeMainReel('https://media.githubusercontent.com/media/mishel-0/oval-palace/main/videos/reel-4.mp4')">
+                            <div class="reel-thumb" onclick="changeMainReel('https://media.githubusercontent.com/media/mishel-0/oval-palace/main/videos/reel-4.mp4', '✨ A glimpse of the future. The crown jewel of Perinthalmanna. 👑')">
                                 <img src="images/hero-4.jpg" alt="Reel 4" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">
                                 <div class="reel-thumb-play"><i data-lucide="play"></i></div>
                             </div>
@@ -325,10 +325,10 @@
             </div>
 
             <!-- Premium Instagram Wall -->
-            <div class="ig-gallery reveal">
+            <div class="ig-gallery">
                 <!-- Post 1 -->
-                <a href="https://www.instagram.com/ovalpalace_resort/" target="_blank" class="ig-post">
-                    <img src="images/ig-1.jpg" alt="Investment Opportunity - Price Appreciation" loading="lazy" decoding="async">
+                <a href="https://www.instagram.com/ovalpalace_resort/" target="_blank" class="ig-post reveal">
+                    <img data-src="images/ig-1.webp" alt="Investment Opportunity - Price Appreciation" loading="lazy" decoding="async" fetchpriority="low" onload="this.parentElement.classList.add('img-loaded')">
                     <div class="ig-post-overlay">
                         <i data-lucide="instagram" class="ig-icon"></i>
                         <span class="ig-text">View on Instagram</span>
@@ -336,8 +336,8 @@
                 </a>
                 
                 <!-- Post 2 -->
-                <a href="https://www.instagram.com/ovalpalace_resort/" target="_blank" class="ig-post">
-                    <img src="images/ig-2.jpg" alt="Passive Income Source - Oval Palace" loading="lazy" decoding="async">
+                <a href="https://www.instagram.com/ovalpalace_resort/" target="_blank" class="ig-post reveal">
+                    <img data-src="images/ig-2.webp" alt="Passive Income Source - Oval Palace" loading="lazy" decoding="async" fetchpriority="low" onload="this.parentElement.classList.add('img-loaded')">
                     <div class="ig-post-overlay">
                         <i data-lucide="instagram" class="ig-icon"></i>
                         <span class="ig-text">View on Instagram</span>
@@ -345,8 +345,8 @@
                 </a>
 
                 <!-- Post 3 -->
-                <a href="https://www.instagram.com/ovalpalace_resort/" target="_blank" class="ig-post">
-                    <img src="images/ig-3.jpg" alt="Perinthalmanna Growth - Strategic Location" loading="lazy" decoding="async">
+                <a href="https://www.instagram.com/ovalpalace_resort/" target="_blank" class="ig-post reveal">
+                    <img data-src="images/ig-3.webp" alt="Perinthalmanna Growth - Strategic Location" loading="lazy" decoding="async" fetchpriority="low" onload="this.parentElement.classList.add('img-loaded')">
                     <div class="ig-post-overlay">
                         <i data-lucide="instagram" class="ig-icon"></i>
                         <span class="ig-text">View on Instagram</span>
@@ -354,8 +354,8 @@
                 </a>
 
                 <!-- Post 4 -->
-                <a href="https://www.instagram.com/ovalpalace_resort/" target="_blank" class="ig-post">
-                    <img src="images/ig-4.jpg" alt="Construction Update - Phase 2 Rising" loading="lazy" decoding="async">
+                <a href="https://www.instagram.com/ovalpalace_resort/" target="_blank" class="ig-post reveal">
+                    <img data-src="images/ig-4.webp" alt="Construction Update - Phase 2 Rising" loading="lazy" decoding="async" fetchpriority="low" onload="this.parentElement.classList.add('img-loaded')">
                     <div class="ig-post-overlay">
                         <i data-lucide="instagram" class="ig-icon"></i>
                         <span class="ig-text">View on Instagram</span>
@@ -363,8 +363,8 @@
                 </a>
                 
                 <!-- Post 5 -->
-                <a href="https://www.instagram.com/ovalpalace_resort/" target="_blank" class="ig-post">
-                    <img src="images/ig-5.jpg" alt="Safe & Secure Savings - Nalakath Holdings" loading="lazy" decoding="async">
+                <a href="https://www.instagram.com/ovalpalace_resort/" target="_blank" class="ig-post reveal">
+                    <img data-src="images/ig-5.webp" alt="Safe & Secure Savings - Nalakath Holdings" loading="lazy" decoding="async" fetchpriority="low" onload="this.parentElement.classList.add('img-loaded')">
                     <div class="ig-post-overlay">
                         <i data-lucide="instagram" class="ig-icon"></i>
                         <span class="ig-text">View on Instagram</span>
@@ -372,8 +372,8 @@
                 </a>
 
                 <!-- Post 6 -->
-                <a href="https://www.instagram.com/ovalpalace_resort/" target="_blank" class="ig-post">
-                    <img src="images/ig-6.jpg" alt="Visible Progress - Project Site Update" loading="lazy">
+                <a href="https://www.instagram.com/ovalpalace_resort/" target="_blank" class="ig-post reveal">
+                    <img data-src="images/ig-6.webp" alt="Visible Progress - Project Site Update" loading="lazy" decoding="async" fetchpriority="low" onload="this.parentElement.classList.add('img-loaded')">
                     <div class="ig-post-overlay">
                         <i data-lucide="instagram" class="ig-icon"></i>
                         <span class="ig-text">View on Instagram</span>
@@ -381,8 +381,8 @@
                 </a>
 
                 <!-- Post 7 -->
-                <a href="https://www.instagram.com/ovalpalace_resort/" target="_blank" class="ig-post">
-                    <img src="images/ig-7.jpg" alt="Nalakath Holdings Poster" loading="lazy">
+                <a href="https://www.instagram.com/ovalpalace_resort/" target="_blank" class="ig-post reveal">
+                    <img data-src="images/ig-7.webp" alt="Nalakath Holdings Poster" loading="lazy" decoding="async" fetchpriority="low" onload="this.parentElement.classList.add('img-loaded')">
                     <div class="ig-post-overlay">
                         <i data-lucide="instagram" class="ig-icon"></i>
                         <span class="ig-text">View on Instagram</span>
@@ -390,8 +390,8 @@
                 </a>
 
                 <!-- Post 8 -->
-                <a href="https://www.instagram.com/ovalpalace_resort/" target="_blank" class="ig-post">
-                    <img src="images/ig-8.jpg" alt="Oval Palace Investment Poster" loading="lazy">
+                <a href="https://www.instagram.com/ovalpalace_resort/" target="_blank" class="ig-post reveal">
+                    <img data-src="images/ig-8.webp" alt="Oval Palace Investment Poster" loading="lazy" decoding="async" fetchpriority="low" onload="this.parentElement.classList.add('img-loaded')">
                     <div class="ig-post-overlay">
                         <i data-lucide="instagram" class="ig-icon"></i>
                         <span class="ig-text">View on Instagram</span>
@@ -526,27 +526,25 @@
     <!-- ==================== SCRIPTS ==================== -->
     <script src="common.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            if (typeof lucide !== 'undefined') {
-                lucide.createIcons();
-            }
-            initCommon();
-            
-            // Single retry for robust loading
-            setTimeout(() => { if (typeof lucide !== 'undefined') lucide.createIcons(); }, 800);
-        });
 
 
         // ==================== REEL PLAYER ====================
         let isReelPlaying = true;
         let isReelMuted = true;
         
-        function changeMainReel(src) {
+        function changeMainReel(src, caption) {
             const video = document.getElementById('mainReelVideo');
-            video.src = src;
-            video.play();
-            isReelPlaying = true;
-            updatePlayIcon();
+            const captionEl = document.getElementById('reelCaption');
+            if (video) {
+                video.src = src;
+                video.play();
+                video.dataset.playing = 'true';
+                isReelPlaying = true;
+                updatePlayIcon();
+            }
+            if (captionEl && caption) {
+                captionEl.textContent = caption;
+            }
         }
 
         // Add progress tracking to main video
@@ -560,19 +558,7 @@
             });
         }
 
-        // Reel Intersection Observer (Pause when off-screen)
-        if(mainVid) {
-            const reelObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        if (isReelPlaying) mainVid.play().catch(() => {});
-                    } else {
-                        mainVid.pause();
-                    }
-                });
-            }, { threshold: 0.2 });
-            reelObserver.observe(mainVid);
-        }
+        // Sequential Reel Intersection handling is now in common.js
 
         function toggleReelPlay() {
             const video = document.getElementById('mainReelVideo');
@@ -587,13 +573,13 @@
             isReelMuted = video.muted;
             const icon = document.getElementById('reelMuteIcon');
             if (icon) icon.setAttribute('data-lucide', isReelMuted ? 'volume-x' : 'volume-2');
-            if (typeof lucide !== 'undefined') lucide.createIcons();
+            refreshIcons();
         }
 
         function updatePlayIcon() {
             const icon = document.getElementById('reelPlayIcon');
             if (icon) icon.setAttribute('data-lucide', isReelPlaying ? 'pause' : 'play');
-            if (typeof lucide !== 'undefined') lucide.createIcons();
+            refreshIcons();
         }
 
         // ==================== SOCIAL TABS ====================
@@ -645,7 +631,7 @@
             cinemaVideo.muted = !cinemaVideo.muted;
             cinemaMuted = cinemaVideo.muted;
             cinemaMuteIcon.setAttribute('data-lucide', cinemaMuted ? 'volume-x' : 'volume-2');
-            lucide.createIcons();
+            refreshIcons();
         }
 
         function toggleCinemaFullscreen() {
@@ -671,7 +657,7 @@
             const icon = document.getElementById('cinemaFsIcon');
             if (icon) {
                 icon.setAttribute('data-lucide', document.fullscreenElement ? 'minimize' : 'maximize');
-                lucide.createIcons();
+                refreshIcons();
             }
         });
 
@@ -698,7 +684,7 @@
                 cinemaPlaying = false;
                 cinemaBigPlay.classList.remove('hidden');
                 cinemaPlayIcon.setAttribute('data-lucide', 'play');
-                lucide.createIcons();
+                refreshIcons();
             });
 
             // Click on video to toggle play
@@ -760,14 +746,14 @@
                 cinemaVideo.muted = false;
                 cinemaMuted = false;
                 cinemaMuteIcon.setAttribute('data-lucide', 'volume-2');
-                lucide.createIcons();
+                refreshIcons();
                 // Remove all listeners once done
-                ['click', 'touchstart', 'scroll', 'keydown'].forEach(evt => {
+                ['click', 'touchstart', 'keydown'].forEach(evt => {
                     document.removeEventListener(evt, autoUnmute, { capture: true });
                 });
             }
 
-            ['click', 'touchstart', 'scroll', 'keydown'].forEach(evt => {
+            ['click', 'touchstart', 'keydown'].forEach(evt => {
                 document.addEventListener(evt, autoUnmute, { capture: true, once: false, passive: true });
             });
 
@@ -781,25 +767,11 @@
                     hasUnmuted = true;
                     cinemaMuted = false;
                     cinemaMuteIcon.setAttribute('data-lucide', 'volume-2');
-                    lucide.createIcons();
+                    refreshIcons();
                 }
             }, 500);
 
-            // Auto-pause when out of viewport, resume when back
-            const cinemaObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting && !userPaused) {
-                        cinemaVideo.play().catch(() => {});
-                        cinemaPlaying = true;
-                        cinemaBigPlay.classList.add('hidden');
-                        cinemaPlayIcon.setAttribute('data-lucide', 'pause');
-                        lucide.createIcons();
-                    } else if (!entry.isIntersecting) {
-                        cinemaVideo.pause();
-                    }
-                });
-            }, { threshold: 0.2 });
-            cinemaObserver.observe(cinemaVideo);
+            // Auto-pause when out of viewport handled by common.js
         }
 
         // Override toggleCinemaPlay for manual play/pause

@@ -378,17 +378,6 @@
 
     <!-- Scripts -->
     <script src="common.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            if (typeof lucide !== 'undefined') lucide.createIcons();
-            initPageNavbar();
-            initScrollReveal();
-            
-            // robust single retry
-            setTimeout(() => { if (typeof lucide !== 'undefined') lucide.createIcons(); }, 800);
-            document.body.classList.remove('loading');
-        });
-    </script>
 </body>
 </html>
 

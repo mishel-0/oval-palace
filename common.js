@@ -1,107 +1,159 @@
 /* ============================================
-   OVAL PALACE RESORT — COMMON UTILITIES
-   Shared functions for all sub-pages
-   ============================================ */
+    OVAL PALACE RESORT — CENTRAL PERFORMANCE ENGINE
+    Shared high-performance logic for all pages
+    ============================================ */
 
-function initPageNavbar() {
+// 1. ICON THROTTLING
+let lucideThrottleTimer;
+function refreshIcons() {
+    if (typeof lucide === 'undefined') return;
+    clearTimeout(lucideThrottleTimer);
+    lucideThrottleTimer = setTimeout(() => {
+        lucide.createIcons();
+    }, 100);
+}
+
+// 2. NAVIGATION & NAVBAR
+function initNavbar() {
+    const navbar = document.getElementById('navbar');
     const hamburger = document.getElementById('navHamburger');
     const mobileMenu = document.getElementById('mobileMenu');
     const overlay = document.getElementById('mobileOverlay');
-    
-    if (!hamburger || !mobileMenu || !overlay) return;
 
-    hamburger.addEventListener('click', () => {
+    if (!navbar || !hamburger) return;
+
+    // Mobile Toggle
+    hamburger.onclick = () => {
         hamburger.classList.toggle('active');
-        mobileMenu.classList.toggle('active');
-        overlay.classList.toggle('active');
-        document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
-    });
-    
-    overlay.addEventListener('click', closeMobileMenu);
+        if (mobileMenu) mobileMenu.classList.toggle('active');
+        if (overlay) overlay.classList.toggle('active');
+        document.body.style.overflow = (mobileMenu && mobileMenu.classList.contains('active')) ? 'hidden' : '';
+    };
+
+    if (overlay) {
+        overlay.onclick = () => {
+            hamburger.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        };
+    }
+
+    // Scroll States (Throttled with rAF)
+    let lastScrollY = 0;
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+        lastScrollY = window.scrollY;
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                if (lastScrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }, { passive: true });
 }
 
-function closeMobileMenu() {
-    const hamburger = document.getElementById('navHamburger');
-    const mobileMenu = document.getElementById('mobileMenu');
-    const overlay = document.getElementById('mobileOverlay');
+// 3. UNIVERSAL INTERSECTION OBSERVER (THE BRAIN)
+function initUniversalObserver() {
+    const observerOptions = {
+        threshold: 0.05,
+        rootMargin: '0px 0px 400px 0px'
+    };
 
-    if (hamburger) hamburger.classList.remove('active');
-    if (mobileMenu) mobileMenu.classList.remove('active');
-    if (overlay) overlay.classList.remove('active');
-    document.body.style.overflow = '';
-}
-
-function initScrollReveal() {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { 
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    });
+            const el = entry.target;
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-}
-
-// Global Video Observer for performance
-function initVideoObserver() {
-    const videoObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            const video = entry.target;
             if (entry.isIntersecting) {
-                video.play().catch(() => {});
+                // A. Reveal Animations
+                if (el.classList.contains('reveal')) {
+                    el.classList.add('visible');
+                    observer.unobserve(el); // Kill task after finish
+                }
+
+                // B. Lazy Loading (Images & Videos)
+                const lazyAsset = el.dataset.src ? el : el.querySelector('[data-src]');
+                if (lazyAsset && !lazyAsset.src) {
+                    if (lazyAsset.tagName === 'VIDEO') {
+                        lazyAsset.src = lazyAsset.dataset.src;
+                        lazyAsset.load();
+                        lazyAsset.addEventListener('canplay', () => {
+                            const loader = lazyAsset.parentElement.querySelector('.video-loader');
+                            if (loader) loader.classList.add('hidden');
+                        }, { once: true });
+                    } else {
+                        lazyAsset.src = lazyAsset.dataset.src;
+                        lazyAsset.onload = () => {
+                            lazyAsset.classList.add('loaded');
+                            // Sync with resort-overview.css expectations
+                            if (el.classList.contains('ig-post')) {
+                                el.classList.add('img-loaded');
+                            }
+                        };
+                    }
+                    if (el === lazyAsset) observer.unobserve(el);
+                }
+
+                // C. Autoplay Management
+                if (el.tagName === 'VIDEO') {
+                    el.play().catch(() => {});
+                }
             } else {
-                video.pause();
+                // Pause videos off-screen to save CPU/Battery
+                if (el.tagName === 'VIDEO') {
+                    el.pause();
+                }
             }
         });
-    }, { threshold: 0.1 });
+    }, observerOptions);
 
-    document.querySelectorAll('video').forEach(v => videoObserver.observe(v));
+    // Observe everything important
+    document.querySelectorAll('.reveal, [data-src], video.lazy, .ig-post').forEach(el => {
+        observer.observe(el);
+    });
 }
 
-// ==================== PRELOADER MANAGEMENT ====================
-function dismissPreloader() {
+// 4. PERFORMANCE HACKS
+function initPerformanceHacks() {
+    let scrollTimer;
+    let isScrolling = false;
+
+    window.addEventListener('scroll', () => {
+        if (!isScrolling) {
+            isScrolling = true;
+            document.body.classList.add('is-scrolling');
+        }
+        
+        clearTimeout(scrollTimer);
+        scrollTimer = setTimeout(() => {
+            isScrolling = false;
+            document.body.classList.remove('is-scrolling');
+        }, 150);
+    }, { passive: true });
+
+    // Preloader masking
     const preloader = document.getElementById('preloader');
     if (preloader) {
-        preloader.classList.add('loaded');
-        document.body.classList.remove('loading');
-        // Small delay to ensure smooth transition before re-enabling scroll
-        setTimeout(() => {
-            document.body.style.overflow = '';
-        }, 800);
+        window.addEventListener('load', () => {
+            preloader.classList.add('loaded');
+            document.body.classList.remove('loading');
+        });
+        setTimeout(() => preloader.classList.add('loaded'), 3000); // Safety timeout
     }
 }
 
-function initPreloaderInterception() {
-    // Dismiss on load
-    window.addEventListener('load', dismissPreloader);
+// 5. BOOTSTRAP
+document.addEventListener('DOMContentLoaded', () => {
+    initNavbar();
+    initUniversalObserver();
+    initPerformanceHacks();
+    refreshIcons();
+});
 
-    // Safety timeout: 3 seconds
-    setTimeout(dismissPreloader, 3000);
-
-    // Intercept internal links to show preloader on navigation
-    document.querySelectorAll('a').forEach(link => {
-        const href = link.getAttribute('href');
-        if (href && !href.startsWith('#') && !href.startsWith('http') && !link.hasAttribute('target')) {
-            link.addEventListener('click', (e) => {
-                const preloader = document.getElementById('preloader');
-                if (preloader) {
-                    preloader.classList.remove('loaded');
-                    document.body.classList.add('loading');
-                }
-            });
-        }
-    });
-}
-
-// Global Initialization
-function initCommon() {
-    initPageNavbar();
-    initScrollReveal();
-    initVideoObserver();
-    initPreloaderInterception();
-}
+// Helper for page-specific scripts to refresh observers if they inject dynamic content
+window.refreshObservers = initUniversalObserver;

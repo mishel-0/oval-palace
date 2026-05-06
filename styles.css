@@ -68,7 +68,7 @@
 }
 
 html {
-    scroll-behavior: smooth;
+    scroll-behavior: auto !important; /* Disabled smooth scroll for better performance and response */
     font-size: 16px;
     scrollbar-width: thin;
     scrollbar-color: var(--gold-dark) var(--bg-primary);
@@ -92,6 +92,10 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeSpeed;
+}
+
+body.is-scrolling {
+    pointer-events: none !important;
 }
 
 /* Safety wrapper for horizontal overflow */
@@ -178,14 +182,13 @@ button {
 
 .reveal {
     opacity: 0;
-    transform: translate3d(0, 40px, 0); /* 3D transform for GPU trigger */
+    transform: translateY(30px);
     transition: opacity 0.8s cubic-bezier(0.165, 0.84, 0.44, 1), transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
-    will-change: opacity, transform;
 }
 
 .reveal.visible {
     opacity: 1;
-    transform: translate3d(0, 0, 0);
+    transform: translateY(0);
 }
 
 /* ---------- NAVIGATION ---------- */
@@ -200,10 +203,7 @@ button {
 }
 
 .navbar.scrolled {
-    background: rgba(4, 10, 24, 0.95);
-    /* Reduced blur for better mobile performance */
-    backdrop-filter: saturate(180%) blur(12px);
-    -webkit-backdrop-filter: saturate(180%) blur(12px);
+    background: rgba(4, 10, 24, 0.98); /* Near solid for performance */
     padding: 12px 0;
     border-bottom: 1px solid var(--border-subtle);
 }
@@ -387,6 +387,7 @@ button {
     display: flex;
     align-items: center;
     overflow: hidden;
+    contain: paint;
 }
 
 .hero-slideshow {
@@ -613,6 +614,7 @@ button {
 .about {
     padding: var(--section-padding);
     position: relative;
+    contain: paint;
 }
 
 .about-grid {
@@ -723,6 +725,7 @@ button {
     background: var(--bg-secondary);
     position: relative;
     overflow: hidden;
+    contain: paint;
 }
 
 .timeline-section::before {
@@ -850,6 +853,7 @@ button {
 .amenities {
     padding: var(--section-padding);
     position: relative;
+    contain: paint;
 }
 
 .amenities-header {
@@ -940,6 +944,7 @@ button {
     background: var(--bg-secondary);
     position: relative;
     overflow: hidden;
+    contain: paint;
 }
 
 .investment::before {
@@ -1256,6 +1261,7 @@ button {
 .gallery {
     padding: var(--section-padding);
     position: relative;
+    contain: paint;
 }
 
 .gallery-header {
@@ -1420,6 +1426,7 @@ button {
     padding: var(--section-padding);
     background: var(--bg-secondary);
     position: relative;
+    contain: paint;
 }
 
 .appointment-header {
@@ -1715,6 +1722,7 @@ button {
 .testimonials {
     padding: var(--section-padding);
     position: relative;
+    contain: paint;
 }
 
 .testimonials-header {
@@ -1850,6 +1858,7 @@ button {
     padding: var(--section-padding);
     background: var(--bg-secondary);
     position: relative;
+    contain: paint;
 }
 
 .contact-header {

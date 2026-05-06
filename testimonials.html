@@ -407,52 +407,7 @@
     </footer>
 
     <!-- Scripts -->
-    <script>
-        // Initialize
-        document.addEventListener('DOMContentLoaded', () => {
-            if (typeof lucide !== 'undefined') lucide.createIcons();
-            initPageNavbar();
-            initScrollReveal();
-            
-            // robust single retry
-            setTimeout(() => { if (typeof lucide !== 'undefined') lucide.createIcons(); }, 800);
-            document.body.classList.remove('loading');
-        });
-
-        function initPageNavbar() {
-            const hamburger = document.getElementById('navHamburger');
-            const mobileMenu = document.getElementById('mobileMenu');
-            const overlay = document.getElementById('mobileOverlay');
-
-            hamburger.addEventListener('click', () => {
-                hamburger.classList.toggle('active');
-                mobileMenu.classList.toggle('active');
-                overlay.classList.toggle('active');
-                document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
-            });
-
-            overlay.addEventListener('click', closeMobileMenu);
-        }
-
-        function closeMobileMenu() {
-            const hamburger = document.getElementById('navHamburger');
-            const mobileMenu = document.getElementById('mobileMenu');
-            const overlay = document.getElementById('mobileOverlay');
-            hamburger.classList.remove('active');
-            mobileMenu.classList.remove('active');
-            overlay.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        function initScrollReveal() {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) entry.target.classList.add('visible');
-                });
-            }, { threshold: 0.1 });
-            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-        }
-    </script>
+    <script src="common.js"></script>
     <script src="tracker.js"></script>
 </body>
 </html>

@@ -4,91 +4,14 @@
    ============================================ */
 
 // ==================== INITIALIZATION ====================
+// Page-specific logic continues below...
+
 document.addEventListener('DOMContentLoaded', () => {
-    if (typeof lucide !== 'undefined') lucide.createIcons();
-    initNavbar();
     initHeroSlideshow();
-    initScrollReveal();
     initCalendar();
     initChatbot();
-    // Retry icons
-    setTimeout(() => { if (typeof lucide !== 'undefined') lucide.createIcons(); }, 500);
+    // common.js handles icons, navbar, and scroll-reveal
 });
-
-// Final Load Event for Preloader
-window.addEventListener('load', () => {
-    dismissPreloader();
-});
-
-// Safety timeout: NEVER let preloader stay more than 3 seconds
-setTimeout(dismissPreloader, 3000);
-
-function dismissPreloader() {
-    const preloader = document.getElementById('preloader');
-    if (preloader && !preloader.classList.contains('loaded')) {
-        preloader.classList.add('loaded');
-        document.body.classList.remove('loading');
-    }
-}
-
-// Show preloader on navigation clicks — Masks network lag
-document.addEventListener('click', (e) => {
-    const link = e.target.closest('a');
-    // Only trigger for internal .html pages, not anchors (#)
-    if (link && link.href && link.href.includes('.html') && !link.href.includes('#')) {
-        const preloader = document.getElementById('preloader');
-        if (preloader) {
-            preloader.classList.remove('loaded');
-            document.body.classList.add('loading');
-        }
-    }
-});
-
-// ==================== NAVBAR ====================
-function initNavbar() {
-    const navbar = document.getElementById('navbar');
-    const hamburger = document.getElementById('navHamburger');
-    const mobileMenu = document.getElementById('mobileMenu');
-    const overlay = document.getElementById('mobileOverlay');
-
-    let lastScrollY = 0;
-    let ticking = false;
-
-    window.addEventListener('scroll', () => {
-        lastScrollY = window.scrollY;
-        if (!ticking) {
-            window.requestAnimationFrame(() => {
-                if (lastScrollY > 80) {
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
-                }
-                ticking = false;
-            });
-            ticking = true;
-        }
-    }, { passive: true });
-
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        mobileMenu.classList.toggle('active');
-        overlay.classList.toggle('active');
-        document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
-    });
-
-    overlay.addEventListener('click', closeMobileMenu);
-}
-
-function closeMobileMenu() {
-    const hamburger = document.getElementById('navHamburger');
-    const mobileMenu = document.getElementById('mobileMenu');
-    const overlay = document.getElementById('mobileOverlay');
-
-    hamburger.classList.remove('active');
-    mobileMenu.classList.remove('active');
-    overlay.classList.remove('active');
-    document.body.style.overflow = '';
-}
 
 // ==================== HERO SLIDESHOW ====================
 let currentSlide = 0;
@@ -103,22 +26,6 @@ function initHeroSlideshow() {
         currentSlide = (currentSlide + 1) % slides.length;
         slides[currentSlide].classList.add('active');
     }, 6000);
-}
-
-// ==================== SCROLL REVEAL ====================
-function initScrollReveal() {
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -60px 0px'
-    });
-
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 }
 
 // ==================== CALENDAR ====================
