@@ -22,6 +22,19 @@
     <!-- Stylesheet -->
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="pages.css">
+    <style>
+        .mandate-card:hover {
+            transform: translateY(-10px) scale(1.02) !important;
+            background: rgba(255,255,255,0.05) !important;
+        }
+        .mandate-card:hover .mandate-icon {
+            transform: scale(1.2) rotate(5deg);
+            color: #fff !important;
+        }
+        .section-padding {
+            padding: 8rem 0;
+        }
+    </style>
 </head>
 <body>
 
@@ -113,27 +126,27 @@
             </div>
 
             <div class="reveal" style="max-width: 1000px; margin: 4rem auto 0; padding: 4rem; background: rgba(255,255,255,0.02); backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.05); border-radius: 30px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem;">
-                <div style="text-align: center;">
-                    <div style="color: var(--gold); margin-bottom: 1.5rem;"><i data-lucide="compass" size="32"></i></div>
+                <div class="mandate-card reveal" style="text-align: center; transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
+                    <div class="mandate-icon" style="color: var(--gold); margin-bottom: 1.5rem; transition: transform 0.5s ease;"><i data-lucide="compass" size="32"></i></div>
                     <h3 style="font-family: 'Playfair Display', serif; color: white; margin-bottom: 1rem;">Global Vision</h3>
                     <p style="font-size: 0.95rem; color: #ccc; line-height: 1.6; font-weight: 300;">An elite assembly of visionaries redefining the hospitality landscape through international standards and cultural stewardship.</p>
                 </div>
-                <div style="text-align: center;">
-                    <div style="color: var(--gold); margin-bottom: 1.5rem;"><i data-lucide="layers" size="32"></i></div>
+                <div class="mandate-card reveal" style="text-align: center; transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
+                    <div class="mandate-icon" style="color: var(--gold); margin-bottom: 1.5rem; transition: transform 0.5s ease;"><i data-lucide="layers" size="32"></i></div>
                     <h3 style="font-family: 'Playfair Display', serif; color: white; margin-bottom: 1rem;">Precision Prowess</h3>
-                    <p style="font-size: 0.95rem; color: #ccc; line-height: 1.6; font-weight: 300;">Executing architectural complexity on the banks of the Kadalundi River with the meticulousness of a generational landmark.</p>
+                    <p style="font-size: 0.95rem; color: #ccc; line-height: 1.6; font-weight: 300;">Executing architectural complexity near the Perinthalmanna Cricket Stadium with the meticulousness of a generational landmark.</p>
                 </div>
-                <div style="text-align: center;">
-                    <div style="color: var(--gold); margin-bottom: 1.5rem;"><i data-lucide="map-pin" size="32"></i></div>
+                <div class="mandate-card reveal" style="text-align: center; transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
+                    <div class="mandate-icon" style="color: var(--gold); margin-bottom: 1.5rem; transition: transform 0.5s ease;"><i data-lucide="map-pin" size="32"></i></div>
                     <h3 style="font-family: 'Playfair Display', serif; color: white; margin-bottom: 1rem;">Strategic Location</h3>
-                    <p style="font-size: 0.95rem; color: #ccc; line-height: 1.6; font-weight: 300;">Strategically positioned in the heart of Perinthalmanna, near the Perinthalmanna Cricket Stadium. Our project site offers a unique blend of urban connectivity and serene natural landscapes in the Malappuram district of Kerala.</p>
+                    <p style="font-size: 0.95rem; color: #ccc; line-height: 1.6; font-weight: 300;">Strategically positioned in the heart of Perinthalmanna, Kerala. Our site offers a unique blend of urban connectivity and serene landscapes.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ==================== THE HORIZON: THE SENSORY TRAP ==================== -->
-    <section class="leadership-section" style="padding: 10rem 0; background-attachment: fixed; background-image: url('images/hero-1.jpg'); background-size: cover; background-position: center; position: relative; overflow: hidden;">
+    <section class="leadership-section" style="padding: 12rem 0; background-attachment: fixed; background-image: url('images/hero-1.jpg'); background-size: cover; background-position: center; position: relative; overflow: hidden;">
         <div style="position: absolute; inset: 0; background: linear-gradient(135deg, rgba(0,0,0,0.95), rgba(0,0,0,0.7));"></div>
         <div class="container" style="position: relative; z-index: 2;">
             <div class="section-header-centered reveal">
