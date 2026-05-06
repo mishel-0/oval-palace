@@ -23,13 +23,29 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="pages.css">
     <style>
-        .mandate-card:hover {
+        .mandate-card, .value-card-premium {
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            padding: 4rem;
+            background: rgba(255,255,255,0.02);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 30px;
+        }
+        .mandate-card:hover, .value-card-premium:hover {
             transform: translateY(-10px) scale(1.02) !important;
             background: rgba(255,255,255,0.05) !important;
         }
-        .mandate-card:hover .mandate-icon {
+        .mandate-card:hover .mandate-icon, .value-card-premium:hover .mandate-icon {
             transform: scale(1.2) rotate(5deg);
             color: #fff !important;
+        }
+        .mandate-icon {
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            transition: transform 0.5s ease;
+            display: flex;
+            justify-content: center;
         }
         .section-padding {
             padding: 8rem 0;
@@ -125,19 +141,19 @@
                 <h2 class="section-title">Curated by the <span class="gold-gradient-text">New Guard</span></h2>
             </div>
 
-            <div class="reveal" style="max-width: 1000px; margin: 4rem auto 0; padding: 4rem; background: rgba(255,255,255,0.02); backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.05); border-radius: 30px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem;">
-                <div class="mandate-card reveal" style="text-align: center; transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
-                    <div class="mandate-icon" style="color: var(--gold); margin-bottom: 1.5rem; transition: transform 0.5s ease;"><i data-lucide="compass" size="32"></i></div>
+            <div class="reveal" style="max-width: 1000px; margin: 4rem auto 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem;">
+                <div class="mandate-card">
+                    <div class="mandate-icon"><i data-lucide="compass" size="32"></i></div>
                     <h3 style="font-family: 'Playfair Display', serif; color: white; margin-bottom: 1rem;">Global Vision</h3>
                     <p style="font-size: 0.95rem; color: #ccc; line-height: 1.6; font-weight: 300;">An elite assembly of visionaries redefining the hospitality landscape through international standards and cultural stewardship.</p>
                 </div>
-                <div class="mandate-card reveal" style="text-align: center; transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
-                    <div class="mandate-icon" style="color: var(--gold); margin-bottom: 1.5rem; transition: transform 0.5s ease;"><i data-lucide="layers" size="32"></i></div>
+                <div class="mandate-card">
+                    <div class="mandate-icon"><i data-lucide="layers" size="32"></i></div>
                     <h3 style="font-family: 'Playfair Display', serif; color: white; margin-bottom: 1rem;">Precision Prowess</h3>
                     <p style="font-size: 0.95rem; color: #ccc; line-height: 1.6; font-weight: 300;">Executing architectural complexity near the Perinthalmanna Hospital City with the meticulousness of a generational landmark.</p>
                 </div>
-                <div class="mandate-card reveal" style="text-align: center; transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
-                    <div class="mandate-icon" style="color: var(--gold); margin-bottom: 1.5rem; transition: transform 0.5s ease;"><i data-lucide="map-pin" size="32"></i></div>
+                <div class="mandate-card">
+                    <div class="mandate-icon"><i data-lucide="map-pin" size="32"></i></div>
                     <h3 style="font-family: 'Playfair Display', serif; color: white; margin-bottom: 1rem;">Strategic Location</h3>
                     <p style="font-size: 0.95rem; color: #ccc; line-height: 1.6; font-weight: 300;">Strategically positioned in the heart of Perinthalmanna, Kerala. Our site offers a unique blend of urban connectivity and serene landscapes.</p>
                 </div>
@@ -194,19 +210,19 @@
                 <h2 class="section-title">Core <span class="gold-gradient-text">Values</span></h2>
             </div>
             
-            <div class="reveal" style="max-width: 1000px; margin: 4rem auto 0; padding: 4rem; background: rgba(255,255,255,0.02); backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.05); border-radius: 30px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem;">
-                <div style="text-align: center;">
-                    <div style="color: var(--gold); margin-bottom: 1.5rem;"><i data-lucide="users" size="32"></i></div>
+            <div class="reveal" style="max-width: 1000px; margin: 4rem auto 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem;">
+                <div class="value-card-premium">
+                    <div class="mandate-icon"><i data-lucide="users" size="32"></i></div>
                     <h3 style="font-family: 'Playfair Display', serif; color: white; margin-bottom: 1rem;">Community</h3>
                     <p style="font-size: 0.95rem; color: #ccc; line-height: 1.6; font-weight: 300;">Creating sustainable value for our investors and the local communities we serve through strategic growth.</p>
                 </div>
-                <div style="text-align: center;">
-                    <div style="color: var(--gold); margin-bottom: 1.5rem;"><i data-lucide="lightbulb" size="32"></i></div>
+                <div class="value-card-premium">
+                    <div class="mandate-icon"><i data-lucide="lightbulb" size="32"></i></div>
                     <h3 style="font-family: 'Playfair Display', serif; color: white; margin-bottom: 1rem;">Innovation</h3>
                     <p style="font-size: 0.95rem; color: #ccc; line-height: 1.6; font-weight: 300;">Implementing modern construction techniques and eco-friendly technologies to redefine luxury hospitality.</p>
                 </div>
-                <div style="text-align: center;">
-                    <div style="color: var(--gold); margin-bottom: 1.5rem;"><i data-lucide="award" size="32"></i></div>
+                <div class="value-card-premium">
+                    <div class="mandate-icon"><i data-lucide="award" size="32"></i></div>
                     <h3 style="font-family: 'Playfair Display', serif; color: white; margin-bottom: 1rem;">Quality</h3>
                     <p style="font-size: 0.95rem; color: #ccc; line-height: 1.6; font-weight: 300;">Uncompromising standards in every architectural detail, ensuring a legacy of excellence for generations.</p>
                 </div>
