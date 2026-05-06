@@ -483,7 +483,7 @@ const chatFlow = {
         messages: [
             "Great choice! Oval Palace offers 6 flexible investment plans:",
             "🥈 1 Unit — ₹5,000/month (Total: ₹5 Lakh)\n🥇 2 Units — ₹10,000/month (Total: ₹10 Lakh)\n💎 4 Units — ₹20,000/month (Total: ₹20 Lakh)\n🏆 10 Units — ₹50,000/month (Total: ₹50 Lakh)\n👑 15 Units — ₹75,000/month (Total: ₹75 Lakh)\n💫 20 Units — ₹1,00,000/month (Total: ₹1 Crore)",
-            "All plans include 12% p.a. immediate returns, buyback guarantee, and capital appreciation!",
+            "All plans are built on our Institutional Standard of architectural excellence and secure capital preservation!",
             "Would you like to book a slot or speak with our sales manager?"
         ],
         options: [
