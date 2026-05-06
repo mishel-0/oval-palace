@@ -147,7 +147,34 @@ function initPerformanceHacks() {
     }
 }
 
-// 5. BOOTSTRAP
+// 6. VIDEO MODAL ENGINE
+function openVideoModal(videoSrc) {
+    const modal = document.getElementById('videoModal');
+    const video = document.getElementById('modalVideo');
+    if (!modal || !video) return;
+
+    const source = video.querySelector('source');
+    source.src = videoSrc;
+    video.load();
+    
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    
+    video.play().catch(e => console.log("Auto-play blocked:", e));
+}
+
+function closeVideoModal() {
+    const modal = document.getElementById('videoModal');
+    const video = document.getElementById('modalVideo');
+    if (!modal || !video) return;
+
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+    video.pause();
+    video.currentTime = 0;
+}
+
+// 7. BOOTSTRAP
 document.addEventListener('DOMContentLoaded', () => {
     initNavbar();
     initUniversalObserver();
@@ -157,3 +184,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Helper for page-specific scripts to refresh observers if they inject dynamic content
 window.refreshObservers = initUniversalObserver;
+window.openVideoModal = openVideoModal;
+window.closeVideoModal = closeVideoModal;

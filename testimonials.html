@@ -99,7 +99,6 @@
             <p class="page-hero-subtitle">Real stories from real investors who trust Nalakath Holdings with their future.</p>
         </div>
     </section>
-
     <!-- ==================== 100+ MILESTONE ==================== -->
     <section class="milestone-section">
         <div class="container">
@@ -107,22 +106,97 @@
                 <div class="milestone-glow"></div>
                 <div class="milestone-content">
                     <div class="milestone-badge">
-                        <i data-lucide="trophy"></i>
+                        <i data-lucide="award"></i>
                     </div>
                     <div class="milestone-text">
-                        <h2>100+ <span class="gold-gradient-text">Investors</span> & Counting</h2>
-                        <p>We are proud to have crossed the 100-investor milestone! Thank you to every investor who believed in the vision of Oval Palace Resort. Your trust fuels our commitment to excellence.</p>
+                        <h2>The Institutional <span class="gold-gradient-text">Standard</span></h2>
+                        <p>We are honored to be entrusted by over 100+ high-profile partners and institutional investors who recognize Oval Palace as a generational landmark for Malabar.</p>
                     </div>
                     <div class="milestone-stats">
                         <div class="milestone-stat">
                             <span class="milestone-stat-value">100+</span>
-                            <span class="milestone-stat-label">Happy Investors</span>
+                            <span class="milestone-stat-label">Strategic Partners</span>
                         </div>
                         <div class="milestone-stat">
                             <span class="milestone-stat-value">₹10Cr+</span>
-                            <span class="milestone-stat-label">Total Investment</span>
+                            <span class="milestone-stat-label">Committed Capital</span>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== VIP TESTIMONIAL REELS ==================== -->
+    <section class="vip-testimonials-section">
+        <div class="container">
+            <div class="section-header-centered reveal">
+                <span class="section-label" style="justify-content: center; color: var(--gold); border-color: rgba(212,175,55,0.3);">Voice of Influence</span>
+                <h2 class="section-title">The <span class="gold-gradient-text">Elite Guard</span></h2>
+                <p class="section-subtitle">Prominent leaders and cultural stewards who recognize the architectural legacy of Oval Palace.</p>
+            </div>
+
+            <div class="vip-reels-container reveal">
+                <!-- MLA Testimonial -->
+                <div class="reel-card" onclick="openVideoModal('videos/testimonials/mla-testimonial.mp4')">
+                    <video muted loop onmouseover="this.play()" onmouseout="this.pause(); this.currentTime=0;">
+                        <source src="videos/testimonials/mla-testimonial.mp4" type="video/mp4">
+                    </video>
+                    <div class="reel-badge">OFFICIAL STATEMENT</div>
+                    <div class="reel-play-btn"><i data-lucide="play" fill="var(--gold)"></i></div>
+                    <div class="reel-overlay">
+                        <div class="reel-info">
+                            <h4>Najeeb Kanthapuram</h4>
+                            <p>Member of Legislative Assembly (MLA)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Actor Testimonial -->
+                <div class="reel-card" onclick="openVideoModal('videos/testimonials/actor-testimonial.mp4')">
+                    <video muted loop onmouseover="this.play()" onmouseout="this.pause(); this.currentTime=0;">
+                        <source src="videos/testimonials/actor-testimonial.mp4" type="video/mp4">
+                    </video>
+                    <div class="reel-badge">VIP ENDORSEMENT</div>
+                    <div class="reel-play-btn"><i data-lucide="play" fill="var(--gold)"></i></div>
+                    <div class="reel-overlay">
+                        <div class="reel-info">
+                            <h4>Ibrahim Kutty</h4>
+                            <p>Film & Television Actor</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== EVENT HIGHLIGHTS ==================== -->
+    <section class="section-padding" style="background: #0a0a0a;">
+        <div class="container">
+            <div class="section-header-centered reveal">
+                <span class="section-label" style="justify-content: center;">Milestones</span>
+                <h2 class="section-title">Moments of <span class="gold-gradient-text">Excellence</span></h2>
+                <p class="section-subtitle">Capturing the energy of our 100+ investor celebrations and milestone meets.</p>
+            </div>
+
+            <div class="reveal" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                <!-- Event 1 -->
+                <div class="event-gallery-item" style="height: 250px; border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05);">
+                    <video muted loop onmouseover="this.play()" onmouseout="this.pause(); this.currentTime=0;" style="width: 100%; height: 100%; object-fit: cover;">
+                        <source src="videos/events_new/event-1.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <!-- Event 2 -->
+                <div class="event-gallery-item" style="height: 250px; border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05);">
+                    <video muted loop onmouseover="this.play()" onmouseout="this.pause(); this.currentTime=0;" style="width: 100%; height: 100%; object-fit: cover;">
+                        <source src="videos/events_new/event-2.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <!-- Event 3 -->
+                <div class="event-gallery-item" style="height: 250px; border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05);">
+                    <video muted loop onmouseover="this.play()" onmouseout="this.pause(); this.currentTime=0;" style="width: 100%; height: 100%; object-fit: cover;">
+                        <source src="videos/events_new/event-3.mp4" type="video/mp4">
+                    </video>
                 </div>
             </div>
         </div>
@@ -134,31 +208,25 @@
             <div class="section-header-centered reveal">
                 <span class="section-label" style="justify-content: center;">Investor Confidence</span>
                 <h2 class="section-title">Trusted by Our <span class="gold-gradient-text">Global Community</span></h2>
-                <p class="section-subtitle">Hear directly from our partners across Malabar and the Middle East about their experience with Oval Palace Resort LLP.</p>
+                <p class="section-subtitle">Hear directly from our partners across Malabar and the Middle East.</p>
             </div>
 
             <div class="testimonials-masonry reveal">
                 <!-- Testimonial 1 -->
                 <div class="testimonial-card-full">
                     <div class="testimonial-card-header">
-                        <div class="testimonial-avatar">
-                            <i data-lucide="user"></i>
-                        </div>
+                        <div class="testimonial-avatar"><i data-lucide="user"></i></div>
                         <div class="testimonial-meta">
                             <h4>Abdul Rasheed</h4>
                             <span>Investor — 2 Units</span>
                         </div>
                         <div class="testimonial-rating">
-                            <i data-lucide="star"></i>
-                            <i data-lucide="star"></i>
-                            <i data-lucide="star"></i>
-                            <i data-lucide="star"></i>
-                            <i data-lucide="star"></i>
+                            <i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i>
                         </div>
                     </div>
-                    <p class="testimonial-text">"As someone from Malappuram working in Dubai, I've always looked for a secure investment back home. Oval Palace Resort is exactly what I needed—professional management and strategic asset security. My family is happy to be part of this."</p>
+                    <p class="testimonial-text">"As someone from Malappuram working in Dubai, I've always looked for a secure investment back home. Oval Palace Resort is exactly what I needed—professional management and strategic asset security."</p>
                     <div class="testimonial-footer">
-                        <span><i data-lucide="map-pin"></i> Dubai, UAE (Malappuram Native)</span>
+                        <span><i data-lucide="map-pin"></i> Dubai, UAE</span>
                         <span><i data-lucide="calendar"></i> Invested: Jan 2025</span>
                     </div>
                 </div>
@@ -166,24 +234,18 @@
                 <!-- Testimonial 2 -->
                 <div class="testimonial-card-full featured">
                     <div class="testimonial-card-header">
-                        <div class="testimonial-avatar">
-                            <i data-lucide="user"></i>
-                        </div>
+                        <div class="testimonial-avatar"><i data-lucide="user"></i></div>
                         <div class="testimonial-meta">
                             <h4>Faisal Bin Ahmed</h4>
                             <span>Investor — 2 Units</span>
                         </div>
                         <div class="testimonial-rating">
-                            <i data-lucide="star"></i>
-                            <i data-lucide="star"></i>
-                            <i data-lucide="star"></i>
-                            <i data-lucide="star"></i>
-                            <i data-lucide="star"></i>
+                            <i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i>
                         </div>
                     </div>
-                    <p class="testimonial-text">"The preferred asset yields were the main attraction for me. Nalakath Holdings has a great reputation in the Gulf, which gave me the confidence to invest in this project from Riyadh. Their communication is impeccable even for NRIs."</p>
+                    <p class="testimonial-text">"The preferred asset yields were the main attraction for me. Nalakath Holdings has a great reputation in the Gulf, which gave me the confidence to invest in this project from Riyadh."</p>
                     <div class="testimonial-footer">
-                        <span><i data-lucide="map-pin"></i> Riyadh, KSA (Kozhikode Native)</span>
+                        <span><i data-lucide="map-pin"></i> Riyadh, KSA</span>
                         <span><i data-lucide="calendar"></i> Invested: Feb 2025</span>
                     </div>
                 </div>
@@ -191,142 +253,41 @@
                 <!-- Testimonial 3 -->
                 <div class="testimonial-card-full">
                     <div class="testimonial-card-header">
-                        <div class="testimonial-avatar">
-                            <i data-lucide="user"></i>
-                        </div>
+                        <div class="testimonial-avatar"><i data-lucide="user"></i></div>
                         <div class="testimonial-meta">
                             <h4>Zubair Ali</h4>
                             <span>Investor — 1 Unit</span>
                         </div>
                         <div class="testimonial-rating">
-                            <i data-lucide="star"></i>
-                            <i data-lucide="star"></i>
-                            <i data-lucide="star"></i>
-                            <i data-lucide="star"></i>
-                            <i data-lucide="star"></i>
+                            <i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i>
                         </div>
                     </div>
-                    <p class="testimonial-text">"I've been following the construction progress closely through the partner portal. The quality of work and the transparency of the buyback policy are top-notch. Truly a premium project for our Malabar region."</p>
+                    <p class="testimonial-text">"I've been following the construction progress closely. The quality of work and the transparency of the policies are top-notch. Truly a premium project for our Malabar region."</p>
                     <div class="testimonial-footer">
-                        <span><i data-lucide="map-pin"></i> Doha, Qatar (Palakkad Native)</span>
+                        <span><i data-lucide="map-pin"></i> Doha, Qatar</span>
                         <span><i data-lucide="calendar"></i> Invested: Mar 2025</span>
                     </div>
                 </div>
-
-                <!-- Testimonial 4 -->
-                <div class="testimonial-card-full">
-                    <div class="testimonial-card-header">
-                        <div class="testimonial-avatar">
-                            <i data-lucide="user"></i>
-                        </div>
-                        <div class="testimonial-meta">
-                            <h4>Mohammed Mustafa</h4>
-                            <span>Investor — 2 Units</span>
-                        </div>
-                        <div class="testimonial-rating">
-                            <i data-lucide="star"></i>
-                            <i data-lucide="star"></i>
-                            <i data-lucide="star"></i>
-                            <i data-lucide="star"></i>
-                            <i data-lucide="star"></i>
-                        </div>
-                    </div>
-                    <p class="testimonial-text">"Being a native of Perinthalmanna, I know how much potential this location has. Oval Palace is going to be a landmark for our town. I'm proud to be a partner in this venture while working in Bahrain."</p>
-                    <div class="testimonial-footer">
-                        <span><i data-lucide="map-pin"></i> Manama, Bahrain (Perinthalmanna Native)</span>
-                        <span><i data-lucide="calendar"></i> Invested: Apr 2025</span>
-                    </div>
-                </div>
-
-                <!-- Testimonial 5 -->
-                <div class="testimonial-card-full featured">
-                    <div class="testimonial-card-header">
-                        <div class="testimonial-avatar">
-                            <i data-lucide="user"></i>
-                        </div>
-                        <div class="testimonial-meta">
-                            <h4>Ibrahim Kutty</h4>
-                            <span>Investor — 1 Unit</span>
-                        </div>
-                        <div class="testimonial-rating">
-                            <i data-lucide="star"></i>
-                            <i data-lucide="star"></i>
-                            <i data-lucide="star"></i>
-                            <i data-lucide="star"></i>
-                            <i data-lucide="star"></i>
-                        </div>
-                    </div>
-                    <p class="testimonial-text">"The partner privileges, especially the discounts on resort facilities, are a great bonus. It's not just an investment; it's a legacy for our families back home in Kerala. I've recommended Oval Palace to many of my friends in Abu Dhabi."</p>
-                    <div class="testimonial-footer">
-                        <span><i data-lucide="map-pin"></i> Abu Dhabi, UAE (Malappuram Native)</span>
-                        <span><i data-lucide="calendar"></i> Invested: Jan 2025</span>
-                    </div>
-                </div>
-
-                <!-- Testimonial 6 -->
-                <div class="testimonial-card-full">
-                    <div class="testimonial-card-header">
-                        <div class="testimonial-avatar">
-                            <i data-lucide="user"></i>
-                        </div>
-                        <div class="testimonial-meta">
-                            <h4>Musthafa Karuvarakundu</h4>
-                            <span>Investor — 2 Units</span>
-                        </div>
-                        <div class="testimonial-rating">
-                            <i data-lucide="star"></i>
-                            <i data-lucide="star"></i>
-                            <i data-lucide="star"></i>
-                            <i data-lucide="star"></i>
-                            <i data-lucide="star"></i>
-                        </div>
-                    </div>
-                    <p class="testimonial-text">"The location near the Perinthalmanna Cricket Stadium is brilliant — it's going to be a tourism magnet for Malappuram. I love how Nalakath Holdings keeps us updated with progress reports even when we are abroad in Muscat. This is truly world-class."</p>
-                    <div class="testimonial-footer">
-                        <span><i data-lucide="map-pin"></i> Muscat, Oman (Malappuram Native)</span>
-                        <span><i data-lucide="calendar"></i> Invested: May 2025</span>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
 
-
-
-    <!-- ==================== TRUST SECTION ==================== -->
-    <section class="trust-section">
-        <div class="container">
-            <div class="trust-badges reveal" style="border-top: none; margin-top: 0; padding-top: 20px;">
-                <div class="trust-badge">
-                    <div class="trust-badge-icon"><i data-lucide="building-2"></i></div>
-                    <span>LLP Registered</span>
-                </div>
-                <div class="trust-badge">
-                    <div class="trust-badge-icon"><i data-lucide="file-check"></i></div>
-                    <span>Fully Compliant</span>
-                </div>
-                <div class="trust-badge">
-                    <div class="trust-badge-icon"><i data-lucide="lock"></i></div>
-                    <span>Secure Investment</span>
-                </div>
-                <div class="trust-badge">
-                    <div class="trust-badge-icon"><i data-lucide="handshake"></i></div>
-                    <span>Buyback Guarantee</span>
-                </div>
-                <div class="trust-badge">
-                    <div class="trust-badge-icon"><i data-lucide="users"></i></div>
-                    <span>100+ Investors</span>
-                </div>
-            </div>
+    <!-- ==================== VIDEO MODAL ==================== -->
+    <div id="videoModal" class="modal" style="display: none; position: fixed; z-index: 1000; inset: 0; background: rgba(0,0,0,0.95); align-items: center; justify-content: center;">
+        <div style="position: absolute; top: 30px; right: 30px; color: white; cursor: pointer; font-size: 2rem;" onclick="closeVideoModal()">&times;</div>
+        <div class="modal-content" style="width: 90%; max-width: 500px; aspect-ratio: 9/16; background: #000; border-radius: 20px; overflow: hidden; position: relative;">
+            <video id="modalVideo" controls style="width: 100%; height: 100%; object-fit: cover;">
+                <source src="" type="video/mp4">
+            </video>
         </div>
-    </section>
+    </div>
 
     <!-- ==================== CTA BANNER ==================== -->
     <section class="cta-banner">
         <div class="container">
             <div class="cta-banner-content reveal">
-                <h2>Ready to Join Our <span class="gold-gradient-text">Investor Family</span>?</h2>
-                <p>Be part of the fastest-growing hospitality investment in Kerala. Start with as little as ₹5,000/month.</p>
+                <h2>Join the <span class="gold-gradient-text">Elite Guard</span></h2>
+                <p>Be part of the most significant architectural statement in Malabar. Secure your legacy today.</p>
                 <div class="cta-banner-buttons">
                     <a href="index.html#investment" class="btn-primary">
                         <i data-lucide="trending-up"></i>
@@ -339,6 +300,7 @@
                 </div>
             </div>
         </div>
+    </section></div>
     </section>
 
     <!-- ==================== FOOTER ==================== -->
@@ -349,7 +311,7 @@
                     <a href="index.html" class="nav-logo">
                         <img src="images/logo.png" alt="Oval Palace Resort Logo" class="nav-logo-img">
                     </a>
-                    <p>A premium luxury resort by Nalakath Holdings. Invest in hospitality, earn 12% p.a. returns with buyback guarantee.</p>
+                    <p>A premium luxury resort by Nalakath Holdings. Invest in hospitality and join a legacy of architectural excellence and capital preservation.</p>
                     <p style="font-size: 0.82rem; color: var(--text-muted);">Oval Palace LLP — A Nalakath Holdings Venture</p>
                 </div>
 
