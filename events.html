@@ -270,45 +270,46 @@
     </section>
 
     <!-- ==================== PHOTO/VIDEO GALLERY ==================== -->
-    <section class="events-gallery-section">
+    <section class="events-gallery-section" style="background: #050505;">
         <div class="container">
             <div class="section-header-centered reveal">
-                <span class="section-label" style="justify-content: center;">Gallery</span>
-                <h2 class="section-title">Event <span class="gold-gradient-text">Highlights</span></h2>
-                <p class="section-subtitle">A collection of exclusive moments from our milestone celebrations and investor meets.</p>
+                <span class="section-label" style="justify-content: center;">Milestones</span>
+                <h2 class="section-title">Moments of <span class="gold-gradient-text">Excellence</span></h2>
+                <p class="section-subtitle">Capturing the energy of our 100+ investor celebrations and milestone meets.</p>
             </div>
 
-            <div class="reveal" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+            <div class="moments-grid reveal">
                 <!-- Event 1 -->
-                <div class="event-gallery-item" onclick="openVideoModal('videos/events_new/event-1.mp4')">
-                    <video autoplay muted loop playsinline preload="auto" style="width: 100%; height: 100%; object-fit: cover;">
+                <div class="moment-item" onclick="openVideoModal('videos/events_new/event-1.mp4')">
+                    <video muted loop onmouseover="this.play()" onmouseout="this.pause(); this.currentTime=0;">
                         <source src="videos/events_new/event-1.mp4" type="video/mp4">
                     </video>
-                    <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.3);">
-                        <i data-lucide="play" style="color: var(--gold); width: 40px; height: 40px;"></i>
+                    <div class="moment-overlay">
+                        <div class="moment-play-icon"><i data-lucide="play"></i></div>
                     </div>
                 </div>
                 <!-- Event 2 -->
-                <div class="event-gallery-item" onclick="openVideoModal('videos/events_new/event-2.mp4')">
-                    <video autoplay muted loop playsinline preload="auto" style="width: 100%; height: 100%; object-fit: cover;">
+                <div class="moment-item" onclick="openVideoModal('videos/events_new/event-2.mp4')">
+                    <video muted loop onmouseover="this.play()" onmouseout="this.pause(); this.currentTime=0;">
                         <source src="videos/events_new/event-2.mp4" type="video/mp4">
                     </video>
-                    <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.3);">
-                        <i data-lucide="play" style="color: var(--gold); width: 40px; height: 40px;"></i>
+                    <div class="moment-overlay">
+                        <div class="moment-play-icon"><i data-lucide="play"></i></div>
                     </div>
                 </div>
                 <!-- Event 3 -->
-                <div class="event-gallery-item" onclick="openVideoModal('videos/events_new/event-3.mp4')">
-                    <video autoplay muted loop playsinline preload="auto" style="width: 100%; height: 100%; object-fit: cover;">
+                <div class="moment-item" onclick="openVideoModal('videos/events_new/event-3.mp4')">
+                    <video muted loop onmouseover="this.play()" onmouseout="this.pause(); this.currentTime=0;">
                         <source src="videos/events_new/event-3.mp4" type="video/mp4">
                     </video>
-                    <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.3);">
-                        <i data-lucide="play" style="color: var(--gold); width: 40px; height: 40px;"></i>
+                    <div class="moment-overlay">
+                        <div class="moment-play-icon"><i data-lucide="play"></i></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
 
     <!-- ==================== VIDEO MODAL ==================== -->
     <div id="videoModal" class="modal">
