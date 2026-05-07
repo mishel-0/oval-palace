@@ -148,19 +148,32 @@ function initPerformanceHacks() {
 }
 
 // 6. VIDEO MODAL ENGINE
-function openVideoModal(videoSrc) {
+function openVideoModal(videoSrc, isPortrait = false) {
     const modal = document.getElementById('videoModal');
     const video = document.getElementById('modalVideo');
+    const content = modal ? modal.querySelector('.modal-content') : null;
     if (!modal || !video) return;
 
     const source = video.querySelector('source');
     source.src = videoSrc;
     video.load();
     
-    modal.style.display = 'flex';
+    // Set aspect ratio class
+    if (content) {
+        if (isPortrait) {
+            content.classList.add('portrait');
+        } else {
+            content.classList.remove('portrait');
+        }
+    }
+
+    modal.classList.add('active');
     document.body.style.overflow = 'hidden';
     
-    video.play().catch(e => console.log("Auto-play blocked:", e));
+    // Professional delay for transition sync
+    setTimeout(() => {
+        video.play().catch(e => console.log("Auto-play blocked:", e));
+    }, 100);
 }
 
 function closeVideoModal() {
@@ -168,10 +181,14 @@ function closeVideoModal() {
     const video = document.getElementById('modalVideo');
     if (!modal || !video) return;
 
-    modal.style.display = 'none';
+    modal.classList.remove('active');
     document.body.style.overflow = '';
-    video.pause();
-    video.currentTime = 0;
+    
+    // Cleanup after transition
+    setTimeout(() => {
+        video.pause();
+        video.currentTime = 0;
+    }, 400);
 }
 
 // 7. BOOTSTRAP
