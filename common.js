@@ -197,6 +197,12 @@ document.addEventListener('DOMContentLoaded', () => {
     initUniversalObserver();
     initPerformanceHacks();
     refreshIcons();
+
+    // Portal Logic: Move modal to body root to escape containment
+    const videoModal = document.getElementById('videoModal');
+    if (videoModal && videoModal.parentElement !== document.body) {
+        document.body.appendChild(videoModal);
+    }
 });
 
 // Helper for page-specific scripts to refresh observers if they inject dynamic content
