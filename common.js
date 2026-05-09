@@ -87,6 +87,12 @@ function initUniversalObserver() {
                             if (loader) loader.classList.add('hidden');
                             lazyAsset.classList.add('loaded');
                         }, { once: true });
+
+                        lazyAsset.addEventListener('error', () => {
+                            const loader = lazyAsset.parentElement.querySelector('.video-loader');
+                            if (loader) loader.classList.add('hidden');
+                            lazyAsset.classList.add('load-error');
+                        }, { once: true });
                     } else {
                         lazyAsset.src = lazyAsset.dataset.src;
                         lazyAsset.onload = () => {
