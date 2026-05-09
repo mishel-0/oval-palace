@@ -1708,3 +1708,47 @@
         gap: 8px;
     }
 }
+
+/* ---------- VIDEO LOADERS & PREVIEWS ---------- */
+.video-loader {
+    position: absolute;
+    inset: 0;
+    background: #050505;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+    transition: opacity 0.5s ease;
+}
+
+.video-loader.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.video-loader-ring {
+    width: 40px;
+    height: 40px;
+    border: 2px solid rgba(201, 168, 76, 0.1);
+    border-top: 2px solid var(--gold);
+    border-radius: 50%;
+    animation: loader-spin 1s linear infinite;
+}
+
+@keyframes loader-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+video.lazy {
+    opacity: 0;
+    transition: opacity 1.2s ease;
+}
+
+video.lazy.loaded {
+    opacity: 1;
+}
+
+.reel-card video, .ig-post video, .insight-video-wrap video {
+    background: #000;
+}

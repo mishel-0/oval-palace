@@ -85,6 +85,7 @@ function initUniversalObserver() {
                         lazyAsset.addEventListener('canplay', () => {
                             const loader = lazyAsset.parentElement.querySelector('.video-loader');
                             if (loader) loader.classList.add('hidden');
+                            lazyAsset.classList.add('loaded');
                         }, { once: true });
                     } else {
                         lazyAsset.src = lazyAsset.dataset.src;
