@@ -338,9 +338,136 @@
 
 @media (max-width: 768px) {
     .vip-reels-container {
-        gap: 30px;
-        flex-direction: column;
-        align-items: center;
+        gap: 20px;
+    }
+}
+
+/* ---------- PREMIUM INSIGHTS FEATURED ---------- */
+.premium-insights-section {
+    padding: 100px 0;
+    background: #000;
+}
+
+.insight-featured-card {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(201, 168, 76, 0.15);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+.insight-visual {
+    position: relative;
+    height: 600px;
+}
+
+.insight-video-wrap {
+    position: absolute;
+    inset: 0;
+    cursor: pointer;
+}
+
+.insight-video-wrap video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.insight-play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background: rgba(0, 0, 0, 0.6);
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.insight-video-wrap:hover .insight-play-btn {
+    transform: translate(-50%, -50%) scale(1.1);
+    background: var(--gold);
+}
+
+.insight-video-wrap:hover .insight-play-btn i {
+    stroke: var(--bg-primary);
+}
+
+.insight-content {
+    padding: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.insight-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--text-primary);
+    margin: 30px 0;
+}
+
+.insight-author h4 {
+    font-size: 1.5rem;
+    color: var(--gold);
+    margin-bottom: 5px;
+}
+
+.insight-author p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.insight-actions {
+    margin-top: 50px;
+}
+
+.btn-instagram {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 32px;
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.btn-instagram:hover {
+    background: var(--gold);
+    color: var(--bg-primary);
+    box-shadow: 0 10px 30px rgba(201, 168, 76, 0.3);
+}
+
+@media (max-width: 1024px) {
+    .insight-featured-card {
+        grid-template-columns: 1fr;
+    }
+    .insight-visual {
+        height: 450px;
+    }
+    .insight-content {
+        padding: 50px 30px;
+    }
+    .insight-quote {
+        font-size: 1.5rem;
     }
 }
 
