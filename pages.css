@@ -329,16 +329,20 @@
 }
 
 .vip-reels-container {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
     margin-top: 50px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 @media (max-width: 768px) {
     .vip-reels-container {
+        grid-template-columns: 1fr;
         gap: 20px;
+        max-width: 320px;
     }
 }
 

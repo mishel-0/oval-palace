@@ -78,26 +78,28 @@ function initUniversalObserver() {
 
                 // B. Lazy Loading (Images & Videos)
                 const lazyAsset = el.dataset.src ? el : el.querySelector('[data-src]');
-                if (lazyAsset && !lazyAsset.src) {
+                if (lazyAsset && lazyAsset.dataset.src) {
                     if (lazyAsset.tagName === 'VIDEO') {
                         lazyAsset.src = lazyAsset.dataset.src;
+                        lazyAsset.removeAttribute('data-src');
                         lazyAsset.load();
                         lazyAsset.addEventListener('canplay', () => {
-                            const loader = lazyAsset.parentElement.querySelector('.video-loader');
+                            const loader = lazyAsset.closest('.reel-card, .insight-video-wrap, .ig-post, .gallery-video-card')?.querySelector('.video-loader');
                             if (loader) loader.classList.add('hidden');
                             lazyAsset.classList.add('loaded');
+                            lazyAsset.play().catch(() => {});
                         }, { once: true });
 
                         lazyAsset.addEventListener('error', () => {
-                            const loader = lazyAsset.parentElement.querySelector('.video-loader');
+                            const loader = lazyAsset.closest('.reel-card, .insight-video-wrap, .ig-post, .gallery-video-card')?.querySelector('.video-loader');
                             if (loader) loader.classList.add('hidden');
                             lazyAsset.classList.add('load-error');
                         }, { once: true });
                     } else {
                         lazyAsset.src = lazyAsset.dataset.src;
+                        lazyAsset.removeAttribute('data-src');
                         lazyAsset.onload = () => {
                             lazyAsset.classList.add('loaded');
-                            // Sync with resort-overview.css expectations
                             if (el.classList.contains('ig-post')) {
                                 el.classList.add('img-loaded');
                             }
