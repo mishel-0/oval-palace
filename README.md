@@ -90,7 +90,11 @@ oval-palace/
 
 ## 🖼️ Screenshots
 
-*Coming soon — homepage hero, room gallery, and mobile views*
+<div align="center">
+  <img src="screenshots/homepage.jpg" alt="Oval Palace Resort Homepage" width="700"/>
+  <br/>
+  <em>Oval Palace Resort — premium hospitality landing page</em>
+</div>
 
 ---
 
