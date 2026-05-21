@@ -263,6 +263,7 @@ button {
     letter-spacing: 0.5px;
     position: relative;
     padding: 4px 0;
+    white-space: nowrap; /* Prevent ugly menu item wrapping */
 }
 
 .nav-links a::after {
@@ -292,6 +293,7 @@ button {
     font-weight: 600 !important;
     letter-spacing: 0.5px;
     box-shadow: var(--shadow-gold);
+    white-space: nowrap; /* Prevent button text wrapping */
 }
 
 .nav-cta::after { display: none !important; }
@@ -394,6 +396,32 @@ button {
     margin-top: 24px;
     text-align: center;
     width: 100%;
+}
+
+/* Tablet & small laptop breakpoint for hamburger menu to prevent crowded nav links */
+@media (max-width: 1024px) {
+    .nav-links {
+        display: none !important;
+    }
+    .nav-hamburger {
+        display: flex !important;
+    }
+    .mobile-menu {
+        display: block !important;
+    }
+}
+
+/* Responsive adjustments for mid-size desktop resolutions to prevent crowded menu items */
+@media (min-width: 1025px) and (max-width: 1280px) {
+    .nav-links {
+        gap: 16px !important;
+    }
+    .nav-links a {
+        font-size: 0.8rem !important;
+    }
+    .nav-cta {
+        padding: 8px 16px !important;
+    }
 }
 
 /* ---------- HERO SECTION ---------- */
