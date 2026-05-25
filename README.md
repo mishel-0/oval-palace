@@ -74,7 +74,6 @@ oval-palace/
 ├── events.html             # Weddings, conferences & events
 ├── testimonials.html       # Guest reviews & testimonials
 ├── construction.html       # Ongoing development projects
-├── insights.html           # Blog & travel insights
 ├── styles.css              # Global styles
 ├── pages.css               # Page-specific styling
 ├── script.js               # Main interactivity
