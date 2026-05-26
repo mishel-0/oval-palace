@@ -269,7 +269,6 @@
             .lightbox-prev { left: 15px; }
             .lightbox-next { right: 15px; }
             .lightbox-close { top: 20px; right: 20px; }
-            .phase-gallery-wall { grid-template-columns: 1fr; }
             .gallery-title h3 { font-size: 1.3rem; text-align: center; }
         }
 
@@ -791,8 +790,8 @@
 
         function closeLightbox() {
             const modal = document.getElementById('lightboxModal');
-            const video = modal.querySelector('video');
-            if (video) video.pause();
+            const container = document.getElementById('lightboxMediaContainer');
+            if (container) container.innerHTML = '';
             modal.classList.remove('active');
             document.body.style.overflow = '';
         }

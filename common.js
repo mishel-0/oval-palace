@@ -73,58 +73,83 @@ function initUniversalObserver() {
                 // A. Reveal Animations
                 if (el.classList.contains('reveal')) {
                     el.classList.add('visible');
-                    observer.unobserve(el); // Kill task after finish
+                    observer.unobserve(el);
                 }
 
-                // B. Lazy Loading (Images & Videos)
+                // B. Lazy Loading (Static Assets Only)
                 const lazyAsset = el.dataset.src ? el : el.querySelector('[data-src]');
-                if (lazyAsset && lazyAsset.dataset.src) {
-                    if (lazyAsset.tagName === 'VIDEO') {
-                        lazyAsset.src = lazyAsset.dataset.src;
-                        lazyAsset.removeAttribute('data-src');
-                        lazyAsset.load();
-                        lazyAsset.addEventListener('canplay', () => {
-                            const loader = lazyAsset.closest('.reel-card, .insight-video-wrap, .ig-post, .gallery-video-card')?.querySelector('.video-loader');
-                            if (loader) loader.classList.add('hidden');
-                            lazyAsset.classList.add('loaded');
-                            lazyAsset.play().catch(() => {});
-                        }, { once: true });
-
-                        lazyAsset.addEventListener('error', () => {
-                            const loader = lazyAsset.closest('.reel-card, .insight-video-wrap, .ig-post, .gallery-video-card')?.querySelector('.video-loader');
-                            if (loader) loader.classList.add('hidden');
-                            lazyAsset.classList.add('load-error');
-                        }, { once: true });
-                    } else {
-                        lazyAsset.src = lazyAsset.dataset.src;
-                        lazyAsset.removeAttribute('data-src');
-                        lazyAsset.onload = () => {
-                            lazyAsset.classList.add('loaded');
-                            if (el.classList.contains('ig-post')) {
-                                el.classList.add('img-loaded');
-                            }
-                        };
-                    }
+                if (lazyAsset && lazyAsset.dataset.src && lazyAsset.tagName !== 'VIDEO') {
+                    lazyAsset.src = lazyAsset.dataset.src;
+                    lazyAsset.removeAttribute('data-src');
+                    lazyAsset.onload = () => {
+                        lazyAsset.classList.add('loaded');
+                        if (el.classList.contains('ig-post')) {
+                            el.classList.add('img-loaded');
+                        }
+                    };
                     if (el === lazyAsset) observer.unobserve(el);
-                }
-
-                // C. Autoplay Management
-                if (el.tagName === 'VIDEO') {
-                    el.play().catch(() => {});
-                }
-            } else {
-                // Pause videos off-screen to save CPU/Battery
-                if (el.tagName === 'VIDEO') {
-                    el.pause();
                 }
             }
         });
     }, observerOptions);
 
-    // Observe everything important
-    document.querySelectorAll('.reveal, [data-src], video.lazy, .ig-post').forEach(el => {
+    // Observe reveal components and lazy images
+    document.querySelectorAll('.reveal, img[data-src], .ig-post').forEach(el => {
         observer.observe(el);
     });
+}
+
+// 3.5 DEDICATED HIGH-PERFORMANCE VIDEO OBSERVER
+let videoObserver;
+function initVideoObserver() {
+    if (!('IntersectionObserver' in window)) return;
+
+    videoObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const video = entry.target;
+
+            if (entry.isIntersecting) {
+                // A. Lazy load video source
+                if (video.dataset.src) {
+                    const src = video.dataset.src;
+                    video.removeAttribute('data-src');
+                    video.src = src;
+                    video.load();
+                    
+                    video.addEventListener('canplay', () => {
+                        const loader = video.closest('.reel-card, .insight-video-wrap, .ig-post, .gallery-video-card, .site-card')?.querySelector('.video-loader');
+                        if (loader) loader.classList.add('hidden');
+                        video.classList.add('loaded');
+                        video.play().catch(() => {});
+                    }, { once: true });
+
+                    video.addEventListener('error', () => {
+                        const loader = video.closest('.reel-card, .insight-video-wrap, .ig-post, .gallery-video-card, .site-card')?.querySelector('.video-loader');
+                        if (loader) loader.classList.add('hidden');
+                        video.classList.add('load-error');
+                    }, { once: true });
+                } else {
+                    // B. Auto-play when visible
+                    video.play().catch(() => {});
+                }
+            } else {
+                // C. Pause when off-screen to save CPU & battery
+                if (!video.paused) {
+                    video.pause();
+                }
+            }
+        });
+    }, {
+        threshold: 0.05,
+        rootMargin: '100px 0px 100px 0px' // Load/play slightly before/after screen bounds
+    });
+
+    // Observe all videos on the page
+    document.querySelectorAll('video').forEach(video => {
+        videoObserver.observe(video);
+    });
+
+    window.videoObserver = videoObserver;
 }
 
 // 4. PERFORMANCE HACKS
@@ -204,6 +229,7 @@ function closeVideoModal() {
 document.addEventListener('DOMContentLoaded', () => {
     initNavbar();
     initUniversalObserver();
+    initVideoObserver();
     initPerformanceHacks();
     refreshIcons();
 
@@ -215,6 +241,13 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Helper for page-specific scripts to refresh observers if they inject dynamic content
-window.refreshObservers = initUniversalObserver;
+window.refreshObservers = () => {
+    initUniversalObserver();
+    if (window.videoObserver) {
+        document.querySelectorAll('video').forEach(video => {
+            window.videoObserver.observe(video);
+        });
+    }
+};
 window.openVideoModal = openVideoModal;
 window.closeVideoModal = closeVideoModal;
