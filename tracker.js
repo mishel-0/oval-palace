@@ -38,7 +38,7 @@ function trackInteractions() {
         if (target) {
             monitorChannel.postMessage({
                 type: 'INTERACTION',
-                element: target.innerText || target.ariaLabel || 'Button/Link',
+                element: (target.innerText || target.ariaLabel || 'Button/Link').trim().replace(/\s+/g, ' '),
                 timestamp: new Date().toLocaleTimeString(),
                 action: 'CLICKED'
             });
