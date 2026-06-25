@@ -35,12 +35,16 @@ let selectedTime = null;
 let selectedMode = 'in-person';
 
 function initCalendar() {
+    const grid = document.getElementById('calendarGrid');
+    const monthLabel = document.getElementById('calendarMonth');
+    if (!grid || !monthLabel) return;
     renderCalendar();
 }
 
 function renderCalendar() {
     const grid = document.getElementById('calendarGrid');
     const monthLabel = document.getElementById('calendarMonth');
+    if (!grid || !monthLabel) return;
     const year = calendarDate.getFullYear();
     const month = calendarDate.getMonth();
 
@@ -307,6 +311,7 @@ function showTestimonial(index) {
 // Auto-rotate testimonials
 setInterval(() => {
     const total = document.querySelectorAll('.testimonial-card').length;
+    if (total === 0) return;
     showTestimonial((currentTestimonial + 1) % total);
 }, 5000);
 
@@ -579,6 +584,7 @@ function initChatbot() {
 function toggleChatbot() {
     const window_ = document.getElementById('chatbotWindow');
     const trigger = document.getElementById('chatbotTrigger');
+    if (!window_ || !trigger) return;
     const notification = trigger.querySelector('.chatbot-notification');
 
     window_.classList.toggle('active');
