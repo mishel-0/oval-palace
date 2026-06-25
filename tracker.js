@@ -3,7 +3,25 @@
  * Enables real-time navigation tracking and site vitals report to monitor.html
  */
 
-const monitorChannel = new BroadcastChannel('oval_palace_monitor');
+// BroadcastChannel with fallback for Safari < 15.4
+let monitorChannel;
+try {
+  monitorChannel = new BroadcastChannel('oval_palace_monitor');
+} catch (e) {
+  // Fallback: use a simple event bus via window for incompatible browsers
+  monitorChannel = {
+    postMessage: (data) => {
+      const event = new CustomEvent('oval_palace_monitor', { detail: data });
+      window.dispatchEvent(event);
+    },
+    onmessage: null,
+    set onmessage(handler) {
+      if (handler) {
+        window.addEventListener('oval_palace_monitor', (e) => handler({ data: e.detail }));
+      }
+    },
+  };
+}
 
 // Send initial navigation event
 function trackNavigation() {

@@ -3010,9 +3010,7 @@ button {
     
     .nav-logo-img { height: 75px; }
     .navbar.scrolled .nav-logo-img { height: 60px; }
-}
 
-@media (max-width: 768px) {
     .container {
         padding: 0 24px;
     }

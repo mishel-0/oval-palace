@@ -13,14 +13,14 @@ for f in files:
     if "insights.html" not in content and "nav-links" in content:
         # For Desktop Nav
         content = re.sub(
-            r"(<li><a href=\"events\.html\">Events</a></li>)",
-            r"\1\n                <li><a href=\"insights.html\">Insights</a></li>",
+            r'(<li><a href="events\.html">Events</a></li>)',
+            r'\1\n                <li><a href="insights.html">Insights</a></li>',
             content
         )
         # For Mobile Nav
         content = re.sub(
-            r"(<li><a href=\"events\.html\" onclick=\"closeMobileMenu\(\)\">Events</a></li>)",
-            r"\1\n            <li><a href=\"insights.html\" onclick=\"closeMobileMenu()\">Insights</a></li>",
+            r'(<li><a href="events\.html" onclick="closeMobileMenu\(\)">Events</a></li>)',
+            r'\1\n            <li><a href="insights.html" onclick="closeMobileMenu()">Insights</a></li>',
             content
         )
         with open(f, "w", encoding="utf-8") as file:
@@ -35,8 +35,16 @@ try:
         
     # Replace title and active link
     header = re.sub(r"<title>.*?</title>", "<title>Investment Insights — Oval Palace Resort | Nalakath Holdings</title>", header)
-    header = re.sub(r"<li><a href=\"about\.html\" class=\"active\">About</a></li>", "<li><a href=\"about.html\">About</a></li>", header)
-    header = re.sub(r"<li><a href=\"insights\.html\">Insights</a></li>", "<li><a href=\"insights.html\" class=\"active\">Insights</a></li>", header)
+    header = re.sub(
+        r'<li><a href="about\.html" class="active">About</a></li>',
+        '<li><a href="about.html">About</a></li>',
+        header
+    )
+    header = re.sub(
+        r'<li><a href="insights\.html">Insights</a></li>',
+        '<li><a href="insights.html" class="active">Insights</a></li>',
+        header
+    )
 
     # Blog Content
     blog_content = """
