@@ -1,48 +1,41 @@
-import os
-import glob
+import os, sys
 from PIL import Image
 
-def compress_images():
-    print("Starting compression...")
-    image_dir = "images"
-    pattern = os.path.join(image_dir, "ig-*.jpg")
-    files = glob.glob(pattern)
-    
-    if not files:
-        print("No images found matching ig-*.jpg")
-        return
+base = "/Users/misheladnan/Desktop/Nalakath_Holdings/Oval-Palace/oval-palace/images"
+files = [f for f in os.listdir(base) if f.endswith('.jpg')]
 
-    for file_path in files:
-        filename = os.path.basename(file_path)
-        name, _ = os.path.splitext(filename)
-        webp_path = os.path.join(image_dir, f"{name}.webp")
-        
-        print(f"Compressing {filename}...")
-        try:
-            with Image.open(file_path) as img:
-                # Convert to RGB if necessary
-                if img.mode in ("RGBA", "P"):
-                    img = img.convert("RGB")
-                
-                # Resize if the image is too large (e.g. max width 1080px for IG)
-                max_width = 1080
-                if img.width > max_width:
-                    ratio = max_width / img.width
-                    new_height = int(img.height * ratio)
-                    img = img.resize((max_width, new_height), Image.Resampling.LANCZOS)
-                
-                # Save as webp with high compression
-                img.save(webp_path, "webp", quality=60, method=6)
-                
-            orig_size = os.path.getsize(file_path) / (1024 * 1024)
-            new_size = os.path.getsize(webp_path) / 1024
-            print(f"  ✓ Saved as {name}.webp (was {orig_size:.2f}MB, now {new_size:.2f}KB)")
-            
-            # Optionally remove the original to save space
-            # os.remove(file_path)
-            
-        except Exception as e:
-            print(f"Error compressing {filename}: {e}")
-            
-if __name__ == "__main__":
-    compress_images()
+for fname in sorted(files):
+    fpath = os.path.join(base, fname)
+    old_size = os.path.getsize(fpath)
+    
+    img = Image.open(fpath).convert('RGB')
+    w, h = img.size
+    
+    # Resize large images to max 1920px on longest side
+    max_dim = 1920
+    resample = Image.Resampling.LANCZOS if hasattr(Image, 'Resampling') else Image.LANCZOS
+    if max(w, h) > max_dim:
+        if w > h:
+            new_w = max_dim
+            new_h = int(h * max_dim / w)
+        else:
+            new_h = max_dim
+            new_w = int(w * max_dim / h)
+        img = img.resize((new_w, new_h), resample)
+    
+    # Save as WebP
+    out_name = fname.rsplit('.', 1)[0] + '.webp'
+    out_path = os.path.join(base, out_name)
+    
+    # Quality: 85 for hero images, 80 for others
+    q = 85 if fname.startswith('hero') else 80
+    img.save(out_path, 'WEBP', quality=q)
+    
+    new_size = os.path.getsize(out_path)
+    reduction = (1 - new_size / old_size) * 100
+    print(f"{fname:25s} {old_size/1024/1024:5.1f}MB -> {out_name:25s} {new_size/1024/1024:5.1f}MB ({reduction:.0f}% saved)")
+
+print(f"\nTotal images converted: {len(files)}")
+print(f"Total size before: {sum(os.path.getsize(os.path.join(base,f)) for f in files if f.endswith('.jpg'))/1024/1024:.0f}MB")
+webps = [f for f in os.listdir(base) if f.endswith('.webp') and f != 'og-image.png']
+print(f"Total size after:  {sum(os.path.getsize(os.path.join(base,f)) for f in webps)/1024/1024:.0f}MB")
