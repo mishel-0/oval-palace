@@ -384,6 +384,14 @@ function saveLead(name, email, phone, source, extra = {}) {
     leads.push({ name, email, phone, source, ...extra, timestamp });
     localStorage.setItem('ovalPalace_leads', JSON.stringify(leads));
 
+    // 1.5 Fire GA4 conversion event so leads can be attributed by source/page/campaign
+    if (typeof gtag === 'function') {
+        gtag('event', 'generate_lead', {
+            lead_source: source,
+            page_path: window.location.pathname
+        });
+    }
+
     // 2. Send email via Web3Forms
     if (WEB3FORMS_KEY === 'YOUR_ACCESS_KEY_HERE') {
         console.warn('[Oval Palace] Web3Forms key not set. Email not sent. Get your key at https://web3forms.com');
