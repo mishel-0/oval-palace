@@ -816,6 +816,81 @@ function animateCounter(el, target, suffix = '') {
     }, 16);
 }
 
+// ==================== NRI INVESTMENT CALCULATOR ====================
+const CALC_MIN = 500000;
+const CALC_MAX = 10000000;
+
+const CALC_PLANS = [
+    { units: 1, monthly: 5000, total: 500000, label: '1 Unit — ₹5,000/month', totalLabel: '₹5 Lakh' },
+    { units: 2, monthly: 10000, total: 1000000, label: '2 Units — ₹10,000/month', totalLabel: '₹10 Lakh' },
+    { units: 4, monthly: 20000, total: 2000000, label: '4 Units — ₹20,000/month', totalLabel: '₹20 Lakh' },
+    { units: 10, monthly: 50000, total: 5000000, label: '10 Units — ₹50,000/month', totalLabel: '₹50 Lakh' },
+    { units: 15, monthly: 75000, total: 7500000, label: '15 Units — ₹75,000/month', totalLabel: '₹75 Lakh' },
+    { units: 20, monthly: 100000, total: 10000000, label: '20 Units — ₹1,00,000/month', totalLabel: '₹1 Crore' }
+];
+
+let calcDebounce;
+
+function updateCalculatorDisplay(rawValue) {
+    const input = document.getElementById('calcAmount');
+    let amount = parseInt(rawValue, 10);
+    if (isNaN(amount)) amount = CALC_MIN;
+    amount = Math.min(CALC_MAX, Math.max(CALC_MIN, amount));
+
+    const monthly = amount * 0.12 / 12;
+    const annualLow = amount * 0.12;
+    const annualHigh = amount * 0.18;
+
+    document.getElementById('calcMonthly').textContent = '₹' + Math.round(monthly).toLocaleString('en-IN');
+    document.getElementById('calcAnnual').textContent = '₹' + Math.round(annualLow).toLocaleString('en-IN');
+    document.getElementById('calcCombined').textContent = '₹' + Math.round(annualLow).toLocaleString('en-IN') + ' – ₹' + Math.round(annualHigh).toLocaleString('en-IN');
+
+    document.querySelectorAll('.calc-quick-btn').forEach(btn => {
+        btn.classList.toggle('active', parseInt(btn.dataset.amount, 10) === amount);
+    });
+
+    clearTimeout(calcDebounce);
+    calcDebounce = setTimeout(() => {
+        if (typeof gtag === 'function') {
+            gtag('event', 'calculator_used', { investment_amount: amount });
+        }
+    }, 600);
+}
+
+function setCalcAmount(amount) {
+    const input = document.getElementById('calcAmount');
+    input.value = amount;
+    updateCalculatorDisplay(amount);
+}
+
+function findClosestPlan(amount) {
+    let closest = CALC_PLANS[0];
+    let minDiff = Math.abs(amount - closest.total);
+    CALC_PLANS.forEach(p => {
+        const diff = Math.abs(amount - p.total);
+        if (diff < minDiff) {
+            minDiff = diff;
+            closest = p;
+        }
+    });
+    return closest;
+}
+
+function bookFromCalculator() {
+    const input = document.getElementById('calcAmount');
+    let amount = parseInt(input.value, 10);
+    if (isNaN(amount)) amount = CALC_MIN;
+    amount = Math.min(CALC_MAX, Math.max(CALC_MIN, amount));
+
+    const plan = findClosestPlan(amount);
+
+    if (typeof gtag === 'function') {
+        gtag('event', 'calculator_to_booking', { investment_amount: amount, matched_plan: plan.totalLabel });
+    }
+
+    openBookingModal(plan.label, plan.totalLabel);
+}
+
 // ==================== GCC CURRENCY DISPLAY ====================
 // Approximate mid-market rates (INR per 1 unit of currency) — reference only,
 // not used for any actual transaction. Update periodically.

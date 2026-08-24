@@ -77,7 +77,7 @@
     <script src="https://unpkg.com/lucide@0.344.0/dist/umd/lucide.js"></script>
 
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="styles.css?v=1.4">
+    <link rel="stylesheet" href="styles.css?v=1.5">
 
     <!-- Schema Markup -->
     <!-- Resort Schema -->
@@ -708,6 +708,48 @@
                     <i data-lucide="lock"></i>
                     <span><strong>Four-Year Lock-in Period</strong> ensuring project stability.</span>
                 </div>
+            </div>
+
+            <!-- ==================== NRI INVESTMENT CALCULATOR ==================== -->
+            <div class="reveal" style="max-width: 700px; margin: 3rem auto; background: rgba(201,168,76,0.04); border: 1px solid rgba(201,168,76,0.18); border-radius: 24px; padding: 2.5rem;">
+                <div style="text-align: center; margin-bottom: 1.8rem;">
+                    <i data-lucide="calculator" style="width: 34px; height: 34px; color: var(--gold, #C9A84C);"></i>
+                    <h3 style="font-family: 'Playfair Display', serif; color: #fff; margin: 0.6rem 0 0.3rem;">NRI Investment Calculator</h3>
+                    <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; margin: 0;">See your projected returns instantly — minimum investment ₹5 Lakh</p>
+                </div>
+
+                <label for="calcAmount" style="display: block; color: rgba(255,255,255,0.7); font-size: 0.85rem; margin-bottom: 8px;">Investment Amount (₹)</label>
+                <input type="number" id="calcAmount" min="500000" step="100000" value="500000" oninput="updateCalculatorDisplay(this.value)" style="width: 100%; background: rgba(0,0,0,0.3); border: 1px solid rgba(201,168,76,0.3); color: #fff; border-radius: 10px; padding: 12px 16px; font-size: 1.1rem; margin-bottom: 14px;">
+
+                <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1.8rem;">
+                    <button type="button" onclick="setCalcAmount(500000)" class="calc-quick-btn active" data-amount="500000">₹5L</button>
+                    <button type="button" onclick="setCalcAmount(1000000)" class="calc-quick-btn" data-amount="1000000">₹10L</button>
+                    <button type="button" onclick="setCalcAmount(2000000)" class="calc-quick-btn" data-amount="2000000">₹20L</button>
+                    <button type="button" onclick="setCalcAmount(5000000)" class="calc-quick-btn" data-amount="5000000">₹50L</button>
+                    <button type="button" onclick="setCalcAmount(7500000)" class="calc-quick-btn" data-amount="7500000">₹75L</button>
+                    <button type="button" onclick="setCalcAmount(10000000)" class="calc-quick-btn" data-amount="10000000">₹1Cr</button>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 1.2rem;">
+                    <div style="background: rgba(0,0,0,0.25); border-radius: 14px; padding: 1.1rem; text-align: center;">
+                        <div style="color: rgba(255,255,255,0.5); font-size: 0.78rem; margin-bottom: 6px;">Monthly Payout (12% p.a.)</div>
+                        <div id="calcMonthly" style="color: var(--gold, #C9A84C); font-size: 1.3rem; font-weight: 700;">₹5,000</div>
+                    </div>
+                    <div style="background: rgba(0,0,0,0.25); border-radius: 14px; padding: 1.1rem; text-align: center;">
+                        <div style="color: rgba(255,255,255,0.5); font-size: 0.78rem; margin-bottom: 6px;">Annual Payout (Pre-Operational)</div>
+                        <div id="calcAnnual" style="color: var(--gold, #C9A84C); font-size: 1.3rem; font-weight: 700;">₹60,000</div>
+                    </div>
+                    <div style="background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.25); border-radius: 14px; padding: 1.1rem; text-align: center;">
+                        <div style="color: rgba(255,255,255,0.6); font-size: 0.78rem; margin-bottom: 6px;">Combined Annual Return Potential*</div>
+                        <div id="calcCombined" style="color: #fff; font-size: 1.15rem; font-weight: 700;">₹60,000 – ₹90,000</div>
+                    </div>
+                </div>
+
+                <p style="color: rgba(255,255,255,0.4); font-size: 0.75rem; line-height: 1.5; margin-bottom: 1.5rem;">*Based on the 12% p.a. pre-operational yield structure applied across all Oval Palace investment tiers, plus the 12-18% combined return range (pre-operational yield + post-operational revenue sharing and capital appreciation) published elsewhere on this site. This is an estimate, not a guarantee — actual returns depend on the LLP's performance and are governed by the partnership agreement.</p>
+
+                <button type="button" class="btn-primary" style="width: 100%; justify-content: center;" onclick="bookFromCalculator()">
+                    <i data-lucide="calendar-check"></i> Book This Investment
+                </button>
             </div>
 
             <!-- Investment Plans Row 1 -->
@@ -1516,7 +1558,7 @@
 
     <!-- ==================== SCRIPTS ==================== -->
     <script src="common.js?v=1.2"></script>
-    <script src="script.js?v=1.4"></script>
+    <script src="script.js?v=1.5"></script>
     <script src="tracker.js?v=1.2"></script>
 </body>
 </html>

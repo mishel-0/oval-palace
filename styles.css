@@ -2201,6 +2201,25 @@ button {
     }
 }
 
+/* ---------- INVESTMENT CALCULATOR ---------- */
+.calc-quick-btn {
+    background: rgba(201, 168, 76, 0.08);
+    border: 1px solid rgba(201, 168, 76, 0.25);
+    color: var(--gold, #C9A84C);
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.calc-quick-btn:hover,
+.calc-quick-btn.active {
+    background: var(--gold, #C9A84C);
+    color: #000;
+}
+
 /* ---------- MOBILE STICKY BOOKING BAR ---------- */
 .mobile-sticky-cta {
     display: none;
