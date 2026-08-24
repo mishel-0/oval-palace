@@ -579,6 +579,9 @@ const chatFlow = {
 };
 
 function initChatbot() {
+    // Chatbot markup only exists on index.html — skip on pages that don't have it
+    if (!document.getElementById('chatMessages')) return;
+
     // Delay the first message for natural feel
     setTimeout(() => {
         if (!chatState.initialized) {

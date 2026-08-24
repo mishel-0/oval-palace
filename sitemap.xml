@@ -4,61 +4,73 @@
         xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
     <loc>https://www.ovalpalaceresort.com/</loc>
-    <lastmod>2026-07-02</lastmod>
+    <lastmod>2026-08-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.ovalpalaceresort.com/about</loc>
-    <lastmod>2026-07-02</lastmod>
+    <lastmod>2026-08-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.ovalpalaceresort.com/resort-overview</loc>
-    <lastmod>2026-07-02</lastmod>
+    <lastmod>2026-08-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.ovalpalaceresort.com/construction</loc>
-    <lastmod>2026-07-02</lastmod>
+    <lastmod>2026-08-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.ovalpalaceresort.com/testimonials</loc>
-    <lastmod>2026-07-02</lastmod>
+    <lastmod>2026-08-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.ovalpalaceresort.com/events</loc>
-    <lastmod>2026-07-02</lastmod>
+    <lastmod>2026-08-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.ovalpalaceresort.com/blog</loc>
-    <lastmod>2026-07-02</lastmod>
+    <lastmod>2026-08-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.ovalpalaceresort.com/blog/fema-rbi-rules-nri-investment-india-2026</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.ovalpalaceresort.com/blog/fractional-ownership-vs-llp-resort-investment-kerala</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.ovalpalaceresort.com/blog/top-10-best-investment-options-kerala-nri-2026</loc>
-    <lastmod>2026-07-02</lastmod>
+    <lastmod>2026-08-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.ovalpalaceresort.com/blog/hospitality-investment-kerala-nri-guide</loc>
-    <lastmod>2026-07-02</lastmod>
+    <lastmod>2026-08-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.ovalpalaceresort.com/blog/resort-investment-vs-real-estate-nri-kerala</loc>
-    <lastmod>2026-07-02</lastmod>
+    <lastmod>2026-08-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
