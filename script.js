@@ -815,3 +815,61 @@ function animateCounter(el, target, suffix = '') {
         el.textContent = Math.floor(current) + suffix;
     }, 16);
 }
+
+// ==================== GCC CURRENCY DISPLAY ====================
+// Approximate mid-market rates (INR per 1 unit of currency) — reference only,
+// not used for any actual transaction. Update periodically.
+const GCC_RATES = {
+    INR: { rate: 1, symbol: '₹' },
+    AED: { rate: 26.0, symbol: 'AED ' },
+    QAR: { rate: 26.3, symbol: 'QAR ' },
+    SAR: { rate: 25.5, symbol: 'SAR ' },
+    KWD: { rate: 311.0, symbol: 'KWD ' },
+    OMR: { rate: 249.0, symbol: 'OMR ' },
+    BHD: { rate: 254.0, symbol: 'BHD ' }
+};
+
+function formatGccAmount(inrValue, currency) {
+    const info = GCC_RATES[currency];
+    if (!info || currency === 'INR') return null;
+    const converted = inrValue / info.rate;
+    const formatted = converted >= 1000
+        ? Math.round(converted).toLocaleString('en-US')
+        : converted.toFixed(converted < 100 ? 1 : 0);
+    return info.symbol + formatted;
+}
+
+function updatePlanCurrency(currency) {
+    const disclaimer = document.getElementById('currencyDisclaimer');
+    if (disclaimer) disclaimer.style.display = currency === 'INR' ? 'none' : 'block';
+
+    document.querySelectorAll('.plan-monthly[data-inr]').forEach(el => {
+        if (!el.dataset.origSuffix) {
+            const span = el.querySelector('span');
+            el.dataset.origSuffix = span ? span.outerHTML : '';
+        }
+        const inrValue = parseFloat(el.dataset.inr);
+        const suffix = el.dataset.origSuffix;
+        if (currency === 'INR') {
+            el.innerHTML = '₹' + inrValue.toLocaleString('en-IN') + ' ' + suffix;
+        } else {
+            const amount = formatGccAmount(inrValue, currency);
+            el.innerHTML = amount + ' <span style="font-size:0.7em;opacity:0.6;">(₹' + inrValue.toLocaleString('en-IN') + ')</span> ' + suffix;
+        }
+    });
+
+    document.querySelectorAll('.plan-total strong[data-inr]').forEach(el => {
+        const inrValue = parseFloat(el.dataset.inr);
+        if (currency === 'INR') {
+            el.textContent = el.dataset.inrLabel || el.textContent;
+        } else {
+            if (!el.dataset.inrLabel) el.dataset.inrLabel = el.textContent;
+            const amount = formatGccAmount(inrValue, currency);
+            el.textContent = amount + ' (' + el.dataset.inrLabel + ')';
+        }
+    });
+
+    if (typeof gtag === 'function') {
+        gtag('event', 'currency_switch', { currency: currency });
+    }
+}

@@ -2201,6 +2201,52 @@ button {
     }
 }
 
+/* ---------- MOBILE STICKY BOOKING BAR ---------- */
+.mobile-sticky-cta {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .mobile-sticky-cta {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 999997;
+        background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+        color: var(--bg-primary);
+        font-weight: 700;
+        font-size: 0.95rem;
+        text-decoration: none;
+        padding: 14px 16px;
+        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.35);
+    }
+
+    .mobile-sticky-cta:hover {
+        color: var(--bg-primary);
+    }
+
+    .mobile-sticky-cta svg,
+    .mobile-sticky-cta i {
+        width: 18px;
+        height: 18px;
+    }
+
+    /* Lift the floating buttons above the sticky bar so nothing overlaps */
+    .whatsapp-float,
+    .chatbot-trigger {
+        bottom: 84px;
+    }
+
+    body {
+        padding-bottom: 56px;
+    }
+}
+
 .chatbot-window {
     position: fixed;
     bottom: 100px;
