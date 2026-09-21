@@ -841,12 +841,10 @@ function updateCalculatorDisplay(rawValue) {
     amount = Math.min(CALC_MAX, Math.max(CALC_MIN, amount));
 
     const monthly = amount * 0.12 / 12;
-    const annualLow = amount * 0.12;
-    const annualHigh = amount * 0.18;
+    const annual = amount * 0.12;
 
     document.getElementById('calcMonthly').textContent = '₹' + Math.round(monthly).toLocaleString('en-IN');
-    document.getElementById('calcAnnual').textContent = '₹' + Math.round(annualLow).toLocaleString('en-IN');
-    document.getElementById('calcCombined').textContent = '₹' + Math.round(annualLow).toLocaleString('en-IN') + ' – ₹' + Math.round(annualHigh).toLocaleString('en-IN');
+    document.getElementById('calcAnnual').textContent = '₹' + Math.round(annual).toLocaleString('en-IN');
 
     document.querySelectorAll('.calc-quick-btn').forEach(btn => {
         btn.classList.toggle('active', parseInt(btn.dataset.amount, 10) === amount);
