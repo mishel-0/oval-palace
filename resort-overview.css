@@ -244,6 +244,10 @@
 .reel-overlay-top {
     padding: 16px;
     background: linear-gradient(180deg, rgba(0,0,0,0.5), transparent);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    pointer-events: all;
 }
 
 .reel-badge {
@@ -262,54 +266,6 @@
 .reel-badge i {
     width: 14px;
     height: 14px;
-}
-
-.reel-overlay-bottom {
-    padding: 20px 16px;
-    background: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.85) 55%, transparent 100%);
-    backdrop-filter: blur(4px);
-}
-
-.reel-author {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 10px;
-}
-
-.reel-author-avatar {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    border: 2px solid var(--gold);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    background: var(--bg-card);
-}
-
-.reel-author-name {
-    font-weight: 600;
-    font-size: 0.85rem;
-    color: white;
-    display: block;
-}
-
-.reel-author-handle {
-    font-size: 0.72rem;
-    color: rgba(255,255,255,0.6);
-}
-
-.reel-caption {
-    font-size: 0.8rem;
-    color: rgba(255,255,255,0.85);
-    line-height: 1.5;
-    margin-bottom: 14px;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
 }
 
 .reel-actions {

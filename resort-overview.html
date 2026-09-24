@@ -289,22 +289,10 @@
                             <!-- Main Video Player -->
                             <video id="mainReelVideo" src="videos/reel-1.mp4" playsinline loop muted preload="auto" poster="images/hero-1.webp" style="opacity:0;transition:opacity 0.8s ease;"></video>
                             
-                            <!-- Reel Overlay UI -->
+                            <!-- Reel Overlay UI (minimal — these clips already carry their own baked-in branding/captions) -->
                             <div class="reel-overlay" id="reelOverlay">
                                 <div class="reel-overlay-top">
                                     <span class="reel-badge"><i data-lucide="clapperboard"></i> Reels</span>
-                                </div>
-                                <div class="reel-overlay-bottom">
-                                    <div class="reel-author">
-                                        <div class="reel-author-avatar">
-                                            <img src="images/logo.png" alt="Oval Palace Logo" style="width:100%;height:100%;object-fit:cover;">
-                                        </div>
-                                        <div class="reel-author-info">
-                                            <span class="reel-author-name">Oval Palace Resort</span>
-                                            <span class="reel-author-handle">@ovalpalaceresort</span>
-                                        </div>
-                                    </div>
-                                    <p class="reel-caption" id="reelCaption">🏡 Experience luxury redefined. Oval Palace Resort — Coming Soon! 🌟</p>
                                     <div class="reel-actions">
                                         <button class="reel-action" onclick="toggleReelPlay()">
                                             <i data-lucide="pause" id="reelPlayIcon"></i>
