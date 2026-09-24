@@ -266,7 +266,8 @@
 
 .reel-overlay-bottom {
     padding: 20px 16px;
-    background: linear-gradient(0deg, rgba(0,0,0,0.7) 0%, transparent 100%);
+    background: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.85) 55%, transparent 100%);
+    backdrop-filter: blur(4px);
 }
 
 .reel-author {
