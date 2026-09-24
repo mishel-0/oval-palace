@@ -281,6 +281,15 @@
                 <div class="reel-player-wrapper">
                     <div class="phone-mockup">
                         <div class="phone-notch"></div>
+                        <!-- Controls live on the bezel, outside the video frame -->
+                        <div class="phone-controls">
+                            <button class="reel-action" onclick="toggleReelPlay()">
+                                <i data-lucide="pause" id="reelPlayIcon"></i>
+                            </button>
+                            <button class="reel-action" onclick="toggleReelMute()">
+                                <i data-lucide="volume-x" id="reelMuteIcon"></i>
+                            </button>
+                        </div>
                         <div class="phone-screen" id="mainReelScreen">
                             <!-- Video Loader -->
                             <div class="video-loader" id="reelLoader">
@@ -288,23 +297,10 @@
                             </div>
                             <!-- Main Video Player -->
                             <video id="mainReelVideo" src="videos/reel-1.mp4" playsinline loop muted preload="auto" poster="images/hero-1.webp" style="opacity:0;transition:opacity 0.8s ease;"></video>
-                            
-                            <!-- Reel Overlay UI (minimal — these clips already carry their own baked-in branding/captions) -->
-                            <div class="reel-overlay" id="reelOverlay">
-                                <div class="reel-overlay-top">
-                                    <div class="reel-actions">
-                                        <button class="reel-action" onclick="toggleReelPlay()">
-                                            <i data-lucide="pause" id="reelPlayIcon"></i>
-                                        </button>
-                                        <button class="reel-action" onclick="toggleReelMute()">
-                                            <i data-lucide="volume-x" id="reelMuteIcon"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <!-- Progress bar -->
-                                <div class="reel-progress">
-                                    <div class="reel-progress-bar" id="reelProgressBar"></div>
-                                </div>
+
+                            <!-- Progress bar (thin, sits on the video edge — not a content-blocking overlay) -->
+                            <div class="reel-progress">
+                                <div class="reel-progress-bar" id="reelProgressBar"></div>
                             </div>
                         </div>
                         <div class="phone-home-bar"></div>
